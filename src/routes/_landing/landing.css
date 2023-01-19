@@ -1,0 +1,47 @@
+.Landing {
+  background-color: aqua;
+}
+
+.border {
+  border: 1px solid black;
+}
+
+.white {
+  background-color: white;
+}
+
+.header {
+  height: 9vh;
+  width: 100vw;
+  background-color: aqua;
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+}
+
+.heading {
+  flex: 1;
+  font-size: large;
+  text-align: left;
+}
+
+.links {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.links > p {
+  margin: 0 1.5vw 0 1.5vw;
+}
+
+.blank_flex {
+  width: 10vw;
+}
+
+.sections-container {
+  display: flex;
+}

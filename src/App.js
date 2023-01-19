@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Landing from "./routes/landing";
+import Landing from "./routes/_landing/landing";
 import DrumMachine from "./routes/drumMachine/drumMachine";
 import "./App.css";
 
