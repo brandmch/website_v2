@@ -3,7 +3,7 @@
 }
 
 .border {
-  border: 1px solid black;
+  border: 1px solid red;
 }
 
 .white {
@@ -42,6 +42,26 @@
   width: 10vw;
 }
 
+.body {
+  max-width: 100vw;
+}
+
 .sections-container {
   display: flex;
+  width: 100vw;
+  flex: 1;
+}
+
+.column-left {
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  margin: 10px 5px 5px 0;
+}
+
+.column-right {
+  justify-content: center;
+  align-items: center;
+  flex: 3;
+  margin: 10px 0 5px 5px;
 }
