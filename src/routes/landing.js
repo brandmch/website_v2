@@ -1,5 +1,8 @@
 import { Paper, Box, Typography } from "@mui/material";
-import { height } from "@mui/system";
+import SchoolIcon from "@mui/icons-material/School";
+import WorkIcon from "@mui/icons-material/Work";
+import HomeIcon from "@mui/icons-material/Home";
+import CallIcon from "@mui/icons-material/Call";
 import React from "react";
 import AppBarCustom from "../components/appbar";
 
@@ -22,6 +25,22 @@ const Landing = () => {
                 </Typography>
               </Box>
               <hr />
+              <Typography gutterBottom>
+                <WorkIcon />
+                Software Developer
+              </Typography>
+              <Typography gutterBottom>
+                <SchoolIcon />
+                Bachelor of Science
+              </Typography>
+              <Typography gutterBottom>
+                <HomeIcon />
+                Rockaway, New Jersey
+              </Typography>
+              <Typography gutterBottom>
+                <CallIcon />
+                Contact me
+              </Typography>
             </Paper>
           </Box>
 
