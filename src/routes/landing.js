@@ -1,4 +1,5 @@
 import { Paper, Box, Typography } from "@mui/material";
+import { height } from "@mui/system";
 import React from "react";
 import AppBarCustom from "../components/appbar";
 
@@ -6,77 +7,89 @@ const Landing = () => {
   return (
     <div>
       <AppBarCustom />
-      <Box sx={{ display: "flex", marginTop: "10px" }}>
+      <Box display={"flex"} marginTop={2}>
         {/*  */}
         {/* LEFT COLUMN */}
         {/*  */}
 
-        <Box sx={{ flex: 2, margin: "10px" }}>
+        <Box flex={2} margin={2}>
           {/* CONTACT INFO */}
-          <Paper elevation={2} sx={{ height: 100, width: "100%" }}>
-            <Typography variant="h4" align="center" sx={{ padding: "10px" }}>
-              Brandon McHugh
-            </Typography>
-            <hr />
-          </Paper>
+          <Box>
+            <Paper elevation={2}>
+              <Box paddingTop={2}>
+                <Typography variant="h4" align="center" gutterBottom>
+                  Brandon McHugh
+                </Typography>
+              </Box>
+              <hr />
+            </Paper>
+          </Box>
 
           {/* SKILLS */}
-          <Paper
-            elevation={2}
-            sx={{ height: 100, width: "100%", marginTop: "20px" }}
-          >
-            <Typography variant="h4" align="center">
-              Skills
-            </Typography>
-            <hr />
-          </Paper>
+          <Box>
+            <Paper elevation={2}>
+              <Box paddingTop={2}>
+                <Typography variant="h4" align="center" gutterBottom>
+                  Skills
+                </Typography>
+              </Box>
+              <hr />
+            </Paper>
+          </Box>
 
           {/* CERTIFICATIONS? */}
-          <Paper
-            elevation={2}
-            sx={{ height: 100, width: "100%", marginTop: "20px" }}
-          >
-            <Typography variant="h4" align="center">
-              Certifications?
-            </Typography>
-            <hr />
-          </Paper>
+          <Box>
+            <Paper elevation={2}>
+              <Box paddingTop={2}>
+                <Typography variant="h4" align="center" gutterBottom>
+                  Certifications?
+                </Typography>
+              </Box>
+              <hr />
+            </Paper>
+          </Box>
         </Box>
 
         {/*  */}
         {/* RIGHT COLUMN */}
         {/*  */}
 
-        <Box sx={{ flex: 5, margin: "10px" }}>
+        <Box flex={5} margin={2}>
           {/* SUMMARY */}
-          <Paper elevation={2} sx={{ height: 100, width: "100%" }}>
-            <Typography variant="h4" align="center">
-              Summary
-            </Typography>
-            <hr />
-          </Paper>
+          <Box>
+            <Paper>
+              <Box paddingTop={2}>
+                <Typography variant="h4" align="center" gutterBottom>
+                  Summary
+                </Typography>
+              </Box>
+              <hr />
+            </Paper>
+          </Box>
 
           {/* EXPERIENCE */}
-          <Paper
-            elevation={2}
-            sx={{ height: 100, width: "100%", marginTop: "20px" }}
-          >
-            <Typography variant="h4" align="center">
-              Experience
-            </Typography>
-            <hr />
-          </Paper>
+          <Box>
+            <Paper elevation={2}>
+              <Box paddingTop={2}>
+                <Typography variant="h4" align="center" gutterBottom>
+                  Experience
+                </Typography>
+              </Box>
+              <hr />
+            </Paper>
+          </Box>
 
           {/* EDUCATION */}
-          <Paper
-            elevation={2}
-            sx={{ height: 100, width: "100%", marginTop: "20px" }}
-          >
-            <Typography variant="h4" align="center">
-              Education
-            </Typography>
-            <hr />
-          </Paper>
+          <Box>
+            <Paper elevation={2}>
+              <Box paddingTop={2}>
+                <Typography variant="h4" align="center" gutterBottom>
+                  Education
+                </Typography>
+              </Box>
+              <hr />
+            </Paper>
+          </Box>
         </Box>
       </Box>
     </div>
