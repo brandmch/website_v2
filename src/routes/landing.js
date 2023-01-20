@@ -53,6 +53,13 @@ const Landing = () => {
                 </Typography>
               </Box>
               <hr />
+              <Typography>JavaScript</Typography>
+              <Typography>React</Typography>
+              <Typography>React Native</Typography>
+              <Typography>HTML/CSS</Typography>
+              <Typography>Node.js</Typography>
+              <Typography>VS Code</Typography>
+              <Typography></Typography>
             </Paper>
           </Box>
 
