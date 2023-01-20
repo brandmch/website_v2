@@ -3,6 +3,10 @@ import SchoolIcon from "@mui/icons-material/School";
 import WorkIcon from "@mui/icons-material/Work";
 import HomeIcon from "@mui/icons-material/Home";
 import CallIcon from "@mui/icons-material/Call";
+import JavascriptIcon from "@mui/icons-material/Javascript";
+import HtmlIcon from "@mui/icons-material/Html";
+import CssIcon from "@mui/icons-material/Css";
+import CodeIcon from "@mui/icons-material/Code";
 import React from "react";
 import AppBarCustom from "../components/appbar";
 
@@ -53,13 +57,34 @@ const Landing = () => {
                 </Typography>
               </Box>
               <hr />
-              <Typography>JavaScript</Typography>
-              <Typography>React</Typography>
-              <Typography>React Native</Typography>
-              <Typography>HTML/CSS</Typography>
-              <Typography>Node.js</Typography>
-              <Typography>VS Code</Typography>
-              <Typography></Typography>
+              <Typography>
+                <JavascriptIcon fontSize="large" />
+                JavaScript
+              </Typography>
+              <Typography>
+                <CodeIcon fontSize="large" />
+                React
+              </Typography>
+              <Typography>
+                <CodeIcon fontSize="large" />
+                React Native
+              </Typography>
+              <Typography>
+                <HtmlIcon fontSize="large" />
+                HTML
+              </Typography>
+              <Typography>
+                <CssIcon fontSize="large" />
+                CSS
+              </Typography>
+              <Typography>
+                <CodeIcon fontSize="large" />
+                Node.js
+              </Typography>
+              <Typography>
+                <CodeIcon fontSize="large" />
+                VS Code
+              </Typography>
             </Paper>
           </Box>
 
