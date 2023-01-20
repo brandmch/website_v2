@@ -99,6 +99,16 @@ const Landing = () => {
                 </Typography>
 
                 <hr />
+                <Typography gutterBottom>
+                  Back End Development and APIs
+                </Typography>
+                <Typography gutterBottom>
+                  Front End Development Libraries
+                </Typography>
+                <Typography gutterBottom>Responsive Web Design</Typography>
+                <Typography gutterBottom>
+                  JavaScript Algorithms and Data Structures
+                </Typography>
               </Box>
             </Paper>
           </Box>
