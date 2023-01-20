@@ -14,7 +14,7 @@ const Landing = () => {
 
         <Box flex={2} margin={2}>
           {/* CONTACT INFO */}
-          <Box>
+          <Box marginBottom={2}>
             <Paper elevation={2}>
               <Box paddingTop={2}>
                 <Typography variant="h4" align="center" gutterBottom>
@@ -26,7 +26,7 @@ const Landing = () => {
           </Box>
 
           {/* SKILLS */}
-          <Box>
+          <Box marginBottom={2} marginTop={2}>
             <Paper elevation={2}>
               <Box paddingTop={2}>
                 <Typography variant="h4" align="center" gutterBottom>
@@ -38,7 +38,7 @@ const Landing = () => {
           </Box>
 
           {/* CERTIFICATIONS? */}
-          <Box>
+          <Box marginBottom={2} marginTop={2}>
             <Paper elevation={2}>
               <Box paddingTop={2}>
                 <Typography variant="h4" align="center" gutterBottom>
@@ -56,7 +56,7 @@ const Landing = () => {
 
         <Box flex={5} margin={2}>
           {/* SUMMARY */}
-          <Box>
+          <Box marginBottom={2}>
             <Paper>
               <Box paddingTop={2}>
                 <Typography variant="h4" align="center" gutterBottom>
@@ -68,7 +68,7 @@ const Landing = () => {
           </Box>
 
           {/* EXPERIENCE */}
-          <Box>
+          <Box marginBottom={2} marginTop={2}>
             <Paper elevation={2}>
               <Box paddingTop={2}>
                 <Typography variant="h4" align="center" gutterBottom>
@@ -80,7 +80,7 @@ const Landing = () => {
           </Box>
 
           {/* EDUCATION */}
-          <Box>
+          <Box marginBottom={2} marginTop={2}>
             <Paper elevation={2}>
               <Box paddingTop={2}>
                 <Typography variant="h4" align="center" gutterBottom>
