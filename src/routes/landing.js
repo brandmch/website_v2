@@ -58,31 +58,31 @@ const Landing = () => {
               </Box>
               <hr />
               <Typography>
-                <JavascriptIcon fontSize="large" />
+                <JavascriptIcon fontSize="medium" />
                 JavaScript
               </Typography>
               <Typography>
-                <CodeIcon fontSize="large" />
+                <CodeIcon fontSize="medium" />
                 React
               </Typography>
               <Typography>
-                <CodeIcon fontSize="large" />
+                <CodeIcon fontSize="medium" />
                 React Native
               </Typography>
               <Typography>
-                <HtmlIcon fontSize="large" />
+                <HtmlIcon fontSize="medium" />
                 HTML
               </Typography>
               <Typography>
-                <CssIcon fontSize="large" />
+                <CssIcon fontSize="medium" />
                 CSS
               </Typography>
               <Typography>
-                <CodeIcon fontSize="large" />
+                <CodeIcon fontSize="medium" />
                 Node.js
               </Typography>
               <Typography>
-                <CodeIcon fontSize="large" />
+                <CodeIcon fontSize="medium" />
                 VS Code
               </Typography>
             </Paper>
