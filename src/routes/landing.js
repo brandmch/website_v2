@@ -135,17 +135,19 @@ const Landing = () => {
                   Experience
                 </Typography>
                 <hr />
-                <Typography gutterBottom>Software Developer</Typography>
+                <Typography variant="h5" gutterBottom>
+                  Software Developer
+                </Typography>
                 <Typography variant="h6" gutterBottom>
                   OtherWhy LLC
                 </Typography>
-                <Typography gutterBottom>
+                <Typography variant="h5" gutterBottom>
                   Sales Development Representative
                 </Typography>
                 <Typography variant="h6" gutterBottom>
                   Procore Technologies
                 </Typography>
-                <Typography gutterBottom>
+                <Typography variant="h5" gutterBottom>
                   Sales Development Representative
                 </Typography>
                 <Typography variant="h6" gutterBottom>
