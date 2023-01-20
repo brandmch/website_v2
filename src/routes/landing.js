@@ -14,9 +14,10 @@ const Landing = () => {
         <Box sx={{ flex: 2, margin: "10px" }}>
           {/* CONTACT INFO */}
           <Paper elevation={2} sx={{ height: 100, width: "100%" }}>
-            <Typography variant="h4" align="center">
+            <Typography variant="h4" align="center" sx={{ padding: "10px" }}>
               Brandon McHugh
             </Typography>
+            <hr />
           </Paper>
 
           {/* SKILLS */}
@@ -27,6 +28,7 @@ const Landing = () => {
             <Typography variant="h4" align="center">
               Skills
             </Typography>
+            <hr />
           </Paper>
 
           {/* CERTIFICATIONS? */}
@@ -37,6 +39,7 @@ const Landing = () => {
             <Typography variant="h4" align="center">
               Certifications?
             </Typography>
+            <hr />
           </Paper>
         </Box>
 
@@ -50,6 +53,7 @@ const Landing = () => {
             <Typography variant="h4" align="center">
               Summary
             </Typography>
+            <hr />
           </Paper>
 
           {/* EXPERIENCE */}
@@ -60,6 +64,7 @@ const Landing = () => {
             <Typography variant="h4" align="center">
               Experience
             </Typography>
+            <hr />
           </Paper>
 
           {/* EDUCATION */}
@@ -70,6 +75,7 @@ const Landing = () => {
             <Typography variant="h4" align="center">
               Education
             </Typography>
+            <hr />
           </Paper>
         </Box>
       </Box>

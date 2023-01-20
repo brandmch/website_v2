@@ -10,3 +10,7 @@
 body {
   padding: 20px;
 }
+
+hr {
+  width: 75%;
+}
