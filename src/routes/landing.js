@@ -150,7 +150,7 @@ const Landing = () => {
                   Education
                 </Typography>
                 <hr />
-                <Typography></Typography>
+                <Typography>Rowan University</Typography>
               </Box>
             </Paper>
           </Box>
