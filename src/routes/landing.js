@@ -27,7 +27,6 @@ const Landing = () => {
                 <Typography variant="h4" align="center" gutterBottom>
                   Brandon McHugh
                 </Typography>
-
                 <hr />
                 <Typography gutterBottom>
                   <WorkIcon />
@@ -56,7 +55,6 @@ const Landing = () => {
                 <Typography variant="h4" align="center" gutterBottom>
                   Languages and Frameworks
                 </Typography>
-
                 <hr />
                 <Typography>
                   <JavascriptIcon fontSize="medium" />
@@ -97,7 +95,6 @@ const Landing = () => {
                 <Typography variant="h4" align="center" gutterBottom>
                   Certifications?
                 </Typography>
-
                 <hr />
                 <Typography gutterBottom>
                   Back End Development and APIs
@@ -137,7 +134,6 @@ const Landing = () => {
                 <Typography variant="h4" align="center" gutterBottom>
                   Experience
                 </Typography>
-
                 <hr />
               </Box>
             </Paper>
@@ -150,7 +146,6 @@ const Landing = () => {
                 <Typography variant="h4" align="center" gutterBottom>
                   Education
                 </Typography>
-
                 <hr />
               </Box>
             </Paper>
