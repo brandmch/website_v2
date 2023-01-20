@@ -131,19 +131,23 @@ const Landing = () => {
           <Box marginBottom={4} marginTop={4}>
             <Paper elevation={4}>
               <Box padding={2.5}>
-                <Typography variant="h4" align="center" gutterBottom>
+                <Typography variant="h4" align="center">
                   Experience
                 </Typography>
                 <hr />
-                <Typography>Software Developer</Typography>
+                <Typography gutterBottom>Software Developer</Typography>
                 <Typography variant="h6" gutterBottom>
                   OtherWhy LLC
                 </Typography>
-                <Typography>Sales Development Representative</Typography>
+                <Typography gutterBottom>
+                  Sales Development Representative
+                </Typography>
                 <Typography variant="h6" gutterBottom>
                   Procore Technologies
                 </Typography>
-                <Typography>Sales Development Representative</Typography>
+                <Typography gutterBottom>
+                  Sales Development Representative
+                </Typography>
                 <Typography variant="h6" gutterBottom>
                   Advanced Systems Concepts
                 </Typography>
