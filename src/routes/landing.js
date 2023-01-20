@@ -49,7 +49,7 @@ const Landing = () => {
             <Paper elevation={2}>
               <Box paddingTop={2}>
                 <Typography variant="h4" align="center" gutterBottom>
-                  Skills
+                  Languages and Frameworks
                 </Typography>
               </Box>
               <hr />
