@@ -135,9 +135,9 @@ const Landing = () => {
                   Experience
                 </Typography>
                 <hr />
-                <Typography>OtherWhy LLC</Typography>
-                <Typography>Procore Technologies</Typography>
-                <Typography>Advanced Systems Concepts</Typography>
+                <Typography variant="h6">OtherWhy LLC</Typography>
+                <Typography variant="h6">Procore Technologies</Typography>
+                <Typography variant="h6">Advanced Systems Concepts</Typography>
               </Box>
             </Paper>
           </Box>
