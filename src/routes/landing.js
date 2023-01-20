@@ -150,6 +150,7 @@ const Landing = () => {
                   Education
                 </Typography>
                 <hr />
+                <Typography></Typography>
               </Box>
             </Paper>
           </Box>
