@@ -30,29 +30,41 @@ const Landing = () => {
                   Brandon McHugh
                 </Typography>
                 <hr />
-                <Typography gutterBottom>
-                  <WorkIcon />
+                <Typography gutterBottom display="flex" alignItems="start">
+                  <Box marginRight={1}>
+                    <WorkIcon />
+                  </Box>
                   Software Developer
                 </Typography>
-                <Typography gutterBottom>
-                  <SchoolIcon />
+                <Typography gutterBottom display="flex" alignItems="start">
+                  <Box marginRight={1}>
+                    <SchoolIcon />
+                  </Box>
                   Bachelor of Science
                 </Typography>
-                <Typography gutterBottom>
-                  <HomeIcon />
+                <Typography gutterBottom display="flex" alignItems="start">
+                  <Box marginRight={1}>
+                    <HomeIcon />
+                  </Box>
                   Rockaway, New Jersey
                 </Typography>
-                <Typography gutterBottom>
-                  <LinkedInIcon />
+                <Typography gutterBottom display="flex" alignItems="start">
+                  <Box marginRight={1}>
+                    <LinkedInIcon />
+                  </Box>
                   LinkedIn
                 </Typography>
-                <Typography gutterBottom>
-                  <GitHubIcon />
+                <Typography gutterBottom display="flex" alignItems="start">
+                  <Box marginRight={1}>
+                    <GitHubIcon />
+                  </Box>
                   GitHub
                 </Typography>
-                <Typography gutterBottom>
-                  <CallIcon />
-                  Contact me
+                <Typography gutterBottom display="flex" alignItems="start">
+                  <Box marginRight={1}>
+                    <CallIcon />
+                  </Box>
+                  Contact me!
                 </Typography>
               </Box>
             </Paper>
@@ -66,32 +78,46 @@ const Landing = () => {
                   Languages and Frameworks
                 </Typography>
                 <hr />
-                <Typography>
-                  <JavascriptIcon fontSize="medium" />
+                <Typography gutterBottom display="flex" alignItems="start">
+                  <Box marginRight={1}>
+                    <JavascriptIcon fontSize="medium" />
+                  </Box>
                   JavaScript
                 </Typography>
-                <Typography>
-                  <CodeIcon fontSize="medium" />
+                <Typography gutterBottom display="flex" alignItems="start">
+                  <Box marginRight={1}>
+                    <CodeIcon fontSize="medium" />
+                  </Box>
                   React
                 </Typography>
-                <Typography>
-                  <CodeIcon fontSize="medium" />
+                <Typography gutterBottom display="flex" alignItems="start">
+                  <Box marginRight={1}>
+                    <CodeIcon fontSize="medium" />
+                  </Box>
                   React Native
                 </Typography>
-                <Typography>
-                  <HtmlIcon fontSize="medium" />
+                <Typography gutterBottom display="flex" alignItems="start">
+                  <Box marginRight={1}>
+                    <HtmlIcon fontSize="medium" />
+                  </Box>
                   HTML
                 </Typography>
-                <Typography>
-                  <CssIcon fontSize="medium" />
+                <Typography gutterBottom display="flex" alignItems="start">
+                  <Box marginRight={1}>
+                    <CssIcon fontSize="medium" />
+                  </Box>
                   CSS
                 </Typography>
-                <Typography>
-                  <CodeIcon fontSize="medium" />
+                <Typography gutterBottom display="flex" alignItems="start">
+                  <Box marginRight={1}>
+                    <CodeIcon fontSize="medium" />
+                  </Box>
                   Node.js
                 </Typography>
-                <Typography>
-                  <CodeIcon fontSize="medium" />
+                <Typography gutterBottom display="flex" alignItems="start">
+                  <Box marginRight={1}>
+                    <CodeIcon fontSize="medium" />
+                  </Box>
                   VS Code
                 </Typography>
               </Box>
