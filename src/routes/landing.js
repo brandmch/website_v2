@@ -171,6 +171,9 @@ const Landing = () => {
           </Box>
         </Box>
       </Box>
+      <Box display="flex" justifyContent="center">
+        <Typography>Brandon McHugh 2023</Typography>
+      </Box>
     </div>
   );
 };
