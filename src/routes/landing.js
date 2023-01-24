@@ -131,17 +131,24 @@ const Landing = () => {
           <Box marginBottom={4} marginTop={4}>
             <Paper elevation={4}>
               <Box padding={2.5}>
-                <Typography variant="h4" align="center">
-                  Experience
-                </Typography>
-                <hr />
-                <Typography variant="h5" gutterBottom>
-                  Software Developer
-                </Typography>
-                <Typography variant="h6" gutterBottom>
-                  OtherWhy LLC
-                </Typography>
-                <Typography>March 2022 - Present</Typography>
+                <Box marginBottom={4}>
+                  <Typography variant="h4" align="center">
+                    Experience
+                  </Typography>
+                  <hr />
+                </Box>
+                <Box display="flex">
+                  <Box flex={1}>
+                    <Typography variant="h5">Software Developer</Typography>
+                    <Typography variant="h6" gutterBottom fontStyle="italic">
+                      OtherWhy LLC
+                    </Typography>
+                  </Box>
+                  <Box>
+                    <Typography variant="h6">March 2022 - Present</Typography>
+                    <hr />
+                  </Box>
+                </Box>
                 <ul>
                   <li>
                     Built the scaffolding for a new web app using React,
@@ -182,13 +189,22 @@ const Landing = () => {
                     Designers and business stakeholders
                   </li>
                 </ul>
-                <Typography variant="h5" gutterBottom>
-                  Sales Development Representative
-                </Typography>
-                <Typography variant="h6" gutterBottom>
-                  Procore Technologies
-                </Typography>
-                <Typography>November 2021 - February 2022</Typography>
+                <Box display="flex">
+                  <Box flex={1}>
+                    <Typography variant="h5">
+                      Sales Development Representative
+                    </Typography>
+                    <Typography variant="h6" gutterBottom fontStyle="italic">
+                      Procore Technologies
+                    </Typography>
+                  </Box>
+                  <Box>
+                    <Typography variant="h6">
+                      November 2021 - February 2022
+                    </Typography>
+                    <hr />
+                  </Box>
+                </Box>
                 <ul>
                   <li>
                     Created new business opportunities to fuel Procore’s growth
@@ -214,13 +230,20 @@ const Landing = () => {
                     opportunities for new business
                   </li>
                 </ul>
-                <Typography variant="h5" gutterBottom>
-                  Sales Development Representative
-                </Typography>
-                <Typography variant="h6" gutterBottom>
-                  Advanced Systems Concepts
-                </Typography>
-                <Typography>March 2020 - May 2021</Typography>
+                <Box display="flex">
+                  <Box flex={1}>
+                    <Typography variant="h5">
+                      Sales Development Representative
+                    </Typography>
+                    <Typography variant="h6" gutterBottom fontStyle="italic">
+                      Advanced Systems Concepts, Inc.
+                    </Typography>
+                  </Box>
+                  <Box>
+                    <Typography variant="h6">March 2020 - May 2021</Typography>
+                    <hr />
+                  </Box>
+                </Box>
                 <ul>
                   <li>
                     Helped pioneer the Sales Development team for ASCI’s
