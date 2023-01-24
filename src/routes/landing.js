@@ -141,18 +141,86 @@ const Landing = () => {
                 <Typography variant="h6" gutterBottom>
                   OtherWhy LLC
                 </Typography>
+                <Typography>March 2022 - Present</Typography>
+                <ul>
+                  <li>
+                    Built the scaffolding for a new web app using React,
+                    TypeScript, GraphQL Apollo, AWS Amplify, AWS Cognito, MUI,
+                    and Github
+                  </li>
+                  <li>
+                    Helped design and implement cloud infrastructure with Amazon
+                    services such as AWS Amplify and AWS Cognito
+                  </li>
+                  <li>
+                    Set up content management using a headless CMS with API
+                    calls
+                  </li>
+                  <li>
+                    Configured Google Cloud Platform to allow Cognito to
+                    authenticate users using Google Sign In
+                  </li>
+                  <li>
+                    Created login and registration pages using React, MUI, AWS
+                    Cognito, and GraphQL
+                  </li>
+                  <li>
+                    Deployed assets using a Content Delivery Network (CDN)
+                  </li>
+                  <li>
+                    Setup end to end testing as well as unit testing using
+                    different test frameworks
+                  </li>
+                  <li>
+                    Worked on an agile team using agile ceremonies such as
+                    standup, retro, grooming and commitment meetings
+                  </li>
+                  <li>
+                    Utilized Jira, Confluence, Slack, Figma, Miro and google
+                    workspace to collaborate cross-team with Technical Project
+                    Managers, Scrum Master, Architect, Product Managers,
+                    Designers and business stakeholders
+                  </li>
+                </ul>
                 <Typography variant="h5" gutterBottom>
                   Sales Development Representative
                 </Typography>
                 <Typography variant="h6" gutterBottom>
                   Procore Technologies
                 </Typography>
+                <Typography>November 2021 - February 2022</Typography>
+                <ul>
+                  <li>
+                    Created new business opportunities to fuel Procore’s growth
+                  </li>
+                  <li>
+                    Engaged construction professionals through phone, email, and
+                    other channels to understand their challenges and identify
+                    opportunities to solve them
+                  </li>
+                  <li>
+                    Partnered with Account Executives to achieve mutually
+                    aligned sales quotas each month
+                  </li>
+                  <li>
+                    Autonomously operated beyond the role to help the team
+                    improve processes, training, use of technology, and any
+                    other aspects of business
+                  </li>
+                  <li>
+                    {" "}
+                    Worked cross-team with sales management to develop targeted
+                    lists, call strategies, and messaging to create
+                    opportunities for new business
+                  </li>
+                </ul>
                 <Typography variant="h5" gutterBottom>
                   Sales Development Representative
                 </Typography>
                 <Typography variant="h6" gutterBottom>
                   Advanced Systems Concepts
                 </Typography>
+                <Typography>March 2020 - May 2021</Typography>
               </Box>
             </Paper>
           </Box>
