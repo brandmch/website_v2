@@ -7,6 +7,8 @@ import JavascriptIcon from "@mui/icons-material/Javascript";
 import HtmlIcon from "@mui/icons-material/Html";
 import CssIcon from "@mui/icons-material/Css";
 import CodeIcon from "@mui/icons-material/Code";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import GitHubIcon from "@mui/icons-material/GitHub";
 import React from "react";
 import AppBarCustom from "../components/appbar";
 
@@ -39,6 +41,14 @@ const Landing = () => {
                 <Typography gutterBottom>
                   <HomeIcon />
                   Rockaway, New Jersey
+                </Typography>
+                <Typography gutterBottom>
+                  <LinkedInIcon />
+                  LinkedIn
+                </Typography>
+                <Typography gutterBottom>
+                  <GitHubIcon />
+                  GitHub
                 </Typography>
                 <Typography gutterBottom>
                   <CallIcon />
@@ -131,13 +141,11 @@ const Landing = () => {
           <Box marginBottom={4} marginTop={4}>
             <Paper elevation={4}>
               <Box padding={2.5}>
-                <Box marginBottom={4}>
-                  <Typography variant="h4" align="center">
-                    Experience
-                  </Typography>
-                  <hr />
-                </Box>
-                <Box display="flex">
+                <Typography variant="h4" align="center">
+                  Experience
+                </Typography>
+                <hr />
+                <Box display="flex" marginTop={4}>
                   <Box flex={1}>
                     <Typography variant="h5">Software Developer</Typography>
                     <Typography variant="h6" gutterBottom fontStyle="italic">
@@ -189,7 +197,7 @@ const Landing = () => {
                     Designers and business stakeholders
                   </li>
                 </ul>
-                <Box display="flex">
+                <Box display="flex" marginTop={4}>
                   <Box flex={1}>
                     <Typography variant="h5">
                       Sales Development Representative
@@ -230,7 +238,7 @@ const Landing = () => {
                     opportunities for new business
                   </li>
                 </ul>
-                <Box display="flex">
+                <Box display="flex" marginTop={4}>
                   <Box flex={1}>
                     <Typography variant="h5">
                       Sales Development Representative
@@ -285,7 +293,43 @@ const Landing = () => {
                   Education
                 </Typography>
                 <hr />
-                <Typography>Rowan University</Typography>
+                <Box display="flex" marginTop={4}>
+                  <Box flex={1}>
+                    <Typography variant="h5">
+                      Bachelor of Science - Psychology
+                    </Typography>
+                    <Typography variant="h6" gutterBottom fontStyle="italic">
+                      Rowan University
+                    </Typography>
+                  </Box>
+                  <Box>
+                    <Typography variant="h6">
+                      <span
+                        style={{
+                          fontSize: 12,
+                          fontStyle: "italic",
+                          marginRight: 5,
+                        }}
+                      >
+                        Degree Received{" "}
+                      </span>
+                      December 2019
+                    </Typography>
+                  </Box>
+                </Box>
+                <ul>
+                  <li>
+                    Conducted research to determine correlations between
+                    academic stress, parental pressure, procrastination, and
+                    stimulant use in undergraduate students
+                  </li>
+                  <li>
+                    Using Latent Class Analysis and self-report questionnaires
+                    from over two-hundred students, research concluded that
+                    procrastination, parental pressure, and academic stress were
+                    possible predictors of licit stimulant use
+                  </li>
+                </ul>
               </Box>
             </Paper>
           </Box>
