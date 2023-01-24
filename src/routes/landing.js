@@ -221,6 +221,35 @@ const Landing = () => {
                   Advanced Systems Concepts
                 </Typography>
                 <Typography>March 2020 - May 2021</Typography>
+                <ul>
+                  <li>
+                    Helped pioneer the Sales Development team for ASCI’s
+                    workload automation software, ActiveBatch
+                  </li>
+                  <li>
+                    Assessed, identified and implemented novel approaches and
+                    techniques to quickly identify high potential clients for
+                    ActiveBatch Workload Automation
+                  </li>
+                  <li>
+                    Engaged IT professionals through phone, email, and other
+                    channels to understand their challenges and identify
+                    opportunities to solve them
+                  </li>
+                  <li>
+                    Collaborated with Account Executives to organize discovery
+                    calls and product demos with a high rate of conversion and
+                    attendance
+                  </li>
+                  <li>
+                    Connected with current clients to discover new business
+                    opportunities
+                  </li>
+                  <li>
+                    Worked cross functionally to refine SDR procedures and
+                    maximize the effectiveness of the sales team
+                  </li>
+                </ul>
               </Box>
             </Paper>
           </Box>
