@@ -14,7 +14,7 @@ const Landing = () => {
   return (
     <div>
       <AppBarCustom />
-      <Box display={"flex"} marginTop={2}>
+      <Box display={"flex"} marginTop={2} marginLeft={15} marginRight={15}>
         {/*  */}
         {/* LEFT COLUMN */}
         {/*  */}
