@@ -153,9 +153,14 @@ const Landing = () => {
         <Box flex={5} margin={2}>
           {/* SUMMARY */}
           <Box marginBottom={4}>
-            <Paper elevation={4}>
+            <Paper elevation={4} sx={{ backgroundColor: "#044A07" }}>
               <Box padding={2.5}>
-                <Typography variant="h4" align="center" gutterBottom>
+                <Typography
+                  variant="h4"
+                  align="center"
+                  gutterBottom
+                  color="#FFFFFF"
+                >
                   Summary
                 </Typography>
                 <hr />
