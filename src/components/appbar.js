@@ -6,6 +6,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
+import { useTheme } from "@mui/material/styles";
 
 const pages = [
   ["Social", "/social"],
