@@ -7,6 +7,7 @@ import DrumMachine from "./routes/drumMachine/drumMachine";
 import Projects from "./routes/projects";
 import Social from "./routes/social";
 import "./App.css";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const router = createBrowserRouter([
   { path: "/", element: <Landing /> },
@@ -16,8 +17,22 @@ const router = createBrowserRouter([
   { path: "/social", element: <Social /> },
 ]);
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#388e3c",
+      dark: "",
+      light: "",
+    },
+  },
+});
+
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <ThemeProvider theme={theme}>
+      <RouterProvider router={router} />
+    </ThemeProvider>
+  );
 }
 
 export default App;
