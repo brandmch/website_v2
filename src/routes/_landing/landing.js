@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, CircularProgress } from "@mui/material";
 
 import AppBarCustom from "../../components/appbar";
 import useWindowSize from "../../utils/useWindowSize";
@@ -74,23 +74,27 @@ const Landing = () => {
     );
   };
 
-  return (
-    <div>
-      <AppBarCustom />
+  {
+    return width ? (
+      <div>
+        <AppBarCustom />
 
-      {width > 900 ? (
-        <Desktop width={width} />
-      ) : width > 631 ? (
-        <InBetween width={width} />
-      ) : (
-        <Mobile width={width} />
-      )}
+        {width > 900 ? (
+          <Desktop width={width} />
+        ) : width > 631 ? (
+          <InBetween width={width} />
+        ) : (
+          <Mobile width={width} />
+        )}
 
-      <Box display="flex" justifyContent="center">
-        <Typography>Brandon McHugh 2023</Typography>
-      </Box>
-    </div>
-  );
+        <Box display="flex" justifyContent="center">
+          <Typography>Brandon McHugh 2023</Typography>
+        </Box>
+      </div>
+    ) : (
+      <CircularProgress />
+    );
+  }
 };
 
 export default Landing;

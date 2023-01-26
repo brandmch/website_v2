@@ -33,13 +33,17 @@ const Summary = ({ width }) => {
               </Typography>
             </Box>
             <Box flex={1}></Box>
-            <Box
-              flex={10}
-              height={200}
-              width={200}
-              borderRadius={100}
-              backgroundColor="white"
-            ></Box>
+            {width > 355 ? (
+              <Box
+                flex={10}
+                height={200}
+                width={200}
+                borderRadius={100}
+                backgroundColor="white"
+              ></Box>
+            ) : (
+              ""
+            )}
           </Box>
         </Box>
       </Paper>
