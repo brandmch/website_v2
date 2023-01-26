@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import AppBarCustom from "../../components/appbar";
 import "./randomQuoteMachine.css";
 
 // Grabs array of quotes from API. Returns 1 random quote from the array.
@@ -51,6 +53,7 @@ const RandomQuoteMachine = () => {
           backgroundImage: `linear-gradient(to bottom right, ${state.backgroundColor}, rgb(255, 255, 255))`,
         }}
       >
+        <AppBarCustom />
         <div className="header-randomQuoteMachine">
           <p className="quote-randomQuoteMachine" id="text">
             "{state.quote.text}"
@@ -70,16 +73,15 @@ const RandomQuoteMachine = () => {
               New Quote
             </button>
             <div className="blank-button-end-randomQuoteMachine"></div>
-            <i
-              className="fa-randomQuoteMachine fa-twitter"
-              style={{ color: state.backgroundColor }}
+            <TwitterIcon
+              style={{ color: state.backgroundColor, fontSize: 50 }}
               onClick={() => {
                 window.open(
                   `https://twitter.com/intent/tweet?text=${getTweetStr(state)}`,
                   "_blank"
                 );
               }}
-            ></i>
+            />
           </div>
         </div>
       </div>

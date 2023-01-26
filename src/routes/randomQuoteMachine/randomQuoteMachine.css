@@ -1,11 +1,9 @@
 .App-randomQuoteMachine {
-  text-align: center;
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  color: #000000;
-  justify-content: center;
+  flex-direction: column;
+  text-align: left;
   align-items: center;
+  height: 100vh;
   font-family: "Raleway", sans-serif;
 }
 
@@ -20,6 +18,7 @@
   padding: 30px;
   box-shadow: 7px 7px rgba(0, 0, 0, 0.1);
   animation: header-fadeIn 3s;
+  margin-top: 18vh;
 }
 
 @keyframes header-fadeIn {
