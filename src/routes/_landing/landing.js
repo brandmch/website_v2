@@ -34,7 +34,7 @@ const Landing = () => {
     );
   };
 
-  const Mobile = () => {
+  const InBetween = () => {
     return (
       <Box marginTop={4} marginLeft={6} marginRight={6}>
         <Summary />
@@ -57,11 +57,28 @@ const Landing = () => {
     );
   };
 
+  const Mobile = () => {
+    return (
+      <Box marginTop={4} marginLeft={6} marginRight={6}>
+        <Summary />
+
+        <ContactInfo />
+        <Skills />
+
+        <Certifications />
+        <Projects />
+
+        <Experience />
+        <Education />
+      </Box>
+    );
+  };
+
   return (
     <div>
       <AppBarCustom />
 
-      {width > 900 ? <Desktop /> : <Mobile />}
+      {width > 900 ? <Desktop /> : width > 631 ? <InBetween /> : <Mobile />}
 
       <Box display="flex" justifyContent="center">
         <Typography>Brandon McHugh 2023</Typography>

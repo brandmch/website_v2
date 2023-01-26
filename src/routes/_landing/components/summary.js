@@ -1,6 +1,9 @@
 import { Paper, Box, Typography } from "@mui/material";
+import useWindowSize from "../../../utils/useWindowSize";
 
 const Summary = () => {
+  const { width } = useWindowSize();
+
   return (
     <Box marginBottom={4}>
       <Paper elevation={4} sx={{ backgroundColor: "#044A07" }}>
