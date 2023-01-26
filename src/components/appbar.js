@@ -6,7 +6,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-import { useTheme } from "@mui/material/styles";
+import useWindowSize from "../utils/useWindowSize";
 
 const pages = [
   ["Social", "/social"],
@@ -18,6 +18,7 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"];
 const AppBarCustom = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const { width } = useWindowSize();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -43,48 +44,68 @@ const AppBarCustom = () => {
             noWrap
             component="a"
             href="/"
-            sx={{
-              mr: 6,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
+            sx={
+              width > 900
+                ? {
+                    mr: 6,
+                    display: { xs: "none", md: "flex" },
+                    fontFamily: "monospace",
+                    fontWeight: 700,
+                    letterSpacing: ".3rem",
+                    color: "inherit",
+                    textDecoration: "none",
+                  }
+                : {
+                    fontFamily: "monospace",
+                    fontWeight: 700,
+                    letterSpacing: ".3rem",
+                    color: "inherit",
+                    textDecoration: "none",
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                  }
+            }
           >
             BRANDON McHUGH
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            ></IconButton>
-          </Box>
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: { xs: "none", md: "flex", justifyContent: "flex-end" },
-            }}
-          >
-            {pages.map(([title, url]) => (
-              <Button
-                key={url}
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.location.href = url;
-                }}
-                sx={{ my: 2, mx: 2, color: "white", display: "block" }}
-              >
-                {title}
-              </Button>
-            ))}
-          </Box>
+          {width > 900 ? (
+            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="inherit"
+              ></IconButton>
+            </Box>
+          ) : (
+            ""
+          )}
+          {width > 900 ? (
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "none", md: "flex", justifyContent: "flex-end" },
+              }}
+            >
+              {pages.map(([title, url]) => (
+                <Button
+                  key={url}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = url;
+                  }}
+                  sx={{ my: 2, mx: 2, color: "white", display: "block" }}
+                >
+                  {title}
+                </Button>
+              ))}
+            </Box>
+          ) : (
+            ""
+          )}
         </Toolbar>
       </Container>
     </AppBar>

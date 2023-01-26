@@ -1,3 +1,4 @@
+import React from "react";
 import { Paper, Box, Typography } from "@mui/material";
 import SchoolIcon from "@mui/icons-material/School";
 import WorkIcon from "@mui/icons-material/Work";
@@ -9,14 +10,21 @@ import CssIcon from "@mui/icons-material/Css";
 import CodeIcon from "@mui/icons-material/Code";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import React from "react";
 import AppBarCustom from "../components/appbar";
 
+import useWindowSize from "../utils/useWindowSize";
+
 const Landing = () => {
+  const { width } = useWindowSize();
   return (
     <div>
       <AppBarCustom />
-      <Box display={"flex"} marginTop={4} marginLeft={15} marginRight={15}>
+      <Box
+        display={width < 900 ? "" : "flex"}
+        marginTop={4}
+        marginLeft={15}
+        marginRight={15}
+      >
         {/*  */}
         {/* LEFT COLUMN */}
         {/*  */}
@@ -27,7 +35,7 @@ const Landing = () => {
             <Paper elevation={4}>
               <Box padding={2.5}>
                 <Typography variant="h4" align="center" gutterBottom>
-                  Brandon McHugh
+                  Info
                 </Typography>
                 <hr />
                 <Typography
