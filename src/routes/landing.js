@@ -129,7 +129,7 @@ const Landing = () => {
             <Paper elevation={4}>
               <Box padding={2.5}>
                 <Typography variant="h4" align="center" gutterBottom>
-                  Certifications?
+                  Certifications
                 </Typography>
                 <hr />
                 <Typography gutterBottom>
@@ -142,6 +142,23 @@ const Landing = () => {
                 <Typography gutterBottom>
                   JavaScript Algorithms and Data Structures
                 </Typography>
+              </Box>
+            </Paper>
+          </Box>
+
+          {/* PROJECTS */}
+          <Box marginBottom={4} marginTop={4}>
+            <Paper elevation={4}>
+              <Box padding={2.5}>
+                <Typography variant="h4" align="center" gutterBottom>
+                  Projects
+                </Typography>
+                <hr />
+                <Typography gutterBottom>Drum Machine</Typography>
+                <Typography gutterBottom>JavaScript Calculator</Typography>
+                <Typography gutterBottom>Mardown Previewer</Typography>
+                <Typography gutterBottom>Random Quote Machine</Typography>
+                <Typography gutterBottom>Timer</Typography>
               </Box>
             </Paper>
           </Box>

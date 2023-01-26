@@ -25,6 +25,9 @@ const theme = createTheme({
       light: "#6abf69",
     },
   },
+  typography: {
+    fontFamily: ["Open Sans"],
+  },
 });
 
 function App() {
