@@ -1,4 +1,5 @@
 import "./javascriptcalculator.css";
+import AppBarCustom from "../../components/appbar";
 import { useState } from "react";
 import { Parser } from "expr-eval";
 import { buttons, checkIfMoreThan14, isValidKey } from "./utils/utils";
@@ -109,7 +110,8 @@ function JavascriptCalulator() {
   document.addEventListener("keyup", keyup);
 
   return (
-    <div className="App">
+    <div className="App-JavascriptCalculator">
+      <AppBarCustom />
       <div className="calculator-container">
         <div className="screen r1">
           <div>

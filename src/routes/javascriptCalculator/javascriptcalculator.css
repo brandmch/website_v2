@@ -1,13 +1,14 @@
-.App {
-  height: 100vh;
-  background-color: white;
+.App-JavascriptCalculator {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  text-align: left;
   align-items: center;
+  height: 100%;
   font-family: "Kanit", sans-serif;
 }
 
 .calculator-container {
+  margin-top: 70px;
   height: 420px;
   width: 300px;
   padding: 2px;

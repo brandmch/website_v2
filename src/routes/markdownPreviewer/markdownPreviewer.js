@@ -1,4 +1,5 @@
 import "./markdownPreviewer.css";
+import AppBarCustom from "../../components/appbar";
 import React, { useState } from "react";
 import { marked } from "marked";
 
@@ -45,7 +46,8 @@ function MarkdownPreviewer() {
   );
 
   return (
-    <div className="App">
+    <div className="App-MarkdownPreviewer">
+      <AppBarCustom />
       <Editor setState={setText} state={text} />
       <Previewer state={text} />
     </div>
