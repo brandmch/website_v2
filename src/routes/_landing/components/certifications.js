@@ -2,7 +2,7 @@ import { Paper, Box, Typography } from "@mui/material";
 
 const Certifications = () => {
   return (
-    <Box marginBottom={4} marginTop={4}>
+    <Box marginBottom={4}>
       <Paper elevation={4}>
         <Box padding={2.5}>
           <Typography variant="h4" align="center" gutterBottom>

@@ -36,16 +36,20 @@ const Landing = () => {
 
   const Mobile = () => {
     return (
-      <Box marginTop={4} marginLeft={15} marginRight={15}>
-        <Box flex={2} margin={2}>
-          <ContactInfo />
-          <Skills />
-          <Certifications />
-          <Projects />
+      <Box marginTop={4} marginLeft={6} marginRight={6}>
+        <Summary />
+        <Box display="flex" flex={1} margin={2}>
+          <Box flex={1} margin={2} marginLeft={-2}>
+            <ContactInfo />
+            <Skills />
+          </Box>
+          <Box flex={1} margin={2} marginRight={-2}>
+            <Certifications />
+            <Projects />
+          </Box>
         </Box>
 
-        <Box flex={5} margin={2}>
-          <Summary />
+        <Box marginTop={-5}>
           <Experience />
           <Education />
         </Box>
