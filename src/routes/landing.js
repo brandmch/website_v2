@@ -171,7 +171,7 @@ const Landing = () => {
                   <a href="/javascriptcalulator">JavaScript Calculator</a>
                 </Typography>
                 <Typography gutterBottom>
-                  <a href="/markdownpreviewer">Mardown Previewer</a>
+                  <a href="/markdownpreviewer">Markdown Previewer</a>
                 </Typography>
                 <Typography gutterBottom>
                   <a href="/randomquotemachine">Random Quote Machine</a>
