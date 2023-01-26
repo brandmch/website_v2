@@ -15,7 +15,7 @@ import Education from "./components/education";
 const Landing = () => {
   const { width } = useWindowSize();
 
-  const Desktop = () => {
+  const Desktop = ({ width }) => {
     return (
       <Box display={"flex"} marginTop={4} marginLeft={15} marginRight={15}>
         <Box flex={2} margin={2}>
@@ -26,7 +26,7 @@ const Landing = () => {
         </Box>
 
         <Box flex={5} margin={2}>
-          <Summary />
+          <Summary width={width} />
           <Experience />
           <Education />
         </Box>
@@ -34,10 +34,10 @@ const Landing = () => {
     );
   };
 
-  const InBetween = () => {
+  const InBetween = ({ width }) => {
     return (
       <Box marginTop={4} marginLeft={6} marginRight={6}>
-        <Summary />
+        <Summary width={width} />
         <Box display="flex" flex={1} margin={2}>
           <Box flex={1} margin={2} marginLeft={-2}>
             <ContactInfo />
@@ -57,10 +57,10 @@ const Landing = () => {
     );
   };
 
-  const Mobile = () => {
+  const Mobile = ({ width }) => {
     return (
       <Box marginTop={4} marginLeft={6} marginRight={6}>
-        <Summary />
+        <Summary width={width} />
 
         <ContactInfo />
         <Skills />
@@ -78,7 +78,13 @@ const Landing = () => {
     <div>
       <AppBarCustom />
 
-      {width > 900 ? <Desktop /> : width > 631 ? <InBetween /> : <Mobile />}
+      {width > 900 ? (
+        <Desktop width={width} />
+      ) : width > 631 ? (
+        <InBetween width={width} />
+      ) : (
+        <Mobile width={width} />
+      )}
 
       <Box display="flex" justifyContent="center">
         <Typography>Brandon McHugh 2023</Typography>

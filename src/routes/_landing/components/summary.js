@@ -1,9 +1,6 @@
 import { Paper, Box, Typography } from "@mui/material";
-import useWindowSize from "../../../utils/useWindowSize";
 
-const Summary = () => {
-  const { width } = useWindowSize();
-
+const Summary = ({ width }) => {
   return (
     <Box marginBottom={4}>
       <Paper elevation={4} sx={{ backgroundColor: "#044A07" }}>
@@ -12,8 +9,19 @@ const Summary = () => {
             Welcome!
           </Typography>
           <hr />
-          <Box display="flex" alignItems="center">
-            <Box flex={10}>
+          <Box
+            display={
+              width > 1000
+                ? "flex"
+                : width > 900
+                ? null
+                : width > 550
+                ? "flex"
+                : null
+            }
+            alignItems="center"
+          >
+            <Box flex={20}>
               <Typography marginTop={3} color="white">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
