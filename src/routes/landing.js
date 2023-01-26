@@ -173,7 +173,9 @@ const Landing = () => {
                 <Typography gutterBottom>
                   <a href="/markdownpreviewer">Mardown Previewer</a>
                 </Typography>
-                <Typography gutterBottom>Random Quote Machine</Typography>
+                <Typography gutterBottom>
+                  <a href="/randomquotemachine">Random Quote Machine</a>
+                </Typography>
                 <Typography gutterBottom>Timer</Typography>
               </Box>
             </Paper>
