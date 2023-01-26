@@ -14,16 +14,10 @@ import Education from "./components/education";
 
 const Landing = () => {
   const { width } = useWindowSize();
-  return (
-    <div>
-      <AppBarCustom />
-      <Box
-        display={width < 900 ? "" : "flex"}
-        marginTop={4}
-        marginLeft={15}
-        marginRight={15}
-      >
-        {/* LEFT COLUMN */}
+
+  const Desktop = () => {
+    return (
+      <Box display={"flex"} marginTop={4} marginLeft={15} marginRight={15}>
         <Box flex={2} margin={2}>
           <ContactInfo />
           <Skills />
@@ -31,13 +25,40 @@ const Landing = () => {
           <Projects />
         </Box>
 
-        {/* RIGHT COLUMN */}
         <Box flex={5} margin={2}>
           <Summary />
           <Experience />
           <Education />
         </Box>
       </Box>
+    );
+  };
+
+  const Mobile = () => {
+    return (
+      <Box marginTop={4} marginLeft={15} marginRight={15}>
+        <Box flex={2} margin={2}>
+          <ContactInfo />
+          <Skills />
+          <Certifications />
+          <Projects />
+        </Box>
+
+        <Box flex={5} margin={2}>
+          <Summary />
+          <Experience />
+          <Education />
+        </Box>
+      </Box>
+    );
+  };
+
+  return (
+    <div>
+      <AppBarCustom />
+
+      {width > 900 ? <Desktop /> : <Mobile />}
+
       <Box display="flex" justifyContent="center">
         <Typography>Brandon McHugh 2023</Typography>
       </Box>
