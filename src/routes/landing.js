@@ -30,7 +30,12 @@ const Landing = () => {
                   Brandon McHugh
                 </Typography>
                 <hr />
-                <Typography gutterBottom display="flex" alignItems="start">
+                <Typography
+                  gutterBottom
+                  display="flex"
+                  alignItems="start"
+                  marginTop={3}
+                >
                   <Box marginRight={1}>
                     <WorkIcon />
                   </Box>
@@ -78,7 +83,12 @@ const Landing = () => {
                   Languages and Frameworks
                 </Typography>
                 <hr />
-                <Typography gutterBottom display="flex" alignItems="start">
+                <Typography
+                  gutterBottom
+                  display="flex"
+                  alignItems="start"
+                  marginTop={3}
+                >
                   <Box marginRight={1}>
                     <JavascriptIcon fontSize="medium" />
                   </Box>
@@ -132,7 +142,7 @@ const Landing = () => {
                   Certifications
                 </Typography>
                 <hr />
-                <Typography gutterBottom>
+                <Typography gutterBottom marginTop={3}>
                   Back End Development and APIs
                 </Typography>
                 <Typography gutterBottom>
@@ -154,7 +164,9 @@ const Landing = () => {
                   Projects
                 </Typography>
                 <hr />
-                <Typography gutterBottom>Drum Machine</Typography>
+                <Typography gutterBottom marginTop={3}>
+                  Drum Machine
+                </Typography>
                 <Typography gutterBottom>JavaScript Calculator</Typography>
                 <Typography gutterBottom>Mardown Previewer</Typography>
                 <Typography gutterBottom>Random Quote Machine</Typography>
@@ -181,6 +193,7 @@ const Landing = () => {
                   Welcome!
                 </Typography>
                 <hr />
+                <Typography marginTop={3}>Some stuff...</Typography>
               </Box>
             </Paper>
           </Box>
