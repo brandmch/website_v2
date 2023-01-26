@@ -161,7 +161,7 @@ const Landing = () => {
                   gutterBottom
                   color="#FFFFFF"
                 >
-                  Summary
+                  Welcome!
                 </Typography>
                 <hr />
               </Box>
