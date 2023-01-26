@@ -8,9 +8,13 @@
 } */
 
 body {
-  padding: 40px;
+  /* padding: 40px; */
 }
 
 hr {
   width: 75%;
+}
+
+a {
+  color: black;
 }
