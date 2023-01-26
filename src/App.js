@@ -3,10 +3,11 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Landing from "./routes/landing";
 import ContactMe from "./routes/contactme";
-import DrumMachine from "./routes/drumMachine/drumMachine";
 import Projects from "./routes/projects";
 import Social from "./routes/social";
+import DrumMachine from "./routes/drumMachine/drumMachine";
 import JavascriptCalulator from "./routes/javascriptCalculator/javascriptcalculator";
+import MarkdownPreviewer from "./routes/markdownPreviewer/markdownPreviewer";
 import "./App.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
   { path: "/projects", element: <Projects /> },
   { path: "/social", element: <Social /> },
   { path: "/javascriptcalulator", element: <JavascriptCalulator /> },
+  { path: "/markdownpreviewer", element: <MarkdownPreviewer /> },
 ]);
 
 const theme = createTheme({
