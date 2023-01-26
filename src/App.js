@@ -6,6 +6,7 @@ import ContactMe from "./routes/contactme";
 import DrumMachine from "./routes/drumMachine/drumMachine";
 import Projects from "./routes/projects";
 import Social from "./routes/social";
+import JavascriptCalulator from "./routes/javascriptCalculator/javascriptcalculator";
 import "./App.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
   { path: "/contactme", element: <ContactMe /> },
   { path: "/projects", element: <Projects /> },
   { path: "/social", element: <Social /> },
+  { path: "/javascriptcalulator", element: <JavascriptCalulator /> },
 ]);
 
 const theme = createTheme({

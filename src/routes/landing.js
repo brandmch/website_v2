@@ -167,7 +167,9 @@ const Landing = () => {
                 <Typography gutterBottom marginTop={3}>
                   <a href="/drummachine">Drum Machine</a>
                 </Typography>
-                <Typography gutterBottom>JavaScript Calculator</Typography>
+                <Typography gutterBottom>
+                  <a href="/javascriptcalulator">JavaScript Calculator</a>
+                </Typography>
                 <Typography gutterBottom>Mardown Previewer</Typography>
                 <Typography gutterBottom>Random Quote Machine</Typography>
                 <Typography gutterBottom>Timer</Typography>
