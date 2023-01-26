@@ -10,7 +10,7 @@ const renderText = (text) => {
 
 const Header = ({ title }) => {
   return (
-    <div className="header">
+    <div className="header-MarkdownPreviewer">
       <h1>{title}</h1>
     </div>
   );

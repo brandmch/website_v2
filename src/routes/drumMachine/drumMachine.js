@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./drumMachine.css";
 import soundArr from "./sounds/sounds";
+import AppBarCustom from "../../components/appbar";
 
 // Needed to alter style of button on keypress
 let styles = {
@@ -64,16 +65,17 @@ const DrumMachine = () => {
   document.addEventListener("keyup", keyup);
 
   return (
-    <div className="App">
-      <div className="controller">
-        <div className="button-grid-container">
+    <div className="App-drum">
+      <AppBarCustom />
+      <div className="controller-drum">
+        <div className="button-grid-container-drum">
           {soundOrder.map((curr, ind) => {
             let [name, key] = curr;
             return (
               <div
                 key={name}
                 id={key}
-                className="button-grid-item"
+                className="button-grid-item-drum"
                 style={styles[ind]}
                 onClick={() => {
                   if (power) {
@@ -86,10 +88,10 @@ const DrumMachine = () => {
             );
           })}
         </div>
-        <div className="controls-container">
-          <div className="block2">
+        <div className="controls-container-drum">
+          <div className="block2-drum">
             <div
-              className="power-button"
+              className="power-button-drum"
               onClick={() => {
                 togglePower(!power);
                 setSoundTitle("");
@@ -97,16 +99,16 @@ const DrumMachine = () => {
             ></div>
             <h3>POWER</h3>
           </div>
-          <div className="block3">
+          <div className="block3-drum">
             <div
-              className="power-light"
+              className="power-light-drum"
               style={power ? {} : { backgroundColor: "red" }}
             ></div>
           </div>
-          <div className="block5">
+          <div className="block5-drum">
             <h4>{soundTitle}</h4>
           </div>
-          <div className="block8">
+          <div className="block8-drum">
             <input
               max={1}
               min={0}

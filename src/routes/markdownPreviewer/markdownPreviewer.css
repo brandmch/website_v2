@@ -7,20 +7,20 @@
   background-color: #5ebfbf;
 }
 
-.header {
+.header-MarkdownPreviewer {
   background-color: #000000;
-  margin-bottom: -3vh;
   font-family: "Source Code Pro", monospace;
   color: #00ff00;
 }
 
-.header > h1 {
+.header-MarkdownPreviewer > h1 {
   padding: 1rem;
   padding-left: 1.5rem;
 }
 
 .editor {
   margin: 0;
+  margin-top: 5vh;
 }
 
 textarea {
@@ -28,6 +28,7 @@ textarea {
   color: #00ff00;
   padding: 1rem;
   font-size: larger;
+  margin-bottom: 3vh;
 }
 
 .previewer {
