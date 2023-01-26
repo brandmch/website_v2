@@ -9,6 +9,7 @@ import DrumMachine from "./routes/drumMachine/drumMachine";
 import JavascriptCalulator from "./routes/javascriptCalculator/javascriptcalculator";
 import MarkdownPreviewer from "./routes/markdownPreviewer/markdownPreviewer";
 import RandomQuoteMachine from "./routes/randomQuoteMachine/randomQuoteMachine";
+import Timer from "./routes/Timer/timer";
 import "./App.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -21,6 +22,8 @@ const router = createBrowserRouter([
   { path: "/javascriptcalulator", element: <JavascriptCalulator /> },
   { path: "/markdownpreviewer", element: <MarkdownPreviewer /> },
   { path: "/randomquotemachine", element: <RandomQuoteMachine /> },
+  { path: "/randomquotemachine", element: <RandomQuoteMachine /> },
+  { path: "/timer", element: <Timer /> },
 ]);
 
 const theme = createTheme({

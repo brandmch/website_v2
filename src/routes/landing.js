@@ -176,7 +176,9 @@ const Landing = () => {
                 <Typography gutterBottom>
                   <a href="/randomquotemachine">Random Quote Machine</a>
                 </Typography>
-                <Typography gutterBottom>Timer</Typography>
+                <Typography gutterBottom>
+                  <a href="/timer">Timer</a>
+                </Typography>
               </Box>
             </Paper>
           </Box>
