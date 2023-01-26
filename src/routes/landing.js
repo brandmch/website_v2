@@ -143,14 +143,40 @@ const Landing = () => {
                 </Typography>
                 <hr />
                 <Typography gutterBottom marginTop={3}>
-                  Back End Development and APIs
+                  Back End Development and APIs{" "}
+                  <a
+                    href="https://www.freecodecamp.org/certification/brandmch/back-end-development-and-apis"
+                    target="_blank"
+                  >
+                    (FCC)
+                  </a>
                 </Typography>
                 <Typography gutterBottom>
-                  Front End Development Libraries
+                  Front End Development Libraries{" "}
+                  <a
+                    href="https://www.freecodecamp.org/certification/brandmch/front-end-development-libraries"
+                    target="_blank"
+                  >
+                    (FCC)
+                  </a>
                 </Typography>
-                <Typography gutterBottom>Responsive Web Design</Typography>
                 <Typography gutterBottom>
-                  JavaScript Algorithms and Data Structures
+                  Responsive Web Design{" "}
+                  <a
+                    href="https://www.freecodecamp.org/certification/brandmch/responsive-web-design"
+                    target="_blank"
+                  >
+                    (FCC)
+                  </a>
+                </Typography>
+                <Typography gutterBottom>
+                  JavaScript Algorithms and Data Structures{" "}
+                  <a
+                    href="https://www.freecodecamp.org/certification/brandmch/javascript-algorithms-and-data-structures"
+                    target="_blank"
+                  >
+                    (FCC)
+                  </a>
                 </Typography>
               </Box>
             </Paper>
@@ -243,7 +269,7 @@ const Landing = () => {
                     </Typography>
                   </Box>
                   <Box>
-                    <Typography variant="h6">March 2022 - Present</Typography>
+                    <Typography variant="h6">Mar 2022 - Present</Typography>
                     <hr />
                   </Box>
                 </Box>
@@ -297,9 +323,7 @@ const Landing = () => {
                     </Typography>
                   </Box>
                   <Box>
-                    <Typography variant="h6">
-                      November 2021 - February 2022
-                    </Typography>
+                    <Typography variant="h6">Nov 2021 - Feb 2022</Typography>
                     <hr />
                   </Box>
                 </Box>
@@ -338,7 +362,7 @@ const Landing = () => {
                     </Typography>
                   </Box>
                   <Box>
-                    <Typography variant="h6">March 2020 - May 2021</Typography>
+                    <Typography variant="h6">Mar 2020 - May 2021</Typography>
                     <hr />
                   </Box>
                 </Box>
