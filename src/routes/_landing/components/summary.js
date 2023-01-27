@@ -40,6 +40,11 @@ const Summary = ({ width }) => {
                 width={200}
                 borderRadius={100}
                 backgroundColor="white"
+                marginRight="auto"
+                marginLeft="auto"
+                marginTop={
+                  width > 1000 ? null : width > 900 ? 2 : width > 550 ? null : 2
+                }
               ></Box>
             ) : (
               ""
