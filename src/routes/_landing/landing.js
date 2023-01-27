@@ -14,6 +14,7 @@ import Education from "./components/education";
 
 const Landing = () => {
   const { width } = useWindowSize();
+  console.log(width);
 
   const Desktop = ({ width }) => {
     return (
