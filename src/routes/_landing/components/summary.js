@@ -1,5 +1,7 @@
 import { Paper, Box, Typography } from "@mui/material";
 
+const picOfMe = require("../../../utils/picOfMe.jpg");
+
 const Summary = ({ width }) => {
   return (
     <Box marginBottom={4}>
@@ -34,18 +36,25 @@ const Summary = ({ width }) => {
             </Box>
             <Box flex={1}></Box>
             {width > 355 ? (
-              <Box
-                flex={10}
-                height={200}
+              // <Box
+              //   flex={10}
+              //   height={200}
+              //   width={200}
+              //   borderRadius={100}
+              //   backgroundColor="white"
+              //   marginRight="auto"
+              //   marginLeft="auto"
+              //   marginTop={
+              //     width > 1000 ? null : width > 900 ? 2 : width > 550 ? null : 2
+              //   }
+              // ></Box>
+              <img
+                src={picOfMe}
+                alt="HeadShot"
                 width={200}
-                borderRadius={100}
-                backgroundColor="white"
-                marginRight="auto"
-                marginLeft="auto"
-                marginTop={
-                  width > 1000 ? null : width > 900 ? 2 : width > 550 ? null : 2
-                }
-              ></Box>
+                height={200}
+                style={{ borderRadius: 100 }}
+              />
             ) : (
               ""
             )}

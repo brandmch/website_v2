@@ -18,7 +18,13 @@ const Landing = () => {
 
   const Desktop = ({ width }) => {
     return (
-      <Box display={"flex"} marginTop={4} marginLeft={15} marginRight={15}>
+      <Box
+        display={"flex"}
+        marginTop={4}
+        marginLeft="auto"
+        marginRight="auto"
+        maxWidth={1100}
+      >
         <Box flex={2} margin={2}>
           <ContactInfo />
           <Skills />
