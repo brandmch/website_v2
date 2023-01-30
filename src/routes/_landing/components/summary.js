@@ -2,6 +2,48 @@ import { Paper, Box, Typography } from "@mui/material";
 
 const picOfMe = require("../../../utils/picOfMe.jpg");
 
+const MobilePic = () => {
+  return (
+    <Box width="100%" display="flex" justifyContent="center" marginTop={1}>
+      <img
+        src={picOfMe}
+        alt="HeadShot"
+        width={200}
+        height={200}
+        style={{
+          borderRadius: 100,
+        }}
+      />
+    </Box>
+  );
+};
+
+const DesktopPic = () => {
+  return (
+    <img
+      src={picOfMe}
+      alt="HeadShot"
+      width={200}
+      height={200}
+      style={{
+        borderRadius: 100,
+      }}
+    />
+  );
+};
+
+const Pic = ({ width }) => {
+  return width > 1000 ? (
+    <DesktopPic />
+  ) : width > 900 ? (
+    <MobilePic />
+  ) : width > 550 ? (
+    <DesktopPic />
+  ) : (
+    <MobilePic />
+  );
+};
+
 const Summary = ({ width }) => {
   return (
     <Box marginBottom={4}>
@@ -48,13 +90,7 @@ const Summary = ({ width }) => {
               //     width > 1000 ? null : width > 900 ? 2 : width > 550 ? null : 2
               //   }
               // ></Box>
-              <img
-                src={picOfMe}
-                alt="HeadShot"
-                width={200}
-                height={200}
-                style={{ borderRadius: 100 }}
-              />
+              <Pic width={width} />
             ) : (
               ""
             )}
