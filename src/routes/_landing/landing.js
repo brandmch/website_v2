@@ -76,8 +76,8 @@ const Landing = () => {
         <Certifications />
         <Projects />
 
-        <Experience />
-        <Education />
+        <Experience width={width} />
+        <Education width={width} />
       </Box>
     );
   };

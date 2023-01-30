@@ -1,6 +1,6 @@
 import { Paper, Box, Typography } from "@mui/material";
 
-const Experience = () => {
+const Experience = ({ width }) => {
   return (
     <Box marginBottom={4} marginTop={4}>
       <Paper elevation={4}>
@@ -9,7 +9,11 @@ const Experience = () => {
             Experience
           </Typography>
           <hr />
-          <Box display="flex" marginTop={4}>
+          <Box
+            display={width < 600 ? null : "flex"}
+            marginTop={4}
+            textAlign={width < 600 ? "center" : null}
+          >
             <Box flex={1}>
               <Typography variant="h5">Software Developer</Typography>
               <Typography variant="h6" gutterBottom fontStyle="italic">
@@ -57,7 +61,11 @@ const Experience = () => {
               stakeholders
             </li>
           </ul>
-          <Box display="flex" marginTop={4}>
+          <Box
+            display={width < 600 ? null : "flex"}
+            marginTop={4}
+            textAlign={width < 600 ? "center" : null}
+          >
             <Box flex={1}>
               <Typography variant="h5">
                 Sales Development Representative
@@ -94,7 +102,11 @@ const Experience = () => {
               business
             </li>
           </ul>
-          <Box display="flex" marginTop={4}>
+          <Box
+            display={width < 600 ? null : "flex"}
+            marginTop={4}
+            textAlign={width < 600 ? "center" : null}
+          >
             <Box flex={1}>
               <Typography variant="h5">
                 Sales Development Representative
