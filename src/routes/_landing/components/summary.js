@@ -22,6 +22,8 @@ const Summary = ({ width }) => {
                 : null
             }
             alignItems="center"
+            marginRight="auto"
+            marginLeft="auto"
           >
             <Box flex={20}>
               <Typography marginTop={3} color="white">
