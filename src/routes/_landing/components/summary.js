@@ -22,8 +22,6 @@ const Summary = ({ width }) => {
                 : null
             }
             alignItems="center"
-            marginRight="auto"
-            marginLeft="auto"
           >
             <Box flex={20}>
               <Typography marginTop={3} color="white">
@@ -38,20 +36,26 @@ const Summary = ({ width }) => {
             </Box>
             <Box flex={1}></Box>
             {width > 355 ? (
-              <Box
-                height={200}
-                width={200}
-                borderRadius={100}
-                backgroundColor="white"
-              ></Box>
-            ) : (
-              // <img
-              //   src={picOfMe}
-              //   alt="HeadShot"
-              //   width={200}
+              // <Box
+              //   flex={10}
               //   height={200}
-              //   style={{ borderRadius: 100 }}
-              // />
+              //   width={200}
+              //   borderRadius={100}
+              //   backgroundColor="white"
+              //   marginRight="auto"
+              //   marginLeft="auto"
+              //   marginTop={
+              //     width > 1000 ? null : width > 900 ? 2 : width > 550 ? null : 2
+              //   }
+              // ></Box>
+              <img
+                src={picOfMe}
+                alt="HeadShot"
+                width={200}
+                height={200}
+                style={{ borderRadius: 100 }}
+              />
+            ) : (
               ""
             )}
           </Box>
