@@ -66,7 +66,7 @@ const Summary = ({ width }) => {
             alignItems="center"
           >
             <Box flex={20}>
-              <Typography marginTop={3} color="white">
+              <Typography marginTop={3} color="white" textAlign="justify">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                 enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -77,23 +77,7 @@ const Summary = ({ width }) => {
               </Typography>
             </Box>
             <Box flex={1}></Box>
-            {width > 355 ? (
-              // <Box
-              //   flex={10}
-              //   height={200}
-              //   width={200}
-              //   borderRadius={100}
-              //   backgroundColor="white"
-              //   marginRight="auto"
-              //   marginLeft="auto"
-              //   marginTop={
-              //     width > 1000 ? null : width > 900 ? 2 : width > 550 ? null : 2
-              //   }
-              // ></Box>
-              <Pic width={width} />
-            ) : (
-              ""
-            )}
+            {width > 355 ? <Pic width={width} /> : ""}
           </Box>
         </Box>
       </Paper>

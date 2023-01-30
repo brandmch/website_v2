@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Typography, CircularProgress } from "@mui/material";
 
 import AppBarCustom from "../../components/appbar";
+import FooterCustom from "../../components/footer";
 import useWindowSize from "../../utils/useWindowSize";
 
 import ContactInfo from "./components/contactInfo";
@@ -94,9 +95,7 @@ const Landing = () => {
           <Mobile width={width} />
         )}
 
-        <Box display="flex" justifyContent="center">
-          <Typography>Brandon McHugh 2023</Typography>
-        </Box>
+        <FooterCustom url="https://github.com/brandmch/website_v2" />
       </div>
     ) : (
       <CircularProgress />
