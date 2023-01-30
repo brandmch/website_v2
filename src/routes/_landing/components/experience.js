@@ -1,6 +1,6 @@
 import { Paper, Box, Typography } from "@mui/material";
 
-const Experience = () => {
+const Experience = ({ width }) => {
   return (
     <Box marginBottom={4} marginTop={4}>
       <Paper elevation={4}>
@@ -9,7 +9,11 @@ const Experience = () => {
             Experience
           </Typography>
           <hr />
-          <Box display="flex" marginTop={4}>
+          <Box
+            display={width < 600 ? null : "flex"}
+            marginTop={4}
+            textAlign={width < 600 ? "center" : null}
+          >
             <Box flex={1}>
               <Typography variant="h5">Software Developer</Typography>
               <Typography variant="h6" gutterBottom fontStyle="italic">
@@ -21,7 +25,7 @@ const Experience = () => {
               <hr />
             </Box>
           </Box>
-          <ul>
+          <ul style={{ textAlign: "justify", paddingRight: 30 }}>
             <li>
               Built the scaffolding for a new web app using React, TypeScript,
               GraphQL Apollo, AWS Amplify, AWS Cognito, MUI, and Github
@@ -57,7 +61,11 @@ const Experience = () => {
               stakeholders
             </li>
           </ul>
-          <Box display="flex" marginTop={4}>
+          <Box
+            display={width < 600 ? null : "flex"}
+            marginTop={4}
+            textAlign={width < 600 ? "center" : null}
+          >
             <Box flex={1}>
               <Typography variant="h5">
                 Sales Development Representative
@@ -71,7 +79,7 @@ const Experience = () => {
               <hr />
             </Box>
           </Box>
-          <ul>
+          <ul style={{ textAlign: "justify", paddingRight: 30 }}>
             <li>Created new business opportunities to fuel Procore’s growth</li>
             <li>
               Engaged construction professionals through phone, email, and other
@@ -94,7 +102,11 @@ const Experience = () => {
               business
             </li>
           </ul>
-          <Box display="flex" marginTop={4}>
+          <Box
+            display={width < 600 ? null : "flex"}
+            marginTop={4}
+            textAlign={width < 600 ? "center" : null}
+          >
             <Box flex={1}>
               <Typography variant="h5">
                 Sales Development Representative
@@ -108,7 +120,7 @@ const Experience = () => {
               <hr />
             </Box>
           </Box>
-          <ul>
+          <ul style={{ textAlign: "justify", paddingRight: 30 }}>
             <li>
               Helped pioneer the Sales Development team for ASCI’s workload
               automation software, ActiveBatch

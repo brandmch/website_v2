@@ -1,6 +1,6 @@
 import { Paper, Box, Typography } from "@mui/material";
 
-const Education = () => {
+const Education = ({ width }) => {
   return (
     <Box marginBottom={4} marginTop={4}>
       <Paper elevation={4}>
@@ -9,7 +9,11 @@ const Education = () => {
             Education
           </Typography>
           <hr />
-          <Box display="flex" marginTop={4}>
+          <Box
+            display={width < 600 ? null : "flex"}
+            marginTop={4}
+            textAlign={width < 600 ? "center" : null}
+          >
             <Box flex={1}>
               <Typography variant="h5">
                 Bachelor of Science - Psychology
@@ -33,7 +37,7 @@ const Education = () => {
               </Typography>
             </Box>
           </Box>
-          <ul>
+          <ul style={{ textAlign: "justify", paddingRight: 30 }}>
             <li>
               Conducted research to determine correlations between academic
               stress, parental pressure, procrastination, and stimulant use in
