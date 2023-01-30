@@ -2,6 +2,7 @@ import SchoolIcon from "@mui/icons-material/School";
 import WorkIcon from "@mui/icons-material/Work";
 import HomeIcon from "@mui/icons-material/Home";
 import CallIcon from "@mui/icons-material/Call";
+import EmailIcon from "@mui/icons-material/Email";
 
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -51,6 +52,12 @@ const ContactInfo = () => {
               <GitHubIcon />
             </Box>
             GitHub
+          </Typography>
+          <Typography gutterBottom display="flex" alignItems="start">
+            <Box marginRight={1}>
+              <EmailIcon />
+            </Box>
+            brandonmchugh46@gmail.com
           </Typography>
           <Typography gutterBottom display="flex" alignItems="start">
             <Box marginRight={1}>

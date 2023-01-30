@@ -4,7 +4,7 @@ const picOfMe = require("../../../utils/picOfMe.jpg");
 
 const MobilePic = () => {
   return (
-    <Box width="100%" display="flex" justifyContent="center" marginTop={1}>
+    <Box width="100%" display="flex" justifyContent="center" marginTop={2}>
       <img
         src={picOfMe}
         alt="HeadShot"
@@ -33,15 +33,7 @@ const DesktopPic = () => {
 };
 
 const Pic = ({ width }) => {
-  return width > 1000 ? (
-    <DesktopPic />
-  ) : width > 900 ? (
-    <MobilePic />
-  ) : width > 550 ? (
-    <DesktopPic />
-  ) : (
-    <MobilePic />
-  );
+  return width > 750 ? <DesktopPic /> : <MobilePic />;
 };
 
 const Summary = ({ width }) => {
@@ -53,18 +45,7 @@ const Summary = ({ width }) => {
             Welcome!
           </Typography>
           <hr />
-          <Box
-            display={
-              width > 1000
-                ? "flex"
-                : width > 900
-                ? null
-                : width > 550
-                ? "flex"
-                : null
-            }
-            alignItems="center"
-          >
+          <Box display={width > 750 ? "flex" : null} alignItems="center">
             <Box flex={20}>
               <Typography marginTop={3} color="white" textAlign="justify">
                 I specialize in web development, creating solid and scalable

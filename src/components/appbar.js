@@ -9,11 +9,10 @@ import Button from "@mui/material/Button";
 import useWindowSize from "../utils/useWindowSize";
 
 const pages = [
-  ["Social", "/social"],
-  ["Projects", "/projects"],
-  ["Contact Me", "/contactme"],
+  ["LinkedIn", "https://www.linkedin.com/in/mchugh-brandon/"],
+  // ["Projects", "/projects"],
+  // ["Contact Me", "/contactme"],
 ];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const AppBarCustom = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
