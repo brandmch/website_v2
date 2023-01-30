@@ -37,7 +37,7 @@ const Education = ({ width }) => {
               </Typography>
             </Box>
           </Box>
-          <ul>
+          <ul style={{ textAlign: "justify", paddingRight: 30 }}>
             <li>
               Conducted research to determine correlations between academic
               stress, parental pressure, procrastination, and stimulant use in

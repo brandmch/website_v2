@@ -25,7 +25,7 @@ const Experience = ({ width }) => {
               <hr />
             </Box>
           </Box>
-          <ul>
+          <ul style={{ textAlign: "justify", paddingRight: 30 }}>
             <li>
               Built the scaffolding for a new web app using React, TypeScript,
               GraphQL Apollo, AWS Amplify, AWS Cognito, MUI, and Github
@@ -79,7 +79,7 @@ const Experience = ({ width }) => {
               <hr />
             </Box>
           </Box>
-          <ul>
+          <ul style={{ textAlign: "justify", paddingRight: 30 }}>
             <li>Created new business opportunities to fuel Procore’s growth</li>
             <li>
               Engaged construction professionals through phone, email, and other
@@ -120,7 +120,7 @@ const Experience = ({ width }) => {
               <hr />
             </Box>
           </Box>
-          <ul>
+          <ul style={{ textAlign: "justify", paddingRight: 30 }}>
             <li>
               Helped pioneer the Sales Development team for ASCI’s workload
               automation software, ActiveBatch
