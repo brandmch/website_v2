@@ -67,13 +67,19 @@ const Summary = ({ width }) => {
           >
             <Box flex={20}>
               <Typography marginTop={3} color="white" textAlign="justify">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                I specialize in web development, creating solid and scalable
+                products with great user experiences. Highly skilled in several
+                frontend technologies, web scripting, and UI Engineering.
+              </Typography>
+              <Typography marginTop={3} color="white" textAlign="justify">
+                I am an independent self-starter and a reliable team-player with
+                strong interpersonal skills, demonstrated team-leadership
+                abilities, and a passion for achieving goals.
+              </Typography>
+              <Typography marginTop={3} color="white" textAlign="justify">
+                Constantly looking to learn new things and develop new skills.
+                Motivated, quick thinker, eager to accept new challenges and
+                explore new territory.
               </Typography>
             </Box>
             <Box flex={1}></Box>
