@@ -5,6 +5,27 @@ import CodeIcon from "@mui/icons-material/Code";
 
 import { Paper, Box, Typography } from "@mui/material";
 
+const skills = [
+  ["JavaScript", <JavascriptIcon fontSize="medium" />],
+  ["React", <CodeIcon fontSize="medium" />],
+  ["React Native", <CodeIcon fontSize="medium" />],
+  ["HTML", <HtmlIcon fontSize="medium" />],
+  ["CSS", <CssIcon fontSize="medium" />],
+  ["Node.js", <CodeIcon fontSize="medium" />],
+  ["VS Code", <CodeIcon fontSize="medium" />],
+];
+
+const List = () => {
+  return skills.map(([title, icon]) => {
+    return (
+      <Typography gutterBottom display="flex" alignItems="start">
+        <Box marginRight={1}>{icon}</Box>
+        {title}
+      </Typography>
+    );
+  });
+};
+
 const Skills = () => {
   return (
     <Box marginBottom={4} marginTop={4}>
@@ -14,53 +35,7 @@ const Skills = () => {
             Languages and Frameworks
           </Typography>
           <hr />
-          <Typography
-            gutterBottom
-            display="flex"
-            alignItems="start"
-            marginTop={3}
-          >
-            <Box marginRight={1}>
-              <JavascriptIcon fontSize="medium" />
-            </Box>
-            JavaScript
-          </Typography>
-          <Typography gutterBottom display="flex" alignItems="start">
-            <Box marginRight={1}>
-              <CodeIcon fontSize="medium" />
-            </Box>
-            React
-          </Typography>
-          <Typography gutterBottom display="flex" alignItems="start">
-            <Box marginRight={1}>
-              <CodeIcon fontSize="medium" />
-            </Box>
-            React Native
-          </Typography>
-          <Typography gutterBottom display="flex" alignItems="start">
-            <Box marginRight={1}>
-              <HtmlIcon fontSize="medium" />
-            </Box>
-            HTML
-          </Typography>
-          <Typography gutterBottom display="flex" alignItems="start">
-            <Box marginRight={1}>
-              <CssIcon fontSize="medium" />
-            </Box>
-            CSS
-          </Typography>
-          <Typography gutterBottom display="flex" alignItems="start">
-            <Box marginRight={1}>
-              <CodeIcon fontSize="medium" />
-            </Box>
-            Node.js
-          </Typography>
-          <Typography gutterBottom display="flex" alignItems="start">
-            <Box marginRight={1}>
-              <CodeIcon fontSize="medium" />
-            </Box>
-            VS Code
-          </Typography>
+          <List />
         </Box>
       </Paper>
     </Box>

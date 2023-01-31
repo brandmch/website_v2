@@ -1,9 +1,28 @@
-import { Box, Typography, Paper } from "@mui/material";
+import { Box, Typography, Paper, Divider } from "@mui/material";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import CasinoIcon from "@mui/icons-material/Casino";
 import GridViewIcon from "@mui/icons-material/GridView";
 import HikingIcon from "@mui/icons-material/Hiking";
+
+const items = [
+  ["Weight Lifting", <FitnessCenterIcon />],
+  ["Reading", <AutoStoriesIcon />],
+  ["Chess", <GridViewIcon />],
+  ["Boardgames", <CasinoIcon />],
+  ["Disc Golf", <HikingIcon />],
+];
+
+const List = () => {
+  return items.map(([title, icon]) => {
+    return (
+      <Typography gutterBottom display="flex" alignItems="start">
+        <Box marginRight={1}>{icon}</Box>
+        {title}
+      </Typography>
+    );
+  });
+};
 
 const Hobbies = () => {
   return (
@@ -14,41 +33,7 @@ const Hobbies = () => {
             Hobbies
           </Typography>
           <hr />
-          <Typography
-            gutterBottom
-            display="flex"
-            alignItems="start"
-            marginTop={3}
-          >
-            <Box marginRight={1}>
-              <FitnessCenterIcon />
-            </Box>
-            Weight Lifting
-          </Typography>
-          <Typography gutterBottom display="flex" alignItems="start">
-            <Box marginRight={1}>
-              <AutoStoriesIcon />
-            </Box>
-            Reading
-          </Typography>
-          <Typography gutterBottom display="flex" alignItems="start">
-            <Box marginRight={1}>
-              <GridViewIcon />
-            </Box>
-            Chess
-          </Typography>
-          <Typography gutterBottom display="flex" alignItems="start">
-            <Box marginRight={1}>
-              <CasinoIcon />
-            </Box>
-            Boardgames
-          </Typography>
-          <Typography gutterBottom display="flex" alignItems="start">
-            <Box marginRight={1}>
-              <HikingIcon />
-            </Box>
-            Disc Golf
-          </Typography>
+          <List />
         </Box>
       </Paper>
     </Box>
