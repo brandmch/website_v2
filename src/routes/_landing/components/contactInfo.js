@@ -3,11 +3,10 @@ import WorkIcon from "@mui/icons-material/Work";
 import HomeIcon from "@mui/icons-material/Home";
 import CallIcon from "@mui/icons-material/Call";
 import EmailIcon from "@mui/icons-material/Email";
-
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
-
 import { Paper, Box, Typography } from "@mui/material";
+import List from "../../../utils/list";
 
 const info = [
   ["Software Developer", <WorkIcon />],
@@ -19,17 +18,6 @@ const info = [
   ["Contact me!", <CallIcon />],
 ];
 
-const List = () => {
-  return info.map(([title, icon]) => {
-    return (
-      <Typography gutterBottom display="flex" alignItems="start">
-        <Box marginRight={1}>{icon}</Box>
-        {title}
-      </Typography>
-    );
-  });
-};
-
 const ContactInfo = () => {
   return (
     <Box marginBottom={4}>
@@ -39,7 +27,7 @@ const ContactInfo = () => {
             Info
           </Typography>
           <hr />
-          <List />
+          <List data={info} />
         </Box>
       </Paper>
     </Box>

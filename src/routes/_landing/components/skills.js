@@ -2,7 +2,7 @@ import JavascriptIcon from "@mui/icons-material/Javascript";
 import HtmlIcon from "@mui/icons-material/Html";
 import CssIcon from "@mui/icons-material/Css";
 import CodeIcon from "@mui/icons-material/Code";
-
+import List from "../../../utils/list";
 import { Paper, Box, Typography } from "@mui/material";
 
 const skills = [
@@ -15,17 +15,6 @@ const skills = [
   ["VS Code", <CodeIcon fontSize="medium" />],
 ];
 
-const List = () => {
-  return skills.map(([title, icon]) => {
-    return (
-      <Typography gutterBottom display="flex" alignItems="start">
-        <Box marginRight={1}>{icon}</Box>
-        {title}
-      </Typography>
-    );
-  });
-};
-
 const Skills = () => {
   return (
     <Box marginBottom={4} marginTop={4}>
@@ -35,7 +24,7 @@ const Skills = () => {
             Languages and Frameworks
           </Typography>
           <hr />
-          <List />
+          <List data={skills} />
         </Box>
       </Paper>
     </Box>

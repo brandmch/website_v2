@@ -1,26 +1,14 @@
 import { Paper, Box, Typography } from "@mui/material";
 import CodeIcon from "@mui/icons-material/Code";
+import List from "../../../utils/list";
 
 const projects = [
-  ["Drum Machine", "/drummachine"],
-  ["JavaScript Calculator", "/javascriptcalulator"],
-  ["Markdown Previewer", "/markdownpreviewer"],
-  ["Random Quote Machine", "/randomquotemachine"],
-  ["Timer", "/timer"],
+  ["Drum Machine", <CodeIcon />, "/drummachine"],
+  ["JavaScript Calculator", <CodeIcon />, "/javascriptcalulator"],
+  ["Markdown Previewer", <CodeIcon />, "/markdownpreviewer"],
+  ["Random Quote Machine", <CodeIcon />, "/randomquotemachine"],
+  ["Timer", <CodeIcon />, "/timer"],
 ];
-
-const List = () => {
-  return projects.map(([title, url]) => {
-    return (
-      <Typography gutterBottom display="flex" alignItems="start">
-        <Box marginRight={1}>
-          <CodeIcon />
-        </Box>
-        <a href={url}>{title}</a>
-      </Typography>
-    );
-  });
-};
 
 const Projects = () => {
   return (
@@ -31,7 +19,7 @@ const Projects = () => {
             Projects
           </Typography>
           <hr />
-          <List />
+          <List data={projects} />
         </Box>
       </Paper>
     </Box>

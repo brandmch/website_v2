@@ -1,9 +1,10 @@
-import { Box, Typography, Paper, Divider } from "@mui/material";
+import { Box, Typography, Paper } from "@mui/material";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import CasinoIcon from "@mui/icons-material/Casino";
 import GridViewIcon from "@mui/icons-material/GridView";
 import HikingIcon from "@mui/icons-material/Hiking";
+import List from "../../../utils/list";
 
 const items = [
   ["Weight Lifting", <FitnessCenterIcon />],
@@ -12,17 +13,6 @@ const items = [
   ["Boardgames", <CasinoIcon />],
   ["Disc Golf", <HikingIcon />],
 ];
-
-const List = () => {
-  return items.map(([title, icon]) => {
-    return (
-      <Typography gutterBottom display="flex" alignItems="start">
-        <Box marginRight={1}>{icon}</Box>
-        {title}
-      </Typography>
-    );
-  });
-};
 
 const Hobbies = () => {
   return (
@@ -33,7 +23,7 @@ const Hobbies = () => {
             Hobbies
           </Typography>
           <hr />
-          <List />
+          <List data={items} />
         </Box>
       </Paper>
     </Box>
