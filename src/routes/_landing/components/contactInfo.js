@@ -7,6 +7,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { Paper, Box, Typography } from "@mui/material";
 import List from "../../../utils/list";
+import SmallInfoBox from "../../../utils/smallInfoBox";
 
 const info = [
   ["Software Developer", <WorkIcon />],
@@ -19,19 +20,7 @@ const info = [
 ];
 
 const ContactInfo = () => {
-  return (
-    <Box marginBottom={4}>
-      <Paper elevation={4}>
-        <Box padding={2.5}>
-          <Typography variant="h4" align="center" gutterBottom>
-            Info
-          </Typography>
-          <hr />
-          <List data={info} />
-        </Box>
-      </Paper>
-    </Box>
-  );
+  return <SmallInfoBox title="Info" data={info} marginTop={0} />;
 };
 
 export default ContactInfo;

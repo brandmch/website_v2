@@ -1,6 +1,5 @@
-import { Paper, Box, Typography } from "@mui/material";
 import CodeIcon from "@mui/icons-material/Code";
-import List from "../../../utils/list";
+import SmallInfoBox from "../../../utils/smallInfoBox";
 
 const projects = [
   ["Drum Machine", <CodeIcon />, "/drummachine"],
@@ -11,19 +10,7 @@ const projects = [
 ];
 
 const Projects = () => {
-  return (
-    <Box marginBottom={4} marginTop={4}>
-      <Paper elevation={4}>
-        <Box padding={2.5}>
-          <Typography variant="h4" align="center" gutterBottom>
-            Projects
-          </Typography>
-          <hr />
-          <List data={projects} />
-        </Box>
-      </Paper>
-    </Box>
-  );
+  return <SmallInfoBox title="Projects" data={projects} />;
 };
 
 export default Projects;

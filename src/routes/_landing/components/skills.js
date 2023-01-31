@@ -2,8 +2,7 @@ import JavascriptIcon from "@mui/icons-material/Javascript";
 import HtmlIcon from "@mui/icons-material/Html";
 import CssIcon from "@mui/icons-material/Css";
 import CodeIcon from "@mui/icons-material/Code";
-import List from "../../../utils/list";
-import { Paper, Box, Typography } from "@mui/material";
+import SmallInfoBox from "../../../utils/smallInfoBox";
 
 const skills = [
   ["JavaScript", <JavascriptIcon fontSize="medium" />],
@@ -16,19 +15,7 @@ const skills = [
 ];
 
 const Skills = () => {
-  return (
-    <Box marginBottom={4} marginTop={4}>
-      <Paper elevation={4}>
-        <Box padding={2.5}>
-          <Typography variant="h4" align="center" gutterBottom>
-            Languages and Frameworks
-          </Typography>
-          <hr />
-          <List data={skills} />
-        </Box>
-      </Paper>
-    </Box>
-  );
+  return <SmallInfoBox title="Languages & Frameworks" data={skills} />;
 };
 
 export default Skills;
