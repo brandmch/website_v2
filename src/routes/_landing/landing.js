@@ -5,14 +5,21 @@ import AppBarCustom from "../../components/appbar";
 import FooterCustom from "../../components/footer";
 import useWindowSize from "../../utils/useWindowSize";
 
-import ContactInfo from "./components/contactInfo";
-import Skills from "./components/skills";
-import Certifications from "./components/certifications";
-import Projects from "./components/projects";
+// import ContactInfo from "./components/contactInfo";
+// import Skills from "./components/skills";
+// import Certifications from "./components/certifications";
+// import Projects from "./components/projects";
 import Summary from "./components/summary";
 import Experience from "./components/experience";
 import Education from "./components/education";
-import Hobbies from "./components/hobbies";
+// import Hobbies from "./components/hobbies";
+import {
+  Certifications,
+  ContactInfo,
+  Skills,
+  Projects,
+  Hobbies,
+} from "./components/smallBoxes";
 
 const Landing = () => {
   const { width } = useWindowSize();
