@@ -1,6 +1,9 @@
 import React from "react";
+
+import SmallInfoBox from "./smallInfoBox";
+
+// All Icons
 import CodeIcon from "@mui/icons-material/Code";
-import SmallInfoBox from "../../../utils/smallInfoBox";
 import SchoolIcon from "@mui/icons-material/School";
 import WorkIcon from "@mui/icons-material/Work";
 import HomeIcon from "@mui/icons-material/Home";
