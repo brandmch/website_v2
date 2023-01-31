@@ -3,6 +3,7 @@ import AppBarCustom from "../../components/appbar";
 import { useState } from "react";
 import { Parser } from "expr-eval";
 import { buttons, checkIfMoreThan14, isValidKey } from "./utils/utils";
+import FooterCustom from "../../components/footer";
 
 function JavascriptCalulator() {
   // total = top number
@@ -131,12 +132,10 @@ function JavascriptCalulator() {
           </div>
         ))}
       </div>
-      <footer>
-        <p style={{ color: "black" }}>Brandon McHugh 2022</p>
-        <p>
-          <a href="https://github.com/brandmch/JavaScript-Calculator">GitHub</a>
-        </p>
-      </footer>
+      <FooterCustom
+        url="https://github.com/brandmch/JavaScript-Calculator"
+        style={{ position: "absolute", bottom: 0 }}
+      />
     </div>
   );
 }

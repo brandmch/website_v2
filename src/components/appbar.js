@@ -15,7 +15,7 @@ const pages = [
   // ["Contact Me", "/contactme"],
 ];
 
-const AppBarCustom = () => {
+const AppBarCustom = ({ style = { color: "primary" } }) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const { width } = useWindowSize();
@@ -36,7 +36,7 @@ const AppBarCustom = () => {
   };
 
   return (
-    <AppBar position="static" color="primary">
+    <AppBar position="static" color={style.color}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography

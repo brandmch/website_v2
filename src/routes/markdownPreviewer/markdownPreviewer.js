@@ -2,6 +2,7 @@ import "./markdownPreviewer.css";
 import AppBarCustom from "../../components/appbar";
 import React, { useState } from "react";
 import { marked } from "marked";
+import FooterCustom from "../../components/footer";
 
 const renderText = (text) => {
   const __html = marked(text, { sanitize: true });
@@ -50,6 +51,10 @@ function MarkdownPreviewer() {
       <AppBarCustom />
       <Editor setState={setText} state={text} />
       <Previewer state={text} />
+      <FooterCustom
+        url="https://github.com/brandmch/Markdown-Previewer"
+        style={{ paddingTop: 5 }}
+      />
     </div>
   );
 }
