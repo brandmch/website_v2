@@ -1,4 +1,29 @@
 import { Paper, Box, Typography } from "@mui/material";
+import SubdirectoryArrowRightIcon from "@mui/icons-material/SubdirectoryArrowRight";
+
+const bullets = [
+  "Conducted research to determine correlations between academic stress, parental pressure, procrastination, and stimulant use in undergraduate students",
+  "Using Latent Class Analysis and self-report questionnaires from over two-hundred students, research concluded that procrastination, parental pressure, and academic stress were possible predictors of licit stimulant use",
+];
+
+const List = () => {
+  return bullets.map((curr) => {
+    return (
+      <Box
+        display="flex"
+        marginBottom={1}
+        textAlign="justify"
+        marginLeft={3}
+        marginRight={3}
+      >
+        <SubdirectoryArrowRightIcon style={{ marginRight: 10 }} />
+        <Typography alignContent="center" gutterBottom>
+          {curr}
+        </Typography>
+      </Box>
+    );
+  });
+};
 
 const Education = ({ width }) => {
   return (
@@ -37,19 +62,8 @@ const Education = ({ width }) => {
               </Typography>
             </Box>
           </Box>
-          <ul style={{ textAlign: "justify", paddingRight: 30 }}>
-            <li>
-              Conducted research to determine correlations between academic
-              stress, parental pressure, procrastination, and stimulant use in
-              undergraduate students
-            </li>
-            <li>
-              Using Latent Class Analysis and self-report questionnaires from
-              over two-hundred students, research concluded that
-              procrastination, parental pressure, and academic stress were
-              possible predictors of licit stimulant use
-            </li>
-          </ul>
+
+          <List />
         </Box>
       </Paper>
     </Box>

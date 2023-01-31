@@ -1,4 +1,5 @@
 import { Paper, Box, Typography } from "@mui/material";
+import SubdirectoryArrowRightIcon from "@mui/icons-material/SubdirectoryArrowRight";
 
 const items = [
   {
@@ -51,6 +52,7 @@ const ExpList = ({ width }) => {
         <Box
           display={width < 600 ? null : "flex"}
           marginTop={4}
+          marginBottom={1}
           textAlign={width < 600 ? "center" : null}
         >
           <Box flex={1}>
@@ -64,11 +66,22 @@ const ExpList = ({ width }) => {
             <hr />
           </Box>
         </Box>
-        <ul style={{ textAlign: "justify", paddingRight: 30 }}>
-          {duties.map((curr) => {
-            return <li style={{ marginBottom: 10 }}>{curr}</li>;
-          })}
-        </ul>
+        {duties.map((curr) => {
+          return (
+            <Box
+              display="flex"
+              marginBottom={1}
+              textAlign="justify"
+              marginLeft={3}
+              marginRight={3}
+            >
+              <SubdirectoryArrowRightIcon style={{ marginRight: 10 }} />
+              <Typography alignContent="center" gutterBottom>
+                {curr}
+              </Typography>
+            </Box>
+          );
+        })}
       </Box>
     );
   });

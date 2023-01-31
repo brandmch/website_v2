@@ -1,33 +1,16 @@
-import { Paper, Box, Typography } from "@mui/material";
+import CodeIcon from "@mui/icons-material/Code";
+import SmallInfoBox from "../../../utils/smallInfoBox";
+
+const projects = [
+  ["Drum Machine", <CodeIcon />, "/drummachine"],
+  ["JavaScript Calculator", <CodeIcon />, "/javascriptcalulator"],
+  ["Markdown Previewer", <CodeIcon />, "/markdownpreviewer"],
+  ["Random Quote Machine", <CodeIcon />, "/randomquotemachine"],
+  ["Timer", <CodeIcon />, "/timer"],
+];
 
 const Projects = () => {
-  return (
-    <Box marginBottom={4} marginTop={4}>
-      <Paper elevation={4}>
-        <Box padding={2.5}>
-          <Typography variant="h4" align="center" gutterBottom>
-            Projects
-          </Typography>
-          <hr />
-          <Typography gutterBottom marginTop={3}>
-            <a href="/drummachine">Drum Machine</a>
-          </Typography>
-          <Typography gutterBottom>
-            <a href="/javascriptcalulator">JavaScript Calculator</a>
-          </Typography>
-          <Typography gutterBottom>
-            <a href="/markdownpreviewer">Markdown Previewer</a>
-          </Typography>
-          <Typography gutterBottom>
-            <a href="/randomquotemachine">Random Quote Machine</a>
-          </Typography>
-          <Typography gutterBottom>
-            <a href="/timer">Timer</a>
-          </Typography>
-        </Box>
-      </Paper>
-    </Box>
-  );
+  return <SmallInfoBox title="Projects" data={projects} />;
 };
 
 export default Projects;
