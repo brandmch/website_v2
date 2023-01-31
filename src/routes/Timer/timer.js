@@ -8,6 +8,7 @@ import {
   FaPause,
   FaRedo,
 } from "react-icons/fa";
+import FooterCustom from "../../components/footer";
 
 function Timer() {
   const [breakLength, setBreakLength] = useState(5);
@@ -101,13 +102,13 @@ function Timer() {
         <div className="timer-container-timer border-timer">
           <h1>Session</h1>
           {onBreak && <h1 className="break-timer">ON BREAK!</h1>}
-          <h1 className="timer-timer">
+          <h1 className="timer-timer border-timer">
             {sessionTimer.minutes}:{sessionTimer.seconds < 10 ? "0" : ""}
             {sessionTimer.seconds}
           </h1>
           <div onClick={timerToggle} className="start-stop-timer">
-            <FaPlay className="fa-timer" />
-            <FaPause className="fa-timer" />
+            <FaPlay className="fa-timer" style={{ margin: 0 }} />
+            <FaPause className="fa-timer" style={{ margin: 0 }} />
           </div>
           <FaRedo
             className="fa-timer"
@@ -118,12 +119,10 @@ function Timer() {
           />
         </div>
       </div>
-      <footer>
-        {/* <p>Brandon McHugh 2022</p> */}
-        <p>
-          <a href="https://github.com/brandmch/Timer">GitHub</a>
-        </p>
-      </footer>
+      <FooterCustom
+        url="https://github.com/brandmch/Timer"
+        style={{ paddingTop: 4, color: "#FFFFFF" }}
+      />
     </div>
   );
 }

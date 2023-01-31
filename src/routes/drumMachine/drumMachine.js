@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./drumMachine.css";
 import soundArr from "./sounds/sounds";
 import AppBarCustom from "../../components/appbar";
+import FooterCustom from "../../components/footer";
 
 // Needed to alter style of button on keypress
 let styles = {
@@ -123,12 +124,10 @@ const DrumMachine = () => {
           </div>
         </div>
       </div>
-      <footer>
-        <p>Brandon McHugh 2022</p>
-        <p>
-          <a href="https://github.com/brandmch/Drum-Machine">GitHub</a>
-        </p>
-      </footer>
+      <FooterCustom
+        url="https://github.com/brandmch/Drum-Machine"
+        style={{ position: "absolute", bottom: 0, color: "#FFFFFF" }}
+      />
     </div>
   );
 };

@@ -3,13 +3,14 @@
   flex-direction: column;
   text-align: left;
   align-items: center;
-  height: 100vh;
   font-family: "Raleway", sans-serif;
+  min-height: 100vh;
 }
 
 /* Main Display */
 .header-randomQuoteMachine {
   width: 65%;
+  min-width: 250px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -57,6 +58,8 @@
   border-radius: 5px;
   font-size: 1rem;
   flex: 2;
+  min-width: 150px;
+  cursor: pointer;
 }
 
 .new-quote-button-randomQuoteMachine:active {
@@ -70,6 +73,7 @@
 .fa-randomQuoteMachine {
   font-size: 2.75rem;
   flex: 1;
+  cursor: grab;
 }
 
 /* Loading Animation */

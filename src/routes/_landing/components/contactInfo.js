@@ -9,6 +9,27 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 
 import { Paper, Box, Typography } from "@mui/material";
 
+const info = [
+  ["Software Developer", <WorkIcon />],
+  ["Bachelor of Science", <SchoolIcon />],
+  ["Rockaway, New Jersey", <HomeIcon />],
+  ["LinkedIn", <LinkedInIcon />],
+  ["GitHub", <GitHubIcon />],
+  ["brandonmchugh46@gmail.com", <EmailIcon />],
+  ["Contact me!", <CallIcon />],
+];
+
+const List = () => {
+  return info.map(([title, icon]) => {
+    return (
+      <Typography gutterBottom display="flex" alignItems="start">
+        <Box marginRight={1}>{icon}</Box>
+        {title}
+      </Typography>
+    );
+  });
+};
+
 const ContactInfo = () => {
   return (
     <Box marginBottom={4}>
@@ -18,53 +39,7 @@ const ContactInfo = () => {
             Info
           </Typography>
           <hr />
-          <Typography
-            gutterBottom
-            display="flex"
-            alignItems="start"
-            marginTop={3}
-          >
-            <Box marginRight={1}>
-              <WorkIcon />
-            </Box>
-            Software Developer
-          </Typography>
-          <Typography gutterBottom display="flex" alignItems="start">
-            <Box marginRight={1}>
-              <SchoolIcon />
-            </Box>
-            Bachelor of Science
-          </Typography>
-          <Typography gutterBottom display="flex" alignItems="start">
-            <Box marginRight={1}>
-              <HomeIcon />
-            </Box>
-            Rockaway, New Jersey
-          </Typography>
-          <Typography gutterBottom display="flex" alignItems="start">
-            <Box marginRight={1}>
-              <LinkedInIcon />
-            </Box>
-            LinkedIn
-          </Typography>
-          <Typography gutterBottom display="flex" alignItems="start">
-            <Box marginRight={1}>
-              <GitHubIcon />
-            </Box>
-            GitHub
-          </Typography>
-          <Typography gutterBottom display="flex" alignItems="start">
-            <Box marginRight={1}>
-              <EmailIcon />
-            </Box>
-            brandonmchugh46@gmail.com
-          </Typography>
-          <Typography gutterBottom display="flex" alignItems="start">
-            <Box marginRight={1}>
-              <CallIcon />
-            </Box>
-            Contact me!
-          </Typography>
+          <List />
         </Box>
       </Paper>
     </Box>

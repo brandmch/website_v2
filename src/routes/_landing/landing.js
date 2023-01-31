@@ -12,10 +12,10 @@ import Projects from "./components/projects";
 import Summary from "./components/summary";
 import Experience from "./components/experience";
 import Education from "./components/education";
+import Hobbies from "./components/hobbies";
 
 const Landing = () => {
   const { width } = useWindowSize();
-  console.log(width);
 
   const Desktop = ({ width }) => {
     return (
@@ -31,6 +31,7 @@ const Landing = () => {
           <Skills />
           <Certifications />
           <Projects />
+          <Hobbies />
         </Box>
 
         <Box flex={5} margin={2}>
@@ -84,7 +85,7 @@ const Landing = () => {
 
   {
     return width ? (
-      <div>
+      <div style={{ backgroundColor: "#EAF5EC" }}>
         <AppBarCustom />
 
         {width > 900 ? (

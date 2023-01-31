@@ -10,11 +10,12 @@ import useWindowSize from "../utils/useWindowSize";
 
 const pages = [
   ["LinkedIn", "https://www.linkedin.com/in/mchugh-brandon/"],
+  ["GitHub", "https://github.com/brandmch"],
   // ["Projects", "/projects"],
   // ["Contact Me", "/contactme"],
 ];
 
-const AppBarCustom = () => {
+const AppBarCustom = ({ style = { color: "primary" } }) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const { width } = useWindowSize();
@@ -35,10 +36,11 @@ const AppBarCustom = () => {
   };
 
   return (
-    <AppBar position="static" color="primary">
+    <AppBar position="static" color={style.color}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
+            paddingLeft={width > 900 ? 8 : 0}
             variant="h4"
             noWrap
             component="a"
@@ -84,6 +86,7 @@ const AppBarCustom = () => {
           )}
           {width > 900 ? (
             <Box
+              paddingRight={8}
               sx={{
                 flexGrow: 1,
                 display: { xs: "none", md: "flex", justifyContent: "flex-end" },
