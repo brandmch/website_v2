@@ -1,18 +1,14 @@
 import React from "react";
-import { Box, Typography, CircularProgress } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 
 import AppBarCustom from "../../components/appbar";
 import FooterCustom from "../../components/footer";
+
 import useWindowSize from "../../utils/useWindowSize";
 
-// import ContactInfo from "./components/contactInfo";
-// import Skills from "./components/skills";
-// import Certifications from "./components/certifications";
-// import Projects from "./components/projects";
 import Summary from "./components/summary";
 import Experience from "./components/experience";
 import Education from "./components/education";
-// import Hobbies from "./components/hobbies";
 import {
   Certifications,
   ContactInfo,
@@ -90,25 +86,23 @@ const Landing = () => {
     );
   };
 
-  {
-    return width ? (
-      <div style={{ backgroundColor: "#EAF5EC" }}>
-        <AppBarCustom />
+  return width ? (
+    <div style={{ backgroundColor: "#EAF5EC" }}>
+      <AppBarCustom />
 
-        {width > 900 ? (
-          <Desktop width={width} />
-        ) : width > 631 ? (
-          <InBetween width={width} />
-        ) : (
-          <Mobile width={width} />
-        )}
+      {width > 900 ? (
+        <Desktop width={width} />
+      ) : width > 631 ? (
+        <InBetween width={width} />
+      ) : (
+        <Mobile width={width} />
+      )}
 
-        <FooterCustom url="https://github.com/brandmch/website_v2" />
-      </div>
-    ) : (
-      <CircularProgress />
-    );
-  }
+      <FooterCustom url="https://github.com/brandmch/website_v2" />
+    </div>
+  ) : (
+    <CircularProgress />
+  );
 };
 
 export default Landing;
