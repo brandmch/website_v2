@@ -65,6 +65,7 @@ const skills = [
   ["JavaScript", <JavascriptIcon fontSize="medium" />],
   ["React", <CodeIcon fontSize="medium" />],
   ["React Native", <CodeIcon fontSize="medium" />],
+  ["MUI", <CodeIcon fontSize="medium" />],
   ["HTML", <HtmlIcon fontSize="medium" />],
   ["CSS", <CssIcon fontSize="medium" />],
   ["Node.js", <CodeIcon fontSize="medium" />],
