@@ -9,13 +9,9 @@ import {
 } from "@mui/material";
 import WeatherDataDisplay from "./App_weatherDataDisplay";
 import useWindowSize from "../../utils/useWindowSize";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-
-const weatherTheme = createTheme({
-  typography: {
-    fontFamily: ["kanit"],
-  },
-});
+import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
+import AppBarCustom from "../../components/appbar";
+import FooterCustom from "../../components/footer";
 
 function convertTime(num) {
   const newStr = new Date(parseInt(`${num}000`));
@@ -41,6 +37,15 @@ function WeatherApp() {
   const [weatherData, setWeatherData] = useState();
   const [loading, setLoading] = useState(false);
   const [CorF, setCorF] = useState(true);
+
+  const theme = useTheme();
+
+  const weatherTheme = createTheme({
+    ...theme,
+    typography: {
+      fontFamily: ["kanit"],
+    },
+  });
 
   const { width } = useWindowSize();
 
@@ -121,8 +126,10 @@ function WeatherApp() {
         display="flex"
         flexDirection="column"
         backgroundColor="#FFD1A8"
+        alignItems="center"
         minHeight={"100vh"}
       >
+        <AppBarCustom />
         <Box
           display="flex"
           marginTop={2}
@@ -134,7 +141,12 @@ function WeatherApp() {
             marginTop={2}
             textAlign={width > 850 ? "end" : "center"}
           >
-            <Typography variant="h1" sx={{ textShadow: "2px 2px 2px #998370" }}>
+            <Typography
+              variant="h1"
+              fontWeight={400}
+              sx={{ textShadow: "2px 2px 2px #998370" }}
+              color="dark"
+            >
               {" "}
               Weather
             </Typography>
@@ -188,6 +200,7 @@ function WeatherApp() {
               variant="contained"
               onClick={getCities}
               sx={{ marginTop: 2, marginBottom: 2 }}
+              color="secondary"
             >
               Get Weather
             </Button>
@@ -211,6 +224,13 @@ function WeatherApp() {
             width={width}
           />
         )}
+        <FooterCustom
+          url="https://github.com/brandmch/Show-Local-Weather"
+          style={{
+            position: "absolute",
+            bottom: 0,
+          }}
+        />
       </Box>
     </ThemeProvider>
   );

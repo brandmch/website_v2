@@ -35,6 +35,9 @@ const theme = createTheme({
       dark: "#00600f",
       light: "#6abf69",
     },
+    header: {
+      main: "#1D4920",
+    },
   },
   typography: {
     fontFamily: ["Open Sans"],
