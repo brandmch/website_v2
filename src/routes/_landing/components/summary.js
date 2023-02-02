@@ -48,9 +48,10 @@ const Summary = ({ width }) => {
           <Box display={width > 750 ? "flex" : null} alignItems="center">
             <Box flex={20}>
               <Typography marginTop={3} color="white" textAlign="justify">
-                I specialize in web development, creating solid and scalable
-                products with great user experiences. Highly skilled in several
-                frontend technologies, web scripting, and UI Engineering.
+                I specialize in web and mobile development, creating solid and
+                scalable products with great user experiences. Highly skilled in
+                several frontend technologies, web scripting, and UI
+                Engineering.
               </Typography>
               <Typography marginTop={3} color="white" textAlign="justify">
                 I am an independent self-starter and a reliable team-player with
