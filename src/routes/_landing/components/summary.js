@@ -39,9 +39,9 @@ const Pic = ({ width }) => {
 const Summary = ({ width }) => {
   return (
     <Box marginBottom={4}>
-      <Paper elevation={4} sx={{ backgroundColor: "#044A07" }}>
+      <Paper elevation={4} sx={{ backgroundColor: "#1D4920" }}>
         <Box padding={2.5}>
-          <Typography variant="h4" align="center" gutterBottom color="#FFFFFF">
+          <Typography variant="h4" align="center" gutterBottom color="white">
             Welcome!
           </Typography>
           <hr />

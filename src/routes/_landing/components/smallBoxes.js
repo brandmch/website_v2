@@ -77,6 +77,7 @@ const Skills = () => {
 };
 
 const projects = [
+  ["Weather App", <CodeIcon />, "/weather"],
   ["Drum Machine", <CodeIcon />, "/drummachine"],
   ["JavaScript Calculator", <CodeIcon />, "/javascriptcalulator"],
   ["Markdown Previewer", <CodeIcon />, "/markdownpreviewer"],

@@ -15,7 +15,7 @@ const pages = [
   // ["Contact Me", "/contactme"],
 ];
 
-const AppBarCustom = ({ style = { color: "primary" } }) => {
+const AppBarCustom = ({ style = { color: "header" } }) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const { width } = useWindowSize();
@@ -53,14 +53,14 @@ const AppBarCustom = ({ style = { color: "primary" } }) => {
                     fontFamily: "monospace",
                     fontWeight: 700,
                     letterSpacing: ".3rem",
-                    color: "inherit",
+                    color: "white",
                     textDecoration: "none",
                   }
                 : {
                     fontFamily: "monospace",
                     fontWeight: 700,
                     letterSpacing: ".3rem",
-                    color: "inherit",
+                    color: "white",
                     textDecoration: "none",
                     marginLeft: "auto",
                     marginRight: "auto",

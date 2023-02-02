@@ -10,6 +10,7 @@ import JavascriptCalulator from "./routes/javascriptCalculator/javascriptcalcula
 import MarkdownPreviewer from "./routes/markdownPreviewer/markdownPreviewer";
 import RandomQuoteMachine from "./routes/randomQuoteMachine/randomQuoteMachine";
 import Timer from "./routes/Timer/timer";
+import WeatherApp from "./routes/weather/weather";
 import "./App.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
   { path: "/randomquotemachine", element: <RandomQuoteMachine /> },
   { path: "/randomquotemachine", element: <RandomQuoteMachine /> },
   { path: "/timer", element: <Timer /> },
+  { path: "/weather", element: <WeatherApp /> },
 ]);
 
 const theme = createTheme({
@@ -32,6 +34,9 @@ const theme = createTheme({
       main: "#388e3c",
       dark: "#00600f",
       light: "#6abf69",
+    },
+    header: {
+      main: "#1D4920",
     },
   },
   typography: {
