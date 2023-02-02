@@ -55,6 +55,7 @@ function WeatherApp() {
     )
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         let tempArr = data.reduce((acc, curr) => {
           const item = {
             name: curr.name,
