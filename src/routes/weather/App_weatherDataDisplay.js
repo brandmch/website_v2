@@ -50,7 +50,7 @@ const WeatherDataDisplay = ({ weatherData, CorF, setCorF, width }) => {
         marginRight={width > 905 ? null : 2}
       >
         <img src={weatherIcon} style={{ width: 200, height: 200 }}></img>
-        <Box marginLeft={width > 905 ? null : 3}>
+        <Box>
           <Box
             display="flex"
             flexDirection="column"
@@ -208,7 +208,7 @@ const WeatherDataDisplay = ({ weatherData, CorF, setCorF, width }) => {
   ) : (
     <Paper
       sx={{
-        width: 400,
+        width: 350,
         alignSelf: "center",
         padding: 3,
         marginBottom: 3,

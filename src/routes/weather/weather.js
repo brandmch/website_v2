@@ -217,21 +217,26 @@ function WeatherApp() {
           />
         )}
         {weatherData && !loading && (
-          <WeatherDataDisplay
-            weatherData={weatherData}
-            setWeatherData={setWeatherData}
-            CorF={CorF}
-            setCorF={setCorF}
-            width={width}
+          <Box>
+            <WeatherDataDisplay
+              weatherData={weatherData}
+              setWeatherData={setWeatherData}
+              CorF={CorF}
+              setCorF={setCorF}
+              width={width}
+            />
+            <FooterCustom
+              url="https://github.com/brandmch/Show-Local-Weather"
+              style={{}}
+            />
+          </Box>
+        )}
+        {!weatherData && (
+          <FooterCustom
+            url="https://github.com/brandmch/Show-Local-Weather"
+            style={{ position: "absolute", bottom: 0 }}
           />
         )}
-        <FooterCustom
-          url="https://github.com/brandmch/Show-Local-Weather"
-          style={{
-            position: "absolute",
-            bottom: 0,
-          }}
-        />
       </Box>
     </ThemeProvider>
   );
