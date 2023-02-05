@@ -6,7 +6,7 @@ const bullets = [
   "Using Latent Class Analysis and self-report questionnaires from over two-hundred students, research concluded that procrastination, parental pressure, and academic stress were possible predictors of licit stimulant use",
 ];
 
-const List = () => {
+const List = ({ width }) => {
   return bullets.map((curr) => {
     return (
       <Box
@@ -16,7 +16,10 @@ const List = () => {
         marginLeft={3}
         marginRight={3}
       >
-        <SubdirectoryArrowRightIcon style={{ marginRight: 10 }} />
+        {width <= 631 ? null : (
+          <SubdirectoryArrowRightIcon style={{ marginRight: 10 }} />
+        )}
+
         <Typography alignContent="center" gutterBottom>
           {curr}
         </Typography>
@@ -63,7 +66,7 @@ const Education = ({ width }) => {
             </Box>
           </Box>
 
-          <List />
+          <List width={width} />
         </Box>
       </Paper>
     </Box>

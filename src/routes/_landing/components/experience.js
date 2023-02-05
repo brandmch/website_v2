@@ -75,7 +75,10 @@ const ExpList = ({ width }) => {
               marginLeft={3}
               marginRight={3}
             >
-              <SubdirectoryArrowRightIcon style={{ marginRight: 10 }} />
+              {width <= 631 ? null : (
+                <SubdirectoryArrowRightIcon style={{ marginRight: 10 }} />
+              )}
+
               <Typography alignContent="center" gutterBottom>
                 {curr}
               </Typography>

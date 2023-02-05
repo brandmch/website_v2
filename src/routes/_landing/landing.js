@@ -71,7 +71,7 @@ const Landing = () => {
 
   const Mobile = ({ width }) => {
     return (
-      <Box marginTop={4} marginLeft={6} marginRight={6}>
+      <Box marginTop={4} marginLeft={2} marginRight={2}>
         <Summary width={width} />
 
         <ContactInfo />
