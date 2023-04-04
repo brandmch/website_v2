@@ -83,6 +83,7 @@ const projects = [
   ["Markdown Previewer", <CodeIcon />, "/markdownpreviewer"],
   ["Random Quote Machine", <CodeIcon />, "/randomquotemachine"],
   ["Timer", <CodeIcon />, "/timer"],
+  ["Minesweeper", <CodeIcon />, "/minesweeper"],
 ];
 
 const Projects = () => {
