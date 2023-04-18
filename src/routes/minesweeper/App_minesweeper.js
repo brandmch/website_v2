@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
 import { Box, Typography, Button } from "@mui/material";
-import randomKeyGenerator from "../../utils/randomKeyGenerator";
 import shuffle from "../../utils/shuffleArray";
-import { lookAround, detectBombs, checkIfArrInArr } from "./utils";
-import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
-import FlagIcon from "@mui/icons-material/Flag";
+import { detectBombs } from "./utils";
 import { Board } from "./components/board";
 
 const newBoard = (numBombs) => {
@@ -33,15 +30,22 @@ const Minesweeper = () => {
   const [searched, setSearched] = useState([]);
   const [flags, setFlags] = useState([]);
   const [numBombs, setNumBombs] = useState(5);
+
   const [lost, setLost] = useState(false);
+  const [won, setWon] = useState(false);
 
   const [going, setGoing] = useState(false);
   const [time, setTime] = useState();
 
-  console.log(going, time);
+  console.log("WON", won, "LOST", lost, "GOING", going, time);
 
-  let won = searched.length + flags.length === 100 && !lost;
-  if (won) {
+  // let won = searched.length + flags.length === 100 && !lost;
+  // if (won) {
+  //   setGoing(false);
+  // }
+
+  if (searched.length + flags.length === 100 && !lost && !won && going) {
+    setWon(true);
     setGoing(false);
   }
 
@@ -84,9 +88,12 @@ const Minesweeper = () => {
         setSearched={setSearched}
         flags={flags}
         setFlags={setFlags}
+        lost={lost}
         setLost={setLost}
         going={going}
         setGoing={setGoing}
+        won={won}
+        setWon={setWon}
       />
       {lost && <Typography color="#FFFFFF">YOU LOSE</Typography>}
       {won && <Typography color="#FFF">YOU WIN!</Typography>}
@@ -97,6 +104,7 @@ const Minesweeper = () => {
           setSearched([]);
           setFlags([]);
           setLost(false);
+          setWon(false);
         }}
       >
         New Game

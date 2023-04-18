@@ -31,9 +31,12 @@ const Tile = ({
   setSearched,
   flags,
   setFlags,
+  lost,
   setLost,
   going,
   setGoing,
+  won,
+  setWon,
 }) => {
   let vis = checkIfArrInArr(searched, coord) === -1 ? false : true;
   let flagged = checkIfArrInArr(flags, coord) === -1 ? false : true;
@@ -112,9 +115,12 @@ export const Board = ({
   setSearched,
   flags,
   setFlags,
+  lost,
   setLost,
   going,
   setGoing,
+  won,
+  setWon,
 }) => {
   const board = data;
 
@@ -132,9 +138,12 @@ export const Board = ({
               flags={flags}
               setFlags={setFlags}
               key={randomKeyGenerator()}
+              lost={lost}
               setLost={setLost}
               going={going}
               setGoing={setGoing}
+              won={won}
+              setWon={setWon}
             />
           ))}
         </Box>
