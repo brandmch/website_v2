@@ -1,28 +1,67 @@
 import { useState, useEffect } from "react";
 import { Box, Typography, Button } from "@mui/material";
 import { newBoard } from "./utils";
+import randomKeyGenerator from "../../utils/randomKeyGenerator";
 import { Board } from "./components/board";
+
+function newGame(setState, numBombs) {
+  const { setSearched, setFlags, setLost, setGoing, setBoard, setWon } =
+    setState;
+
+  setBoard(newBoard(numBombs));
+  setSearched([]);
+  setFlags([]);
+  setLost(false);
+  setWon(false);
+  setGoing(false);
+}
+
+const DifficultyBar = ({ setState, numBombs }) => {
+  const { setNumBombs } = setState;
+  const levels = [
+    [10, "PRACTICE"],
+    [20, "EASY"],
+    [35, "MEDIUM"],
+    [50, "HARD"],
+    [65, "IMPOSSIBLE"],
+  ];
+
+  const Difficulty = ({ x, y }) => {
+    return (
+      <Box
+        border="solid 1px #FFFFFF"
+        onClick={() => {
+          setNumBombs(x);
+          newGame(setState, numBombs);
+        }}
+      >
+        <Typography color={x === numBombs ? "#00FF4A" : "#FFFFFF"}>
+          {y}
+        </Typography>
+      </Box>
+    );
+  };
+
+  return (
+    <Box>
+      {levels.map((curr) => (
+        <Difficulty x={curr[0]} y={curr[1]} key={randomKeyGenerator()} />
+      ))}
+    </Box>
+  );
+};
 
 const Minesweeper = () => {
   const [board, setBoard] = useState([]);
   const [searched, setSearched] = useState([]);
   const [flags, setFlags] = useState([]);
-  const [numBombs, setNumBombs] = useState(20);
+  const [numBombs, setNumBombs] = useState(10);
 
   const [lost, setLost] = useState(false);
   const [won, setWon] = useState(false);
 
   const [going, setGoing] = useState(false);
   const [time, setTime] = useState();
-
-  function newGame() {
-    setBoard(newBoard(numBombs));
-    setSearched([]);
-    setFlags([]);
-    setLost(false);
-    setWon(false);
-    setGoing(false);
-  }
 
   const state = {
     searched: searched,
@@ -36,6 +75,8 @@ const Minesweeper = () => {
     setLost: setLost,
     setGoing: setGoing,
     setBoard: setBoard,
+    setNumBombs: setNumBombs,
+    setWon: setWon,
   };
 
   if (searched.length + flags.length === 100 && !lost && !won && going) {
@@ -79,9 +120,10 @@ const Minesweeper = () => {
       <Board data={board} state={state} setState={setState} />
       {lost && <Typography color="#FFFFFF">YOU LOSE</Typography>}
       {won && <Typography color="#FFF">YOU WIN! {time / 1000} sec</Typography>}
-      <Button variant="contained" onClick={() => newGame()}>
+      <Button variant="contained" onClick={() => newGame(setState, numBombs)}>
         New Game
       </Button>
+      <DifficultyBar setState={setState} numBombs={numBombs} />
     </Box>
   );
 };
