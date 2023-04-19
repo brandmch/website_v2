@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import randomKeyGenerator from "../../../utils/randomKeyGenerator";
-import { lookAround, checkIfArrInArr } from "../utils";
+import { lookAround, checkIfArrInArr, newBoard } from "../utils";
 import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 import FlagIcon from "@mui/icons-material/Flag";
 
@@ -23,32 +23,30 @@ function uncover([i, k], board, flags, searched, toBeUncovered = []) {
   return toBeUncovered;
 }
 
-const Tile = ({
-  x,
-  coord,
-  board,
-  searched,
-  setSearched,
-  flags,
-  setFlags,
-  lost,
-  setLost,
-  going,
-  setGoing,
-  won,
-  setWon,
-}) => {
+const Tile = ({ x, coord, board, state, setState }) => {
+  const { searched, flags, going, numBombs } = state;
+  const { setSearched, setFlags, setLost, setGoing, setBoard } = setState;
+
   let vis = checkIfArrInArr(searched, coord) === -1 ? false : true;
   let flagged = checkIfArrInArr(flags, coord) === -1 ? false : true;
 
   function go() {
     if (!going) {
+      if (x !== 0) {
+        let y, b;
+        while (y !== 0) {
+          b = newBoard(numBombs);
+          y = b[coord[0]][coord[1]];
+        }
+        board = b;
+        setBoard(b);
+      }
       setGoing(true);
     }
   }
 
   const handleLeftClick = () => {
-    go();
+    go(board);
     if (!flagged) {
       let [x, y] = coord;
       if (board[x][y] === "X") {
@@ -64,7 +62,6 @@ const Tile = ({
 
   const handleRightClick = (e) => {
     e.preventDefault();
-    go();
     if (!vis) {
       if (!flagged) {
         let tempArr = [...flags];
@@ -97,7 +94,29 @@ const Tile = ({
       key={randomKeyGenerator()}
     >
       {vis ? (
-        <Typography color="#000000">
+        <Typography
+          fontSize={25}
+          fontWeight="bold"
+          color={
+            x === 1
+              ? "#0054FF"
+              : x === 2
+              ? "#9000FF"
+              : x === 3
+              ? "#FF0000"
+              : x === 4
+              ? "#FF9000"
+              : x === 5
+              ? "#C0B900"
+              : x === 6
+              ? "#4EFF00"
+              : x === 7
+              ? "#00FFEA"
+              : x === 8
+              ? "#906E3E"
+              : "#000000"
+          }
+        >
           {x === 0 ? "" : x === "X" ? <LocalFireDepartmentIcon /> : x}
         </Typography>
       ) : flagged ? (
@@ -109,19 +128,7 @@ const Tile = ({
   );
 };
 
-export const Board = ({
-  data,
-  searched,
-  setSearched,
-  flags,
-  setFlags,
-  lost,
-  setLost,
-  going,
-  setGoing,
-  won,
-  setWon,
-}) => {
+export const Board = ({ data, state, setState }) => {
   const board = data;
 
   return (
@@ -133,17 +140,9 @@ export const Board = ({
               x={box}
               coord={[i, k]}
               board={data}
-              searched={searched}
-              setSearched={setSearched}
-              flags={flags}
-              setFlags={setFlags}
               key={randomKeyGenerator()}
-              lost={lost}
-              setLost={setLost}
-              going={going}
-              setGoing={setGoing}
-              won={won}
-              setWon={setWon}
+              state={state}
+              setState={setState}
             />
           ))}
         </Box>

@@ -1,3 +1,5 @@
+import shuffle from "../../utils/shuffleArray";
+
 export function lookAround([i, k]) {
   let around = [];
   if (i > 0 && i < 9 && k > 0 && k < 9) {
@@ -119,3 +121,24 @@ export function checkIfArrInArr(a, b) {
   const y = JSON.stringify(b);
   return x.indexOf(y);
 }
+
+export const newBoard = (numBombs) => {
+  let board = [];
+  let bombs = numBombs;
+  for (let i = 0; i < 100; i++) {
+    board.push(bombs > 0 ? "X" : "O");
+    bombs--;
+  }
+
+  shuffle(board);
+
+  // Group board array into rows
+  let tempboard = [];
+  for (let i = 0; i < 10; i++) {
+    tempboard.push([]);
+    for (let k = 0; k < 10; k++) {
+      tempboard[i].push(board[i * 10 + k]);
+    }
+  }
+  return detectBombs(tempboard);
+};
