@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Landing from "./routes/_landing/landing";
 import ContactMe from "./routes/contactme";
@@ -38,7 +37,7 @@ const theme = createTheme({
       light: "#6abf69",
     },
     header: {
-      main: "#1D4920",
+      main: "#000000",
     },
   },
   typography: {

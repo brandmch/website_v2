@@ -32,8 +32,8 @@ const Landing = () => {
         <Box flex={2} margin={2}>
           <ContactInfo />
           <Skills />
-          <Certifications />
           <Projects />
+          <Certifications />
           <Hobbies />
         </Box>
 
@@ -87,7 +87,7 @@ const Landing = () => {
   };
 
   return width ? (
-    <div style={{ backgroundColor: "#EAF5EC" }}>
+    <div style={{ backgroundColor: "#30377B" }}>
       <AppBarCustom />
 
       {width > 900 ? (
