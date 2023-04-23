@@ -1,55 +1,9 @@
 import { useState, useEffect } from "react";
 import { Box, Typography, Button } from "@mui/material";
-import { newBoard } from "./utils";
-import randomKeyGenerator from "../../utils/randomKeyGenerator";
+import { newBoard, newGame } from "./utils";
 import { Board } from "./components/board";
-
-function newGame(setState, numBombs) {
-  const { setSearched, setFlags, setLost, setGoing, setBoard, setWon } =
-    setState;
-
-  setBoard(newBoard(numBombs));
-  setSearched([]);
-  setFlags([]);
-  setLost(false);
-  setWon(false);
-  setGoing(false);
-}
-
-const DifficultyBar = ({ setState, numBombs }) => {
-  const { setNumBombs } = setState;
-  const levels = [
-    [10, "PRACTICE"],
-    [20, "EASY"],
-    [35, "MEDIUM"],
-    [50, "HARD"],
-    [65, "IMPOSSIBLE"],
-  ];
-
-  const Difficulty = ({ x, y }) => {
-    return (
-      <Box
-        border="solid 1px #FFFFFF"
-        onClick={() => {
-          setNumBombs(x);
-          newGame(setState, numBombs);
-        }}
-      >
-        <Typography color={x === numBombs ? "#00FF4A" : "#FFFFFF"}>
-          {y}
-        </Typography>
-      </Box>
-    );
-  };
-
-  return (
-    <Box>
-      {levels.map((curr) => (
-        <Difficulty x={curr[0]} y={curr[1]} key={randomKeyGenerator()} />
-      ))}
-    </Box>
-  );
-};
+import { DifficultyBar } from "./components/difficultyBar";
+import { Scores } from "./components/scores";
 
 const Minesweeper = () => {
   const [board, setBoard] = useState([]);
@@ -63,6 +17,7 @@ const Minesweeper = () => {
   const [going, setGoing] = useState(false);
   const [time, setTime] = useState();
 
+  // Hold state in objects to simplify passing between components
   const state = {
     searched: searched,
     flags: flags,
@@ -79,11 +34,14 @@ const Minesweeper = () => {
     setWon: setWon,
   };
 
+  // On render, check if the game is won
   if (searched.length + flags.length === 100 && !lost && !won && going) {
     setWon(true);
     setGoing(false);
   }
 
+  // When a game starts, store the current time
+  // When a game stops, subtract the stored time with the current time
   useEffect(() => {
     if (going) {
       setTime(Date.now());
@@ -92,10 +50,12 @@ const Minesweeper = () => {
     }
   }, [going]);
 
+  // On load, create a board
   useEffect(() => {
     setBoard(newBoard(numBombs));
   }, []);
 
+  // If the game is lost, display all remaining tiles
   useEffect(() => {
     if (lost) {
       let x = [];
@@ -108,6 +68,11 @@ const Minesweeper = () => {
     }
   }, [lost]);
 
+  // When the difficulty changes, newGame
+  useEffect(() => {
+    newGame(setState, numBombs);
+  }, [numBombs]);
+
   return (
     <Box
       display="flex"
@@ -116,14 +81,26 @@ const Minesweeper = () => {
       alignItems="center"
       minHeight={"100vh"}
     >
-      <Typography color="#FFFFFF">Bombs: {numBombs - flags.length}</Typography>
-      <Board data={board} state={state} setState={setState} />
-      {lost && <Typography color="#FFFFFF">YOU LOSE</Typography>}
-      {won && <Typography color="#FFF">YOU WIN! {time / 1000} sec</Typography>}
-      <Button variant="contained" onClick={() => newGame(setState, numBombs)}>
-        New Game
-      </Button>
-      <DifficultyBar setState={setState} numBombs={numBombs} />
+      <Box display="flex">
+        <Scores time={time} />
+        <Box>
+          <Typography color="#FFFFFF">
+            Bombs: {numBombs - flags.length}
+          </Typography>
+          <Board data={board} state={state} setState={setState} />
+          {lost && <Typography color="#FFFFFF">YOU LOSE</Typography>}
+          {won && (
+            <Typography color="#FFF">YOU WIN! {time / 1000} sec</Typography>
+          )}
+          <Button
+            variant="contained"
+            onClick={() => newGame(setState, numBombs)}
+          >
+            New Game
+          </Button>
+          <DifficultyBar setState={setState} numBombs={numBombs} />
+        </Box>
+      </Box>
     </Box>
   );
 };

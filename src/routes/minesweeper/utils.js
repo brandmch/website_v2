@@ -98,6 +98,18 @@ export function lookAround([i, k]) {
   return around;
 }
 
+export function newGame(setState, numBombs) {
+  const { setSearched, setFlags, setLost, setGoing, setBoard, setWon } =
+    setState;
+
+  setBoard(newBoard(numBombs));
+  setSearched([]);
+  setFlags([]);
+  setLost(false);
+  setWon(false);
+  setGoing(false);
+}
+
 export const detectBombs = (board) => {
   return board.map((row, i) => {
     return row.map((tile, k) => {
