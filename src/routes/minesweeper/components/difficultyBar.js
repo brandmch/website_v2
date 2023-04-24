@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Divider } from "@mui/material";
 import randomKeyGenerator from "../../../utils/randomKeyGenerator";
 
 export const DifficultyBar = ({ setState, numBombs }) => {
@@ -14,20 +14,26 @@ export const DifficultyBar = ({ setState, numBombs }) => {
   const Difficulty = ({ x, y }) => {
     return (
       <Box
-        border="solid 1px #FFFFFF"
         onClick={() => {
           setNumBombs(x);
         }}
+        margin="5px 10px 5px 10px"
+        textAlign="center"
       >
         <Typography color={x === numBombs ? "#00FF4A" : "#FFFFFF"}>
           {y}
         </Typography>
+        {y !== "IMPOSSIBLE" ? (
+          <Divider
+            sx={{ backgroundColor: "#FFFFFF", margin: "0px 5px 0px 5px" }}
+          />
+        ) : null}
       </Box>
     );
   };
 
   return (
-    <Box>
+    <Box border="solid 1px #FFFFFF" width={150}>
       {levels.map((curr) => (
         <Difficulty x={curr[0]} y={curr[1]} key={randomKeyGenerator()} />
       ))}

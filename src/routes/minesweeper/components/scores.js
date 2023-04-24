@@ -34,7 +34,7 @@ export const Scores = ({ scores, numBombs }) => {
     ));
 
   return (
-    <Box border="solid 1px #FFFFFF" margin={5}>
+    <Box border="solid 1px #FFFFFF">
       <Typography color="#FFFFFF" align="center" variant="h3">
         SCORES
       </Typography>
