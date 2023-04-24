@@ -5,7 +5,6 @@ import { Board } from "./components/board";
 import { DifficultyBar } from "./components/difficultyBar";
 import { Scores } from "./components/scores";
 import { startFetchMyQuery } from "./hasura/query";
-import { EnterScoreBox } from "./components/enterScoreBox";
 
 const Minesweeper = () => {
   const [board, setBoard] = useState([]);
@@ -107,13 +106,15 @@ const Minesweeper = () => {
     <Box backgroundColor="#00033D" alignItems="center" minHeight={"100vh"}>
       <Box display="flex" flex={1} padding={5}>
         <Box flex={1}>
-          {scores && <Scores scores={scores} numBombs={numBombs} />}
-          {enterScore && (
-            <EnterScoreBox
+          {scores && (
+            <Scores
+              scores={scores}
+              setEnterScore={setEnterScore}
               numBombs={numBombs}
               time={time}
+              setTime={setTime}
+              enterScore={enterScore}
               setScores={setScores}
-              setEnterScore={setEnterScore}
             />
           )}
         </Box>

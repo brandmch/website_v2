@@ -4,13 +4,22 @@ import { startFetchMyQuery } from "../hasura/query";
 import { Box, Button, TextField } from "@mui/material";
 import { difficulty } from "../utils";
 
-const EnterScoreBox = ({ numBombs, time, setScores, setEnterScore }) => {
+const EnterScoreBox = ({
+  numBombs,
+  time,
+  setScores,
+  setEnterScore,
+  setTime,
+}) => {
   const [name, setName] = useState("");
 
   const handleSubmit = () => {
-    startExecuteMyMutation(name, difficulty(numBombs), time / 1000);
-    startFetchMyQuery().then((x) => setScores(x.MinesweeperScores));
-    setEnterScore(false);
+    startExecuteMyMutation(name, difficulty(numBombs), time / 1000)
+      .then(() =>
+        startFetchMyQuery().then((x) => setScores(x.MinesweeperScores))
+      )
+      .then(() => setTime())
+      .finally(() => setEnterScore(false));
   };
 
   return (

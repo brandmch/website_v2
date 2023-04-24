@@ -1,8 +1,17 @@
 import { Box, Typography, Divider } from "@mui/material";
 import randomKeyGenerator from "../../../utils/randomKeyGenerator";
 import { difficulty } from "../utils";
+import { EnterScoreBox } from "./enterScoreBox";
 
-export const Scores = ({ scores, numBombs }) => {
+export const Scores = ({
+  scores,
+  numBombs,
+  time,
+  setTime,
+  setEnterScore,
+  setScores,
+  enterScore,
+}) => {
   const scoresToDisplay = scores
     .filter((c) => c.difficulty === difficulty(numBombs))
     .sort((a, b) => a.score - b.score)
@@ -42,6 +51,15 @@ export const Scores = ({ scores, numBombs }) => {
         in seconds
       </Typography>
       {scores && scoresToDisplay}
+      {enterScore && (
+        <EnterScoreBox
+          numBombs={numBombs}
+          time={time}
+          setTime={setTime}
+          setScores={setScores}
+          setEnterScore={setEnterScore}
+        />
+      )}
     </Box>
   );
 };
