@@ -4,7 +4,7 @@ import randomKeyGenerator from "../../../utils/randomKeyGenerator";
 export const DifficultyBar = ({ setState, numBombs }) => {
   const { setNumBombs } = setState;
   const levels = [
-    [10, "PRACTICE"],
+    [5, "PRACTICE"], // CHANGE BACK TO 10
     [20, "EASY"],
     [35, "MEDIUM"],
     [50, "HARD"],

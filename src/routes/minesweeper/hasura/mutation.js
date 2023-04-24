@@ -1,8 +1,3 @@
-/*
-This is an example snippet - you should consider tailoring it
-to your service.
-*/
-
 async function fetchGraphQL(operationsDoc, operationName, variables) {
   const result = await fetch(`${process.env.REACT_APP_HASURA_URL}`, {
     method: "POST",

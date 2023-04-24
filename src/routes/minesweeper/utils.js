@@ -99,8 +99,16 @@ export function lookAround([i, k]) {
 }
 
 export function newGame(setState, numBombs) {
-  const { setSearched, setFlags, setLost, setGoing, setBoard, setWon } =
-    setState;
+  const {
+    setSearched,
+    setFlags,
+    setLost,
+    setGoing,
+    setBoard,
+    setWon,
+    setEnterScore,
+    setTime,
+  } = setState;
 
   setBoard(newBoard(numBombs));
   setSearched([]);
@@ -108,6 +116,8 @@ export function newGame(setState, numBombs) {
   setLost(false);
   setWon(false);
   setGoing(false);
+  setEnterScore(false);
+  setTime();
 }
 
 export const detectBombs = (board) => {
