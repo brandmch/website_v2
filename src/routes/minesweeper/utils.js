@@ -164,3 +164,18 @@ export const newBoard = (numBombs) => {
   }
   return detectBombs(tempboard);
 };
+
+export const difficulty = (numBombs) => {
+  switch (numBombs) {
+    case 5:
+      return "PRACTICE";
+    case 20:
+      return "EASY";
+    case 35:
+      return "MEDIUM";
+    case 50:
+      return "HARD";
+    case 65:
+      return "IMPOSSIBLE";
+  }
+};

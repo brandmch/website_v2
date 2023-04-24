@@ -2,27 +2,13 @@ import { useState } from "react";
 import { startExecuteMyMutation } from "../hasura/mutation";
 import { startFetchMyQuery } from "../hasura/query";
 import { Box, Button, TextField } from "@mui/material";
+import { difficulty } from "../utils";
 
 const EnterScoreBox = ({ numBombs, time, setScores, setEnterScore }) => {
   const [name, setName] = useState("");
 
-  let difficulty = () => {
-    switch (numBombs) {
-      case 5:
-        return "PRACTICE";
-      case 20:
-        return "EASY";
-      case 35:
-        return "MEDIUM";
-      case 50:
-        return "HARD";
-      case 65:
-        return "IMPOSSIBLE";
-    }
-  };
-
   const handleSubmit = () => {
-    startExecuteMyMutation(name, difficulty(), time / 1000);
+    startExecuteMyMutation(name, difficulty(numBombs), time / 1000);
     startFetchMyQuery().then((x) => setScores(x.MinesweeperScores));
     setEnterScore(false);
   };

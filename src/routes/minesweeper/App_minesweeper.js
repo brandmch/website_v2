@@ -104,16 +104,10 @@ const Minesweeper = () => {
   //
 
   return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      backgroundColor="#00033D"
-      alignItems="center"
-      minHeight={"100vh"}
-    >
-      <Box display="flex">
-        <Box>
-          {scores && <Scores scores={scores} />}
+    <Box backgroundColor="#00033D" alignItems="center" minHeight={"100vh"}>
+      <Box display="flex" flex={1}>
+        <Box flex={1}>
+          {scores && <Scores scores={scores} numBombs={numBombs} />}
           {enterScore && (
             <EnterScoreBox
               numBombs={numBombs}
@@ -123,7 +117,7 @@ const Minesweeper = () => {
             />
           )}
         </Box>
-        <Box>
+        <Box flex={2}>
           <Typography color="#FFFFFF">
             Bombs: {numBombs - flags.length}
           </Typography>
