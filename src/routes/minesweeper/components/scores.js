@@ -4,8 +4,8 @@ import { EnterScoreBox } from "./enterScoreBox";
 import { difficulty } from "../utils";
 
 export const Scores = ({ state, setState }) => {
-  const { scores, numBombs, time, enterScore } = state;
-  const { setTime, setEnterScore, setScores } = setState;
+  const { scores, numBombs, time, enterScore, won } = state;
+  const { setTime, setEnterScore, setScores, setWon } = setState;
 
   const currentScores = scores[difficulty(numBombs)];
 
@@ -56,6 +56,8 @@ export const Scores = ({ state, setState }) => {
           setTime={setTime}
           setScores={setScores}
           setEnterScore={setEnterScore}
+          won={won}
+          setWon={setWon}
         />
       )}
     </Box>

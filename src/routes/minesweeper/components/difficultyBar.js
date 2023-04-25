@@ -5,10 +5,10 @@ export const DifficultyBar = ({ setState, numBombs }) => {
   const { setNumBombs } = setState;
   const levels = [
     [5, "PRACTICE"], // CHANGE BACK TO 10
-    [20, "EASY"],
-    [35, "MEDIUM"],
-    [50, "HARD"],
-    [65, "IMPOSSIBLE"],
+    [15, "EASY"],
+    [25, "MEDIUM"],
+    [35, "HARD"],
+    [50, "IMPOSSIBLE"],
   ];
 
   const Difficulty = ({ x, y }) => {

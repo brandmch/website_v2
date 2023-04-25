@@ -10,12 +10,13 @@ const EnterScoreBox = ({
   setScores,
   setEnterScore,
   setTime,
+  setWon,
 }) => {
   const [name, setName] = useState("");
 
   const handleSubmit = () => {
     setEnterScore(false);
-    setTime();
+    setWon(false);
     startExecuteMyMutation(name, difficulty(numBombs), time / 1000).then(() =>
       startFetchMyQuery()
         .then((x) =>
