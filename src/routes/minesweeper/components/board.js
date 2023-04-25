@@ -1,8 +1,9 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import randomKeyGenerator from "../../../utils/randomKeyGenerator";
 import { lookAround, checkIfArrInArr, newBoard } from "../utils";
 import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 import FlagIcon from "@mui/icons-material/Flag";
+import { newGame } from "../utils";
 
 function uncover([i, k], board, flags, searched, toBeUncovered = []) {
   toBeUncovered.push([i, k]);
@@ -79,6 +80,26 @@ const Tile = ({ x, coord, board, state, setState }) => {
     return false;
   };
 
+  function checkColor(x) {
+    return x === 1
+      ? "#0054FF"
+      : x === 2
+      ? "#9000FF"
+      : x === 3
+      ? "#FF0000"
+      : x === 4
+      ? "#FF9000"
+      : x === 5
+      ? "#C0B900"
+      : x === 6
+      ? "#4EFF00"
+      : x === 7
+      ? "#00FFEA"
+      : x === 8
+      ? "#906E3E"
+      : "#000000";
+  }
+
   return (
     <Box
       display="flex"
@@ -94,29 +115,7 @@ const Tile = ({ x, coord, board, state, setState }) => {
       key={randomKeyGenerator()}
     >
       {vis ? (
-        <Typography
-          fontSize={25}
-          fontWeight="bold"
-          color={
-            x === 1
-              ? "#0054FF"
-              : x === 2
-              ? "#9000FF"
-              : x === 3
-              ? "#FF0000"
-              : x === 4
-              ? "#FF9000"
-              : x === 5
-              ? "#C0B900"
-              : x === 6
-              ? "#4EFF00"
-              : x === 7
-              ? "#00FFEA"
-              : x === 8
-              ? "#906E3E"
-              : "#000000"
-          }
-        >
+        <Typography fontSize={25} fontWeight="bold" color={checkColor(x)}>
           {x === 0 ? "" : x === "X" ? <LocalFireDepartmentIcon /> : x}
         </Typography>
       ) : flagged ? (
@@ -128,18 +127,16 @@ const Tile = ({ x, coord, board, state, setState }) => {
   );
 };
 
-export const Board = ({ data, state, setState }) => {
-  const board = data;
-
+const Board = ({ state, setState }) => {
   return (
     <Box>
-      {board.map((row, i) => (
+      {state.board.map((row, i) => (
         <Box display="flex" key={randomKeyGenerator()}>
           {row.map((box, k) => (
             <Tile
               x={box}
               coord={[i, k]}
-              board={data}
+              board={state.board}
               key={randomKeyGenerator()}
               state={state}
               setState={setState}
@@ -147,6 +144,24 @@ export const Board = ({ data, state, setState }) => {
           ))}
         </Box>
       ))}
+    </Box>
+  );
+};
+
+//
+//
+
+export const Game = ({ state, setState }) => {
+  const { numBombs, flags, lost, won, time } = state;
+  return (
+    <Box flex={5} display="flex" flexDirection="column" alignItems="center">
+      <Typography color="#FFFFFF">Bombs: {numBombs - flags.length}</Typography>
+      <Board state={state} setState={setState} />
+      {lost && <Typography color="#FFFFFF">YOU LOSE</Typography>}
+      {won && <Typography color="#FFF">YOU WIN! {time / 1000} sec</Typography>}
+      <Button variant="contained" onClick={() => newGame(setState, numBombs)}>
+        New Game
+      </Button>
     </Box>
   );
 };

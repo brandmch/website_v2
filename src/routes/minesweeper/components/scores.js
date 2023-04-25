@@ -1,21 +1,16 @@
 import { Box, Typography, Divider } from "@mui/material";
 import randomKeyGenerator from "../../../utils/randomKeyGenerator";
-import { difficulty } from "../utils";
 import { EnterScoreBox } from "./enterScoreBox";
+import { difficulty } from "../utils";
 
-export const Scores = ({
-  scores,
-  numBombs,
-  time,
-  setTime,
-  setEnterScore,
-  setScores,
-  enterScore,
-}) => {
-  const scoresToDisplay = scores
-    .filter((c) => c.difficulty === difficulty(numBombs))
-    .sort((a, b) => a.score - b.score)
-    .map((c) => (
+export const Scores = ({ state, setState }) => {
+  const { scores, numBombs, time, enterScore } = state;
+  const { setTime, setEnterScore, setScores } = setState;
+
+  const currentScores = scores[difficulty(numBombs)];
+
+  const DisplayScores = () => {
+    return currentScores.map((c, i) => (
       <Box key={randomKeyGenerator()}>
         <Box
           display="flex"
@@ -36,11 +31,14 @@ export const Scores = ({
             {c.score}
           </Typography>
         </Box>
-        <Divider
-          sx={{ backgroundColor: "#FFFFFF", margin: "0px 10px 0px 10px" }}
-        />
+        {i < currentScores.length - 1 && (
+          <Divider
+            sx={{ backgroundColor: "#FFFFFF", margin: "0px 10px 0px 10px" }}
+          />
+        )}
       </Box>
     ));
+  };
 
   return (
     <Box border="solid 1px #FFFFFF">
@@ -50,7 +48,7 @@ export const Scores = ({
       <Typography color="#FFFFFF" align="center">
         in seconds
       </Typography>
-      {scores && scoresToDisplay}
+      {currentScores && <DisplayScores />}
       {enterScore && (
         <EnterScoreBox
           numBombs={numBombs}

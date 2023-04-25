@@ -14,12 +14,31 @@ const EnterScoreBox = ({
   const [name, setName] = useState("");
 
   const handleSubmit = () => {
-    startExecuteMyMutation(name, difficulty(numBombs), time / 1000)
-      .then(() =>
-        startFetchMyQuery().then((x) => setScores(x.MinesweeperScores))
-      )
-      .then(() => setTime())
-      .finally(() => setEnterScore(false));
+    setEnterScore(false);
+    setTime();
+    startExecuteMyMutation(name, difficulty(numBombs), time / 1000).then(() =>
+      startFetchMyQuery()
+        .then((x) =>
+          x.MinesweeperScores.reduce(
+            (a, c) => {
+              let tempObj = { ...a };
+              tempObj[c.difficulty].push(c);
+              return tempObj;
+            },
+            { PRACTICE: [], EASY: [], MEDIUM: [], HARD: [], IMPOSSIBLE: [] }
+          )
+        )
+        .then((x) => {
+          let t = { ...x };
+          for (let i in t) {
+            t[i] = t[i]
+              .sort((a, b) => a.score - b.score)
+              .filter((c, i) => i < 10);
+          }
+          return t;
+        })
+        .then((x) => setScores(x))
+    );
   };
 
   return (
