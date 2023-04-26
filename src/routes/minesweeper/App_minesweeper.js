@@ -6,6 +6,8 @@ import { DifficultyBar } from "./components/difficultyBar";
 import { Scores } from "./components/scores";
 import { getScores } from "./hasura/query";
 import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
+import AppBarCustom from "../../components/appbar";
+import FooterCustom from "../../components/footer";
 
 const Minesweeper = () => {
   const [board, setBoard] = useState([]);
@@ -130,8 +132,9 @@ const Minesweeper = () => {
         alignItems="center"
         minHeight={"100vh"}
       >
-        <Box display="flex" flex={1} padding={3} justifyContent="center">
-          <Box marginTop={5} marginRight={5}>
+        <AppBarCustom />
+        <Box display="flex" flex={1} padding={2} justifyContent="center">
+          <Box marginTop={6} marginRight={5}>
             {scores ? (
               <Scores state={state} setState={setState} />
             ) : (
@@ -146,10 +149,14 @@ const Minesweeper = () => {
           <Box>
             <Game state={state} setState={setState} />
           </Box>
-          <Box marginTop={5} marginLeft={5}>
+          <Box marginTop={6} marginLeft={5}>
             <DifficultyBar setState={setState} numBombs={numBombs} />
           </Box>
         </Box>
+        <FooterCustom
+          url="https://github.com/brandmch/website_v2/tree/master/src/routes/minesweeper"
+          style={{ color: "#FFFFFF" }}
+        />
       </Box>
     </ThemeProvider>
   );
