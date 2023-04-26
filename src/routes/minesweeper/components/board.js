@@ -109,10 +109,10 @@ const Tile = ({ x, coord, state, setState }) => {
       display="flex"
       alignItems="center"
       justifyContent="center"
-      height={desktop ? 40 : 20}
-      width={desktop ? 40 : 20}
+      height={desktop ? 40 : 28}
+      width={desktop ? 40 : 28}
       backgroundColor={vis ? "#FFFFFF" : "#BCE6E6"}
-      border={desktop ? "solid 4px" : "solid 2px"}
+      border={desktop ? "solid 4px" : "solid 2.8px"}
       borderColor="white #005959 #005959 white"
       sx={{
         "&:active": {
