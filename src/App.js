@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Landing from "./routes/_landing/landing";
 import ContactMe from "./routes/contactme";
@@ -11,6 +10,7 @@ import MarkdownPreviewer from "./routes/markdownPreviewer/markdownPreviewer";
 import RandomQuoteMachine from "./routes/randomQuoteMachine/randomQuoteMachine";
 import Timer from "./routes/Timer/timer";
 import WeatherApp from "./routes/weather/weather";
+import Minesweeper from "./routes/minesweeper/App_minesweeper";
 import "./App.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -26,6 +26,7 @@ const router = createBrowserRouter([
   { path: "/randomquotemachine", element: <RandomQuoteMachine /> },
   { path: "/timer", element: <Timer /> },
   { path: "/weather", element: <WeatherApp /> },
+  { path: "/minesweeper", element: <Minesweeper /> },
 ]);
 
 const theme = createTheme({
@@ -36,7 +37,7 @@ const theme = createTheme({
       light: "#6abf69",
     },
     header: {
-      main: "#1D4920",
+      main: "#000000",
     },
   },
   typography: {

@@ -3,6 +3,7 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import AppBarCustom from "../../components/appbar";
 import FooterCustom from "../../components/footer";
 import rgbToHex from "../../utils/rgbToHex";
+import { randomColor } from "../../utils/randomColor";
 import "./randomQuoteMachine.css";
 
 // Grabs array of quotes from API. Returns 1 random quote from the array.
@@ -14,15 +15,6 @@ const randomQuote = async () => {
     .then((data) => {
       return data[Math.floor(Math.random() * data.length)];
     });
-};
-
-// Returns a random color in rgba()
-// Used for state.backgroundColor
-const randomColor = () => {
-  function randomValue() {
-    return Math.floor(Math.random() * 256);
-  }
-  return `rgb(${randomValue()}, ${randomValue()}, ${randomValue()})`;
 };
 
 // Turns the current quote in state into a string for Twitter http

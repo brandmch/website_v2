@@ -1,0 +1,4 @@
+.minesweeper_game_container {
+  display: grid;
+  grid-template: 50px / 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px;
+}

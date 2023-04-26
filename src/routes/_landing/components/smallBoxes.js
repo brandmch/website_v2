@@ -77,12 +77,13 @@ const Skills = () => {
 };
 
 const projects = [
+  ["Minesweeper", <CodeIcon />, "/minesweeper"],
   ["Weather App", <CodeIcon />, "/weather"],
-  ["Drum Machine", <CodeIcon />, "/drummachine"],
+  ["Timer", <CodeIcon />, "/timer"],
   ["JavaScript Calculator", <CodeIcon />, "/javascriptcalulator"],
+  ["Drum Machine", <CodeIcon />, "/drummachine"],
   ["Markdown Previewer", <CodeIcon />, "/markdownpreviewer"],
   ["Random Quote Machine", <CodeIcon />, "/randomquotemachine"],
-  ["Timer", <CodeIcon />, "/timer"],
 ];
 
 const Projects = () => {

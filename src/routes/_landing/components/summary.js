@@ -39,26 +39,30 @@ const Pic = ({ width }) => {
 const Summary = ({ width }) => {
   return (
     <Box marginBottom={4}>
-      <Paper elevation={4} sx={{ backgroundColor: "#1D4920" }}>
+      <Paper elevation={4} sx={{ backgroundColor: "#FFFFFF" }}>
         <Box padding={2.5}>
-          <Typography variant="h4" align="center" gutterBottom color="white">
+          <Typography variant="h4" align="center" gutterBottom color="#000000">
             Welcome!
           </Typography>
           <hr />
           <Box display={width > 750 ? "flex" : null} alignItems="center">
             <Box flex={20}>
-              <Typography marginTop={3} color="white" textAlign="justify">
+              <Typography marginTop={3} color="#000000" textAlign="justify">
                 I specialize in web and mobile development, creating solid and
                 scalable products with great user experiences. Highly skilled in
                 several frontend technologies, web scripting, and UI
                 Engineering.
               </Typography>
-              <Typography marginTop={3} color="white" textAlign="justify">
+              <Typography
+                marginTop={3}
+                color="wh#000000ite"
+                textAlign="justify"
+              >
                 I am an independent self-starter and a reliable team-player with
                 strong interpersonal skills, demonstrated team-leadership
                 abilities, and a passion for achieving goals.
               </Typography>
-              <Typography marginTop={3} color="white" textAlign="justify">
+              <Typography marginTop={3} color="#000000" textAlign="justify">
                 Constantly looking to learn new things and develop new skills.
                 Motivated, quick thinker, eager to accept new challenges and
                 explore new territory.

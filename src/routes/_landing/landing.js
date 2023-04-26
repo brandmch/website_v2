@@ -17,6 +17,8 @@ import {
   Hobbies,
 } from "./components/smallBoxes";
 
+import { randomColor } from "../../utils/randomColor";
+
 const Landing = () => {
   const { width } = useWindowSize();
 
@@ -32,8 +34,8 @@ const Landing = () => {
         <Box flex={2} margin={2}>
           <ContactInfo />
           <Skills />
-          <Certifications />
           <Projects />
+          <Certifications />
           <Hobbies />
         </Box>
 
@@ -87,9 +89,13 @@ const Landing = () => {
   };
 
   return width ? (
-    <div style={{ backgroundColor: "#EAF5EC" }}>
+    <div
+      style={{
+        backgroundImage: `linear-gradient(to bottom right, ${randomColor()}, rgb(255, 255, 255))`,
+      }}
+    >
       <AppBarCustom />
-
+      {/* #30377B */}
       {width > 900 ? (
         <Desktop width={width} />
       ) : width > 631 ? (
