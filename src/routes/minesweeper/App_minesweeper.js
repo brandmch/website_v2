@@ -8,6 +8,7 @@ import { getScores } from "./hasura/query";
 import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
 import AppBarCustom from "../../components/appbar";
 import FooterCustom from "../../components/footer";
+import useWindowSize from "../../utils/useWindowSize";
 
 const Minesweeper = () => {
   const [board, setBoard] = useState([]);
@@ -24,6 +25,8 @@ const Minesweeper = () => {
   const [scores, setScores] = useState();
   const [enterScore, setEnterScore] = useState(false);
 
+  const { width } = useWindowSize();
+
   // Hold state in objects to simplify passing between components
   const state = {
     board: board,
@@ -36,6 +39,7 @@ const Minesweeper = () => {
     enterScore: enterScore,
     won: won,
     lost: lost,
+    width: width,
   };
   const setState = {
     setSearched: setSearched,
@@ -123,6 +127,38 @@ const Minesweeper = () => {
   //
   //
 
+  const Desktop = () => {
+    return (
+      <Box display="flex" flex={1} padding={2} justifyContent="center">
+        <Box marginTop={6} marginRight={5}>
+          <Scores state={state} setState={setState} />
+        </Box>
+        <Box>
+          <Game state={state} setState={setState} />
+        </Box>
+        <Box marginTop={6} marginLeft={5}>
+          <DifficultyBar setState={setState} numBombs={numBombs} />
+        </Box>
+      </Box>
+    );
+  };
+
+  const Mobile = () => {
+    return (
+      <Box padding={2}>
+        <Box>
+          <Game state={state} setState={setState} />
+        </Box>
+        <Box marginTop={6} display="flex" justifyContent="center">
+          <DifficultyBar setState={setState} numBombs={numBombs} />
+        </Box>
+        <Box marginTop={6} display="flex" justifyContent="center">
+          <Scores state={state} setState={setState} />
+        </Box>
+      </Box>
+    );
+  };
+
   return (
     <ThemeProvider theme={minesweeperTheme}>
       <Box
@@ -133,26 +169,7 @@ const Minesweeper = () => {
         minHeight={"100vh"}
       >
         <AppBarCustom />
-        <Box display="flex" flex={1} padding={2} justifyContent="center">
-          <Box marginTop={6} marginRight={5}>
-            {scores ? (
-              <Scores state={state} setState={setState} />
-            ) : (
-              <Skeleton
-                variant="rectangular"
-                width={210}
-                height={210}
-                sx={{ backgroundColor: "#656A9B" }}
-              />
-            )}
-          </Box>
-          <Box>
-            <Game state={state} setState={setState} />
-          </Box>
-          <Box marginTop={6} marginLeft={5}>
-            <DifficultyBar setState={setState} numBombs={numBombs} />
-          </Box>
-        </Box>
+        {width > 1000 ? <Desktop /> : <Mobile />}
         <FooterCustom
           url="https://github.com/brandmch/website_v2/tree/master/src/routes/minesweeper"
           style={{ color: "#FFFFFF" }}
