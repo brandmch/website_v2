@@ -45,7 +45,7 @@ export const Scores = ({ state, setState }) => {
         <Typography color="#FFFFFF" align="center" variant="h3">
           SCORES
         </Typography>
-        <Typography color="#FFFFFF" align="center">
+        <Typography color="#FFFFFF" align="center" marginBottom={2}>
           in seconds
         </Typography>
         {currentScores && <DisplayScores />}

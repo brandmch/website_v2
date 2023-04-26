@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Box } from "@mui/material";
+import { Box, Skeleton } from "@mui/material";
 import { newBoard, newGame, difficulty } from "./utils";
 import { Game } from "./components/board";
 import { DifficultyBar } from "./components/difficultyBar";
@@ -123,15 +123,30 @@ const Minesweeper = () => {
 
   return (
     <ThemeProvider theme={minesweeperTheme}>
-      <Box backgroundColor="#30377B" alignItems="center" minHeight={"100vh"}>
+      <Box
+        sx={{
+          backgroundImage: "linear-gradient(to bottom right, #7279BE, #30377B)",
+        }}
+        alignItems="center"
+        minHeight={"100vh"}
+      >
         <Box display="flex" flex={1} padding={3} justifyContent="center">
-          <Box marginTop={5} marginRight={3}>
-            {scores && <Scores state={state} setState={setState} />}
+          <Box marginTop={5} marginRight={5}>
+            {scores ? (
+              <Scores state={state} setState={setState} />
+            ) : (
+              <Skeleton
+                variant="rectangular"
+                width={210}
+                height={210}
+                sx={{ backgroundColor: "#656A9B" }}
+              />
+            )}
           </Box>
           <Box>
             <Game state={state} setState={setState} />
           </Box>
-          <Box marginTop={5} marginLeft={3}>
+          <Box marginTop={5} marginLeft={5}>
             <DifficultyBar setState={setState} numBombs={numBombs} />
           </Box>
         </Box>

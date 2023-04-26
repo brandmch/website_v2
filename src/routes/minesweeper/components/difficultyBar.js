@@ -20,12 +20,15 @@ export const DifficultyBar = ({ setState, numBombs }) => {
         margin="5px 10px 5px 10px"
         textAlign="center"
       >
-        <Typography color={x === numBombs ? "#00FF4A" : "#FFFFFF"}>
+        <Typography
+          color={x === numBombs ? "#00FF4A" : "#FFFFFF"}
+          fontSize={20}
+        >
           {y}
         </Typography>
         {y !== "IMPOSSIBLE" ? (
           <Divider
-            sx={{ backgroundColor: "#FFFFFF", margin: "0px 5px 0px 5px" }}
+            sx={{ backgroundColor: "#FFFFFF", margin: "5px 5px 5px 5px" }}
           />
         ) : null}
       </Box>
@@ -33,7 +36,7 @@ export const DifficultyBar = ({ setState, numBombs }) => {
   };
 
   return (
-    <Box border="solid 1px #FFFFFF" width={150}>
+    <Box border="solid 1px #FFFFFF" width={210}>
       {levels.map((curr) => (
         <Difficulty x={curr[0]} y={curr[1]} key={randomKeyGenerator()} />
       ))}
