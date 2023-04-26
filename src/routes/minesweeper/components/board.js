@@ -107,10 +107,11 @@ const Tile = ({ x, coord, board, state, setState }) => {
       display="flex"
       alignItems="center"
       justifyContent="center"
-      height={50}
-      width={50}
+      height={40}
+      width={40}
       backgroundColor={vis ? "#FFFFFF" : "#BCE6E6"}
-      border="solid 0.5px #007723"
+      border="solid 4px"
+      borderColor="white black black white"
       sx={{ "&:active": { backgroundColor: "#00FF4A" } }}
       onClick={!won && !lost ? handleLeftClick : null}
       onContextMenu={!won && !lost ? handleRightClick : null}
@@ -120,7 +121,7 @@ const Tile = ({ x, coord, board, state, setState }) => {
         <Typography
           fontSize={25}
           fontFamily="kanit"
-          fontWeight={500}
+          fontWeight={800}
           color={checkColor(x)}
         >
           {x === 0 ? "" : x === "X" ? <LocalFireDepartmentIcon /> : x}
@@ -170,7 +171,13 @@ const NewGameButton = ({ numBombs, setState }) => {
     <Box marginTop={2}>
       <Button
         variant="contained"
-        sx={{ width: 250, height: 50, borderRadius: 0 }}
+        sx={{
+          width: 250,
+          height: 50,
+          borderRadius: 0,
+          fontWeight: 900,
+          fontSize: 20,
+        }}
         onClick={() => newGame(setState, numBombs)}
       >
         New Game

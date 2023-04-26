@@ -123,7 +123,7 @@ const Minesweeper = () => {
 
   return (
     <ThemeProvider theme={minesweeperTheme}>
-      <Box backgroundColor="#00033D" alignItems="center" minHeight={"100vh"}>
+      <Box backgroundColor="#30377B" alignItems="center" minHeight={"100vh"}>
         <Box display="flex" flex={1} padding={3} justifyContent="center">
           <Box marginTop={5} marginRight={3}>
             {scores && <Scores state={state} setState={setState} />}
