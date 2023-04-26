@@ -1,33 +1,10 @@
 import React from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Landing from "./routes/_landing/landing";
-import ContactMe from "./routes/contactme";
-import Projects from "./routes/projects";
-import Social from "./routes/social";
-import DrumMachine from "./routes/drumMachine/drumMachine";
-import JavascriptCalulator from "./routes/javascriptCalculator/javascriptcalculator";
-import MarkdownPreviewer from "./routes/markdownPreviewer/markdownPreviewer";
-import RandomQuoteMachine from "./routes/randomQuoteMachine/randomQuoteMachine";
-import Timer from "./routes/Timer/timer";
-import WeatherApp from "./routes/weather/weather";
-import Minesweeper from "./routes/minesweeper/App_minesweeper";
 import "./App.css";
+import Routes from "./routes/routes";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
-const router = createBrowserRouter([
-  { path: "/", element: <Landing /> },
-  { path: "/drummachine", element: <DrumMachine /> },
-  { path: "/contactme", element: <ContactMe /> },
-  { path: "/projects", element: <Projects /> },
-  { path: "/social", element: <Social /> },
-  { path: "/javascriptcalulator", element: <JavascriptCalulator /> },
-  { path: "/markdownpreviewer", element: <MarkdownPreviewer /> },
-  { path: "/randomquotemachine", element: <RandomQuoteMachine /> },
-  { path: "/randomquotemachine", element: <RandomQuoteMachine /> },
-  { path: "/timer", element: <Timer /> },
-  { path: "/weather", element: <WeatherApp /> },
-  { path: "/minesweeper", element: <Minesweeper /> },
-]);
+import { Amplify, Auth } from "aws-amplify";
+import awsconfig2 from "./aws-exports";
+Amplify.configure(awsconfig2);
 
 const theme = createTheme({
   palette: {
@@ -48,7 +25,7 @@ const theme = createTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <RouterProvider router={router} />
+      <Routes />
     </ThemeProvider>
   );
 }

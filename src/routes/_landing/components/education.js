@@ -1,5 +1,6 @@
 import { Paper, Box, Typography } from "@mui/material";
 import SubdirectoryArrowRightIcon from "@mui/icons-material/SubdirectoryArrowRight";
+import randomKeyGenerator from "../../../utils/randomKeyGenerator";
 
 const bullets = [
   "Conducted research to determine correlations between academic stress, parental pressure, procrastination, and stimulant use in undergraduate students",
@@ -15,6 +16,7 @@ const List = ({ width }) => {
         textAlign="justify"
         marginLeft={3}
         marginRight={3}
+        key={randomKeyGenerator()}
       >
         {width <= 631 ? null : (
           <SubdirectoryArrowRightIcon style={{ marginRight: 10 }} />
