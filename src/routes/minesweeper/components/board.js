@@ -111,8 +111,12 @@ const Tile = ({ x, coord, board, state, setState }) => {
       width={40}
       backgroundColor={vis ? "#FFFFFF" : "#BCE6E6"}
       border="solid 4px"
-      borderColor="white black black white"
-      sx={{ "&:active": { backgroundColor: "#00FF4A" } }}
+      borderColor="white #005959 #005959 white"
+      sx={{
+        "&:active": {
+          borderColor: "#005959 white white #005959",
+        },
+      }}
       onClick={!won && !lost ? handleLeftClick : null}
       onContextMenu={!won && !lost ? handleRightClick : null}
       key={randomKeyGenerator()}
@@ -158,7 +162,7 @@ const Board = ({ state, setState }) => {
 
 const BombCounter = ({ numBombs, flags }) => {
   return (
-    <Box marginBottom={1}>
+    <Box marginBottom={2}>
       <Typography fontSize={20} color="#FFFFFF">
         Bombs: {numBombs - flags.length}
       </Typography>
@@ -168,20 +172,24 @@ const BombCounter = ({ numBombs, flags }) => {
 
 const NewGameButton = ({ numBombs, setState }) => {
   return (
-    <Box marginTop={2}>
-      <Button
-        variant="contained"
-        sx={{
-          width: 250,
-          height: 50,
-          borderRadius: 0,
-          fontWeight: 900,
-          fontSize: 20,
-        }}
-        onClick={() => newGame(setState, numBombs)}
-      >
-        New Game
-      </Button>
+    <Box
+      marginTop={3}
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      height={40}
+      width={192}
+      backgroundColor="#BCE6E6"
+      border="solid 4px"
+      borderColor="white #005959 #005959 white"
+      sx={{
+        "&:active": {
+          borderColor: "#005959 white white #005959",
+        },
+      }}
+      onClick={() => newGame(setState, numBombs)}
+    >
+      <Typography>NEW GAME</Typography>
     </Box>
   );
 };
