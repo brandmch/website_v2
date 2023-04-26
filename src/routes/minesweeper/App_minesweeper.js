@@ -5,6 +5,7 @@ import { Game } from "./components/board";
 import { DifficultyBar } from "./components/difficultyBar";
 import { Scores } from "./components/scores";
 import { getScores } from "./hasura/query";
+import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
 
 const Minesweeper = () => {
   const [board, setBoard] = useState([]);
@@ -46,6 +47,16 @@ const Minesweeper = () => {
     setTime: setTime,
     setScores: setScores,
   };
+
+  // Theme
+  const theme = useTheme();
+  const minesweeperTheme = createTheme({
+    ...theme,
+    typography: {
+      fontFamily: ["Roboto Mono"],
+      fontWeightRegular: 600,
+    },
+  });
 
   // On render, check if the game is won
   if (
@@ -111,19 +122,21 @@ const Minesweeper = () => {
   //
 
   return (
-    <Box backgroundColor="#00033D" alignItems="center" minHeight={"100vh"}>
-      <Box display="flex" flex={1} padding={3} justifyContent="center">
-        <Box marginTop={5} marginRight={3}>
-          {scores && <Scores state={state} setState={setState} />}
-        </Box>
-        <Box>
-          <Game state={state} setState={setState} />
-        </Box>
-        <Box marginTop={5} marginLeft={3}>
-          <DifficultyBar setState={setState} numBombs={numBombs} />
+    <ThemeProvider theme={minesweeperTheme}>
+      <Box backgroundColor="#00033D" alignItems="center" minHeight={"100vh"}>
+        <Box display="flex" flex={1} padding={3} justifyContent="center">
+          <Box marginTop={5} marginRight={3}>
+            {scores && <Scores state={state} setState={setState} />}
+          </Box>
+          <Box>
+            <Game state={state} setState={setState} />
+          </Box>
+          <Box marginTop={5} marginLeft={3}>
+            <DifficultyBar setState={setState} numBombs={numBombs} />
+          </Box>
         </Box>
       </Box>
-    </Box>
+    </ThemeProvider>
   );
 };
 

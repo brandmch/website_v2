@@ -117,7 +117,12 @@ const Tile = ({ x, coord, board, state, setState }) => {
       key={randomKeyGenerator()}
     >
       {vis ? (
-        <Typography fontSize={25} fontWeight="bold" color={checkColor(x)}>
+        <Typography
+          fontSize={25}
+          fontFamily="kanit"
+          fontWeight={500}
+          color={checkColor(x)}
+        >
           {x === 0 ? "" : x === "X" ? <LocalFireDepartmentIcon /> : x}
         </Typography>
       ) : flagged ? (
@@ -160,6 +165,20 @@ const BombCounter = ({ numBombs, flags }) => {
   );
 };
 
+const NewGameButton = ({ numBombs, setState }) => {
+  return (
+    <Box marginTop={2}>
+      <Button
+        variant="contained"
+        sx={{ width: 250, height: 50, borderRadius: 0 }}
+        onClick={() => newGame(setState, numBombs)}
+      >
+        New Game
+      </Button>
+    </Box>
+  );
+};
+
 //
 //
 
@@ -171,9 +190,7 @@ export const Game = ({ state, setState }) => {
       <Board state={state} setState={setState} />
       {lost && <Typography color="#FFFFFF">YOU LOSE</Typography>}
       {won && <Typography color="#FFF">YOU WIN! {time / 1000} sec</Typography>}
-      <Button variant="contained" onClick={() => newGame(setState, numBombs)}>
-        New Game
-      </Button>
+      <NewGameButton numBombs={state.numBombs} setState={setState} />
     </Box>
   );
 };

@@ -13,9 +13,17 @@ const EnterScoreBox = ({ state, setState }) => {
   const handleSubmit = () => {
     setEnterScore(false);
     setWon(false);
-    startExecuteMyMutation(name, difficulty(numBombs), time / 1000).then(() =>
-      getScores(setScores)
-    );
+    startExecuteMyMutation(
+      name,
+      difficulty(numBombs),
+      (time / 1000).toFixed(3)
+    ).then(() => getScores(setScores));
+  };
+
+  const handleNameChange = (e) => {
+    if (e.length <= 8) {
+      setName(e);
+    }
   };
 
   return (
@@ -23,8 +31,9 @@ const EnterScoreBox = ({ state, setState }) => {
       <TextField
         variant="filled"
         label="ENTER NAME"
+        value={name}
         sx={{ backgroundColor: "#FFFFFF" }}
-        onChange={(e) => setName(e.target.value)}
+        onChange={(e) => handleNameChange(e.target.value)}
       />
       <Button variant="contained" onClick={handleSubmit}>
         SUBMIT

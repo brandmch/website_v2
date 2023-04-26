@@ -17,7 +17,7 @@ export const Scores = ({ state, setState }) => {
           alignItems="center"
           margin="5px 10px 5px 10px"
         >
-          <Typography color="#FFFFFF" flex={10}>
+          <Typography color="#FFFFFF" flex={1}>
             {c.name}
           </Typography>
 
@@ -40,15 +40,19 @@ export const Scores = ({ state, setState }) => {
   };
 
   return (
-    <Box border="solid 1px #FFFFFF">
-      <Typography color="#FFFFFF" align="center" variant="h3">
-        SCORES
-      </Typography>
-      <Typography color="#FFFFFF" align="center">
-        in seconds
-      </Typography>
-      {currentScores && <DisplayScores />}
-      {enterScore && <EnterScoreBox state={state} setState={setState} />}
+    <Box width={210}>
+      <Box border="solid 1px #FFFFFF" padding={1}>
+        <Typography color="#FFFFFF" align="center" variant="h3">
+          SCORES
+        </Typography>
+        <Typography color="#FFFFFF" align="center">
+          in seconds
+        </Typography>
+        {currentScores && <DisplayScores />}
+      </Box>
+      <Box marginTop={2}>
+        {enterScore && <EnterScoreBox state={state} setState={setState} />}
+      </Box>
     </Box>
   );
 };
