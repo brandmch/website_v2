@@ -4,7 +4,7 @@ import { newBoard, newGame, difficulty } from "./utils";
 import { Game } from "./components/board";
 import { DifficultyBar } from "./components/difficultyBar";
 import { Scores } from "./components/scores";
-import { startFetchMyQuery } from "./hasura/query";
+import { getScores } from "./hasura/query";
 
 const Minesweeper = () => {
   const [board, setBoard] = useState([]);
@@ -48,7 +48,13 @@ const Minesweeper = () => {
   };
 
   // On render, check if the game is won
-  if (searched.length + flags.length === 100 && !lost && !won && going) {
+  if (
+    flags.length === numBombs &&
+    searched.length + flags.length === 100 &&
+    !lost &&
+    !won &&
+    going
+  ) {
     setWon(true);
     setGoing(false);
   }
@@ -56,11 +62,7 @@ const Minesweeper = () => {
   // When a game starts, store the current time
   // When a game stops, subtract the stored time with the current time
   useEffect(() => {
-    if (going) {
-      setTime(Date.now());
-    } else {
-      setTime(Date.now() - time);
-    }
+    going ? setTime(Date.now()) : setTime(Date.now() - time);
   }, [going]);
 
   // On load, create a board
@@ -88,33 +90,13 @@ const Minesweeper = () => {
 
   // Get scores
   useEffect(() => {
-    startFetchMyQuery()
-      .then((x) =>
-        x.MinesweeperScores.reduce(
-          (a, c) => {
-            let tempObj = { ...a };
-            tempObj[c.difficulty].push(c);
-            return tempObj;
-          },
-          { PRACTICE: [], EASY: [], MEDIUM: [], HARD: [], IMPOSSIBLE: [] }
-        )
-      )
-      .then((x) => {
-        let t = { ...x };
-        for (let i in t) {
-          t[i] = t[i]
-            .sort((a, b) => a.score - b.score)
-            .filter((c, i) => i < 10);
-        }
-        return t;
-      })
-      .then((x) => setScores(x));
+    getScores(setScores);
   }, []);
 
   // Get the time of the #10 spot & determine if current user's time beats it
   let timeToBeat = () => {
     let d = difficulty(numBombs);
-    if (scores[d].length >= 10) {
+    if (scores[d] && scores[d].length >= 10) {
       return scores[d][scores[d].length - 1].score;
     } else {
       return 99999999999999999999999999;
@@ -130,12 +112,14 @@ const Minesweeper = () => {
 
   return (
     <Box backgroundColor="#00033D" alignItems="center" minHeight={"100vh"}>
-      <Box display="flex" flex={1} padding={5}>
-        <Box flex={1}>
+      <Box display="flex" flex={1} padding={3} justifyContent="center">
+        <Box marginTop={5} marginRight={3}>
           {scores && <Scores state={state} setState={setState} />}
         </Box>
-        <Game state={state} setState={setState} />
-        <Box flex={1}>
+        <Box>
+          <Game state={state} setState={setState} />
+        </Box>
+        <Box marginTop={5} marginLeft={3}>
           <DifficultyBar setState={setState} numBombs={numBombs} />
         </Box>
       </Box>

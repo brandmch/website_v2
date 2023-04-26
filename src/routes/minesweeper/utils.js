@@ -169,13 +169,13 @@ export const difficulty = (numBombs) => {
   switch (numBombs) {
     case 5:
       return "PRACTICE";
-    case 20:
+    case 15:
       return "EASY";
-    case 35:
+    case 25:
       return "MEDIUM";
-    case 50:
+    case 35:
       return "HARD";
-    case 65:
+    case 50:
       return "IMPOSSIBLE";
   }
 };

@@ -4,8 +4,7 @@ import { EnterScoreBox } from "./enterScoreBox";
 import { difficulty } from "../utils";
 
 export const Scores = ({ state, setState }) => {
-  const { scores, numBombs, time, enterScore, won } = state;
-  const { setTime, setEnterScore, setScores, setWon } = setState;
+  const { scores, numBombs, enterScore } = state;
 
   const currentScores = scores[difficulty(numBombs)];
 
@@ -49,17 +48,7 @@ export const Scores = ({ state, setState }) => {
         in seconds
       </Typography>
       {currentScores && <DisplayScores />}
-      {enterScore && (
-        <EnterScoreBox
-          numBombs={numBombs}
-          time={time}
-          setTime={setTime}
-          setScores={setScores}
-          setEnterScore={setEnterScore}
-          won={won}
-          setWon={setWon}
-        />
-      )}
+      {enterScore && <EnterScoreBox state={state} setState={setState} />}
     </Box>
   );
 };

@@ -1,44 +1,20 @@
 import { useState } from "react";
 import { startExecuteMyMutation } from "../hasura/mutation";
-import { startFetchMyQuery } from "../hasura/query";
+import { getScores } from "../hasura/query";
 import { Box, Button, TextField } from "@mui/material";
 import { difficulty } from "../utils";
 
-const EnterScoreBox = ({
-  numBombs,
-  time,
-  setScores,
-  setEnterScore,
-  setTime,
-  setWon,
-}) => {
+const EnterScoreBox = ({ state, setState }) => {
   const [name, setName] = useState("");
+
+  const { numBombs, time } = state;
+  const { setScores, setEnterScore, setWon } = setState;
 
   const handleSubmit = () => {
     setEnterScore(false);
     setWon(false);
     startExecuteMyMutation(name, difficulty(numBombs), time / 1000).then(() =>
-      startFetchMyQuery()
-        .then((x) =>
-          x.MinesweeperScores.reduce(
-            (a, c) => {
-              let tempObj = { ...a };
-              tempObj[c.difficulty].push(c);
-              return tempObj;
-            },
-            { PRACTICE: [], EASY: [], MEDIUM: [], HARD: [], IMPOSSIBLE: [] }
-          )
-        )
-        .then((x) => {
-          let t = { ...x };
-          for (let i in t) {
-            t[i] = t[i]
-              .sort((a, b) => a.score - b.score)
-              .filter((c, i) => i < 10);
-          }
-          return t;
-        })
-        .then((x) => setScores(x))
+      getScores(setScores)
     );
   };
 

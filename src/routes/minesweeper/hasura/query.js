@@ -30,7 +30,7 @@ function fetchMyQuery() {
   return fetchGraphQL(operationsDoc, "MyQuery", {});
 }
 
-export async function startFetchMyQuery() {
+async function startFetchMyQuery() {
   const { errors, data } = await fetchMyQuery();
 
   if (errors) {
@@ -40,4 +40,26 @@ export async function startFetchMyQuery() {
 
   // do something great with this precious data
   return data;
+}
+
+export function getScores(setState) {
+  startFetchMyQuery()
+    .then((x) =>
+      x.MinesweeperScores.reduce(
+        (a, c) => {
+          let tempObj = { ...a };
+          tempObj[c.difficulty].push(c);
+          return tempObj;
+        },
+        { PRACTICE: [], EASY: [], MEDIUM: [], HARD: [], IMPOSSIBLE: [] }
+      )
+    )
+    .then((x) => {
+      let t = { ...x };
+      for (let i in t) {
+        t[i] = t[i].sort((a, b) => a.score - b.score).filter((c, i) => i < 10);
+      }
+      return t;
+    })
+    .then((x) => setState(x));
 }
