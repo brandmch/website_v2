@@ -26,9 +26,11 @@ function uncover([i, k], board, flags, searched, toBeUncovered = []) {
   return toBeUncovered;
 }
 
-const Tile = ({ x, coord, board, state, setState }) => {
+const Tile = ({ x, coord, state, setState }) => {
   const { searched, flags, going, numBombs, won, lost } = state;
   const { setSearched, setFlags, setLost, setGoing, setBoard } = setState;
+  let board = state.board;
+  let desktop = state.width > 530 ? true : false;
 
   let vis = checkIfArrInArr(searched, coord) === -1 ? false : true;
   let flagged = checkIfArrInArr(flags, coord) === -1 ? false : true;
@@ -107,10 +109,10 @@ const Tile = ({ x, coord, board, state, setState }) => {
       display="flex"
       alignItems="center"
       justifyContent="center"
-      height={40}
-      width={40}
+      height={desktop ? 40 : 20}
+      width={desktop ? 40 : 20}
       backgroundColor={vis ? "#FFFFFF" : "#BCE6E6"}
-      border="solid 4px"
+      border={desktop ? "solid 4px" : "solid 2px"}
       borderColor="white #005959 #005959 white"
       sx={{
         "&:active": {
@@ -123,7 +125,7 @@ const Tile = ({ x, coord, board, state, setState }) => {
     >
       {vis ? (
         <Typography
-          fontSize={25}
+          fontSize={desktop ? 25 : 15}
           fontFamily="kanit"
           fontWeight={800}
           color={checkColor(x)}
@@ -148,7 +150,6 @@ const Board = ({ state, setState }) => {
             <Tile
               x={box}
               coord={[i, k]}
-              board={state.board}
               key={randomKeyGenerator()}
               state={state}
               setState={setState}

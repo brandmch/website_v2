@@ -44,5 +44,5 @@ export async function startExecuteMyMutation(name, difficulty, score) {
   }
 
   // do something great with this precious data
-  console.log(data);
+  // console.log(data);
 }
