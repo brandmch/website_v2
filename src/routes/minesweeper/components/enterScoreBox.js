@@ -10,14 +10,17 @@ const EnterScoreBox = ({ state, setState }) => {
   const { numBombs, time } = state;
   const { setScores, setEnterScore, setWon } = setState;
 
+  let score = (time / 1000).toFixed(3);
+  if (score > 9999.999) {
+    score = 9999.999;
+  }
+
   const handleSubmit = () => {
     setEnterScore(false);
     setWon(false);
-    startExecuteMyMutation(
-      name,
-      difficulty(numBombs),
-      (time / 1000).toFixed(3)
-    ).then(() => getScores(setScores));
+    startExecuteMyMutation(name, difficulty(numBombs), score).then(() =>
+      getScores(setScores)
+    );
   };
 
   const handleNameChange = (e) => {
