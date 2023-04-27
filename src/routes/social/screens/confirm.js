@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
 import { Typography, Box, TextField, Button } from "@mui/material";
 import { getCurrentUser, signUp, confirmSignUp } from "../auth/utils";
+import { useParams } from "react-router-dom";
 
 const Confirm = () => {
-  const [input, setInput] = useState({ username: "", code: "" });
+  const [code, setCode] = useState("");
 
-  const handleInput = (e) => {
-    let temp = { ...input };
-    temp[e.target.id] = e.target.value;
-    setInput(temp);
-  };
+  let { name, email, username } = useParams();
+  console.log(name);
+  console.log(email);
+  console.log(username);
 
   const handleConfirm = () => {
-    confirmSignUp(input);
+    confirmSignUp(email, name, username, code);
   };
 
   return (
@@ -21,15 +21,9 @@ const Confirm = () => {
       <Box>
         <TextField
           sx={{ backgroundColor: "#FFFFFF" }}
-          label="Username"
-          id="username"
-          onChange={handleInput}
-        />
-        <TextField
-          sx={{ backgroundColor: "#FFFFFF" }}
           label="Code"
           id="code"
-          onChange={handleInput}
+          onChange={(e) => setCode(e.target.value)}
         />
         <Button variant="contained" onClick={handleConfirm}>
           Confirm

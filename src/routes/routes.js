@@ -25,7 +25,13 @@ const router = createBrowserRouter([
   { path: "/social", element: <SocialApp /> },
   { path: "/social/login", element: <Login /> },
   { path: "/social/signup", element: <SignUp /> },
-  { path: "/social/signup/confirm", element: <Confirm /> },
+  {
+    path: "/social/signup/confirm/:name/:email/:username",
+    element: <Confirm />,
+    loader: ({ params }) => {
+      return params;
+    },
+  },
 ]);
 
 const Routes = () => {

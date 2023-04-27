@@ -14,9 +14,17 @@ import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import { signOut } from "../auth/utils";
 
-export const AccountMenu = ({ user }) => {
+export const AccountMenu = ({ user, setUser }) => {
   const [anchorEl, setAnchorEl] = useState();
   const open = Boolean(anchorEl);
+
+  const firstInitial = () => {
+    if (user) {
+      return user.name[0];
+    } else {
+      return "??";
+    }
+  };
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -39,7 +47,7 @@ export const AccountMenu = ({ user }) => {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32 }}>ME</Avatar>
+            <Avatar sx={{ width: 32, height: 32 }}>{firstInitial()}</Avatar>
           </IconButton>
         </Tooltip>
       </Box>
@@ -99,7 +107,7 @@ export const AccountMenu = ({ user }) => {
               </ListItemIcon>
               Settings
             </MenuItem>
-            <MenuItem onClick={() => signOut()}>
+            <MenuItem onClick={() => signOut(setUser)}>
               <ListItemIcon>
                 <Logout fontSize="small" />
               </ListItemIcon>
