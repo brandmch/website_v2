@@ -1,4 +1,5 @@
 import { Auth } from "aws-amplify";
+import { signIn } from "./login";
 
 export async function confirmSignUp({ username, code }) {
   try {

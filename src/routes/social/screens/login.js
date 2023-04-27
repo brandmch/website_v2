@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Typography, Box, TextField, Button } from "@mui/material";
-import { getCurrentUser, signUp, confirmSignUp } from "../auth/utils";
+import { signIn, getCurrentUser, signOut } from "../auth/utils";
 
 const Login = () => {
-  const [input, setInput] = useState({ email: "", password: "", username: "" });
+  const [input, setInput] = useState({ email: "", password: "" });
 
   const handleInput = (e) => {
     let temp = { ...input };
@@ -11,13 +11,11 @@ const Login = () => {
     setInput(temp);
   };
 
-  const handleSignUp = () => {
-    signUp(input);
+  const handleSignIn = () => {
+    signIn(input);
   };
 
-  const handleConfirm = () => {
-    confirmSignUp(input.username, confirm);
-  };
+  // getCurrentUser();
 
   return (
     <Box backgroundColor="#000000" height="100vh">
@@ -35,25 +33,8 @@ const Login = () => {
           id="password"
           onChange={(e) => handleInput(e)}
         />
-        <TextField
-          sx={{ backgroundColor: "#FFFFFF" }}
-          label="Username"
-          id="username"
-          onChange={(e) => handleInput(e)}
-        />
-        <Button variant="contained" onClick={handleSignUp}>
-          Sign Up
-        </Button>
-      </Box>
-      <Box>
-        <TextField
-          sx={{ backgroundColor: "#FFFFFF" }}
-          label="Email"
-          id="email"
-          onChange={(e) => setConfirm(e.target.value)}
-        />
-        <Button variant="contained" onClick={handleConfirm}>
-          Confirm
+        <Button variant="contained" onClick={handleSignIn}>
+          Sign In
         </Button>
       </Box>
     </Box>

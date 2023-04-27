@@ -1,5 +1,7 @@
-import { getCurrentUser } from "./currentUser";
-import { signUp } from "./signup";
-import { confirmSignUp } from "./confirm";
+import { getCurrentUser } from "./methods/currentUser";
+import { signUp } from "./methods/signup";
+import { confirmSignUp } from "./methods/confirm";
+import { signIn } from "./methods/login";
+import { signOut } from "./methods/signout";
 
-export { getCurrentUser, signUp, confirmSignUp };
+export { getCurrentUser, signUp, confirmSignUp, signIn, signOut };
