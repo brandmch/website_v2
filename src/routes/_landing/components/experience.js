@@ -1,5 +1,6 @@
 import { Paper, Box, Typography } from "@mui/material";
 import SubdirectoryArrowRightIcon from "@mui/icons-material/SubdirectoryArrowRight";
+import randomKeyGenerator from "../../../utils/randomKeyGenerator";
 
 const items = [
   {
@@ -48,7 +49,7 @@ const items = [
 const ExpList = ({ width }) => {
   return items.map(({ title, company, dates, duties }) => {
     return (
-      <Box>
+      <Box key={randomKeyGenerator()}>
         <Box
           display={width < 600 ? null : "flex"}
           marginTop={4}
@@ -74,6 +75,7 @@ const ExpList = ({ width }) => {
               textAlign="justify"
               marginLeft={3}
               marginRight={3}
+              key={randomKeyGenerator()}
             >
               {width <= 631 ? null : (
                 <SubdirectoryArrowRightIcon style={{ marginRight: 10 }} />

@@ -113,7 +113,7 @@ const Minesweeper = () => {
   // Get the time of the #10 spot & determine if current user's time beats it
   let timeToBeat = () => {
     let d = difficulty(numBombs);
-    if (scores[d] && scores[d].length >= 10) {
+    if (scores && scores[d] && scores[d].length >= 10) {
       return scores[d][scores[d].length - 1].score;
     } else {
       return 99999999999999999999999999;
