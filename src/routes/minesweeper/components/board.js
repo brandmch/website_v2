@@ -113,10 +113,13 @@ const Tile = ({ x, coord, state, setState }) => {
       width={desktop ? 40 : 28}
       backgroundColor={vis ? "#FFFFFF" : "#BCE6E6"}
       border={desktop ? "solid 4px" : "solid 2.8px"}
-      borderColor="white #005959 #005959 white"
+      borderColor={
+        vis ? "#005959 white white #005959" : "white #005959 #005959 white"
+      }
       sx={{
         "&:active": {
           borderColor: "#005959 white white #005959",
+          backgroundColor: "white",
         },
       }}
       onClick={!won && !lost ? handleLeftClick : null}
