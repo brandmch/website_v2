@@ -2,9 +2,6 @@ import React from "react";
 import "./App.css";
 import Routes from "./routes/routes";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Amplify, Auth } from "aws-amplify";
-import awsconfig from "./aws-exports";
-Amplify.configure(awsconfig);
 
 const theme = createTheme({
   palette: {
