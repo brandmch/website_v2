@@ -3,8 +3,8 @@ import "./App.css";
 import Routes from "./routes/routes";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Amplify, Auth } from "aws-amplify";
-import awsconfig2 from "./aws-exports";
-Amplify.configure(awsconfig2);
+import awsconfig from "./aws-exports";
+Amplify.configure(awsconfig);
 
 const theme = createTheme({
   palette: {
