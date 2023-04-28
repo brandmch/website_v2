@@ -15,36 +15,28 @@ async function fetchGraphQL(operationsDoc, operationName, variables) {
   return await result.json();
 }
 
-const operationsDoc = `
-    query MyQuery {
-      social_Posts(order_by: {time: desc}, limit: 5) {
-        id
-        text
-        time
-        Posts_User {
-          id
-          name
-          username
-        }
+const operationsDoc = (text, id) => `
+    mutation MyMutation {
+      insert_social_Posts(objects: {text: "${text}", user_id: ${id}}) {
+        affected_rows
       }
     }
   `;
 
-function fetchMyQuery() {
-  return fetchGraphQL(operationsDoc, "MyQuery", {});
+function executeMyMutation(text, id) {
+  return fetchGraphQL(operationsDoc(text, id), "MyMutation", {});
 }
 
-export async function getPosts() {
-  const { errors, data } = await fetchMyQuery();
+export async function createPost(text, id) {
+  const { errors, data } = await executeMyMutation(text, id);
 
   if (errors) {
     // handle those errors like a pro
     console.error(errors);
-    return { error: -1 };
   }
 
   // do something great with this precious data
   if (data) {
-    return data;
+    return 1;
   }
 }

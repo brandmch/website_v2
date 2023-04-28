@@ -9,7 +9,7 @@ export const Posts = ({ posts }) => {
           <Typography color="white">{Posts_User.name}</Typography>
           <Typography color="white">{parseDate(time)}</Typography>
           <Typography color="white">{text}</Typography>
-          <Typography color="white">{Posts_User.name}</Typography>
+          <Typography color="white">{Posts_User.username}</Typography>
         </Box>
       );
     });

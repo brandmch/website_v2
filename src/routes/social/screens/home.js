@@ -7,9 +7,9 @@ import { Posts } from "../components/posts";
 import { CreatePostBox } from "../components/createPost";
 
 const HomeScreen = () => {
+  // user = {email, id, name, username}
   const [user, setUser] = useState();
   const [posts, setPosts] = useState();
-  const [createPostBox, setCreatePostBox] = useState(false);
 
   useEffect(() => {
     getCurrentUser().then((x) => {
@@ -38,12 +38,7 @@ const HomeScreen = () => {
     <Box backgroundColor="#000000" height="100vh">
       <AccountMenu user={user} setUser={setUser} />
       <UserInfo />
-      <Button
-        variant="contained"
-        onClick={() => setCreatePostBox(!createPostBox)}
-      >
-        {createPostBox ? "EXIT" : "Create Post"}
-      </Button>
+      <CreatePostBox user={user} setPosts={setPosts} />
       <Posts posts={posts} />
     </Box>
   );
