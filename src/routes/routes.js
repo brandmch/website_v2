@@ -6,6 +6,10 @@ import RandomQuoteMachine from "./randomQuoteMachine/randomQuoteMachine";
 import Timer from "./Timer/timer";
 import WeatherApp from "./weather/weather";
 import Minesweeper from "./minesweeper/App_minesweeper";
+import SocialApp from "./social/app_social";
+import Login from "./social/screens/login";
+import SignUp from "./social/screens/signUp";
+import Confirm from "./social/screens/confirm";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -19,6 +23,16 @@ const router = createBrowserRouter([
   { path: "/timer", element: <Timer /> },
   { path: "/weather", element: <WeatherApp /> },
   { path: "/minesweeper", element: <Minesweeper /> },
+  { path: "/social", element: <SocialApp /> },
+  { path: "/social/login", element: <Login /> },
+  { path: "/social/signup", element: <SignUp /> },
+  {
+    path: "/social/signup/confirm/:name/:email/:username",
+    element: <Confirm />,
+    loader: ({ params }) => {
+      return params;
+    },
+  },
 ]);
 
 const Routes = () => {
