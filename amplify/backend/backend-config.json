@@ -1,30 +1,68 @@
 {
-  "auth": {
-    "brandonmchughcom3ffe8971": {
-      "customAuth": false,
+  "api": {
+    "websitev2": {
       "dependsOn": [],
-      "frontendAuthConfig": {
-        "mfaConfiguration": "OFF",
-        "mfaTypes": [
-          "SMS"
-        ],
-        "passwordProtectionSettings": {
-          "passwordPolicyCharacters": [],
-          "passwordPolicyMinLength": 8
-        },
-        "signupAttributes": [
-          "EMAIL"
-        ],
-        "socialProviders": [],
-        "usernameAttributes": [
-          "EMAIL"
-        ],
-        "verificationMechanisms": [
-          "EMAIL"
-        ]
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ],
+          "defaultAuthentication": {
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 30,
+              "description": "api key description"
+            },
+            "authenticationType": "API_KEY"
+          }
+        }
       },
       "providerPlugin": "awscloudformation",
-      "service": "Cognito"
+      "service": "AppSync"
+    }
+  },
+  "auth": {
+    "websitev2": {
+      "customAuth": false,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "serviceType": "imported"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_auth_websitev2_nativeClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "websitev2"
+        }
+      ]
+    },
+    "AMPLIFY_auth_websitev2_userPoolId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "websitev2"
+        }
+      ]
+    },
+    "AMPLIFY_auth_websitev2_userPoolName": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "websitev2"
+        }
+      ]
+    },
+    "AMPLIFY_auth_websitev2_webClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "websitev2"
+        }
+      ]
     }
   }
 }

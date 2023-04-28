@@ -1,0 +1,6 @@
+type Score @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  score: Float
+  difficulty: String
+}
