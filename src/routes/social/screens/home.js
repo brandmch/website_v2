@@ -10,6 +10,8 @@ const HomeScreen = () => {
   // user = {email, id, name, username}
   const [user, setUser] = useState();
   const [posts, setPosts] = useState();
+  const [loadPosts, setLoadPosts] = useState(true);
+  const [postsOnPage, setPostsOnPage] = useState(5);
 
   useEffect(() => {
     getCurrentUser().then((x) => {
@@ -19,8 +21,20 @@ const HomeScreen = () => {
         );
       }
     });
-    getPosts().then((x) => setPosts(x));
   }, []);
+
+  useEffect(() => {
+    if (loadPosts) {
+      getPosts(postsOnPage)
+        .then((x) => setPosts(x))
+        .then((x) => setLoadPosts(false));
+    }
+  }, [loadPosts]);
+
+  const loadMorePosts = () => {
+    setPostsOnPage(postsOnPage + 5);
+    setLoadPosts(true);
+  };
 
   const UserInfo = () => {
     return user ? (
@@ -35,11 +49,14 @@ const HomeScreen = () => {
   };
 
   return (
-    <Box backgroundColor="#000000" height="100vh">
+    <Box backgroundColor="#000000" padding={3}>
       <AccountMenu user={user} setUser={setUser} />
       <UserInfo />
-      <CreatePostBox user={user} setPosts={setPosts} />
+      <CreatePostBox user={user} setLoadPosts={setLoadPosts} />
       <Posts posts={posts} />
+      <Button variant="contained" fullWidth onClick={loadMorePosts}>
+        LOAD MORE
+      </Button>
     </Box>
   );
 };

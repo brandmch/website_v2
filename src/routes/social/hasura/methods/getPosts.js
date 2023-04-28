@@ -15,9 +15,9 @@ async function fetchGraphQL(operationsDoc, operationName, variables) {
   return await result.json();
 }
 
-const operationsDoc = `
+const operationsDoc = (x) => `
     query MyQuery {
-      social_Posts(order_by: {time: desc}, limit: 5) {
+      social_Posts(order_by: {time: desc}, limit: ${x}) {
         id
         text
         time
@@ -30,12 +30,12 @@ const operationsDoc = `
     }
   `;
 
-function fetchMyQuery() {
-  return fetchGraphQL(operationsDoc, "MyQuery", {});
+function fetchMyQuery(x) {
+  return fetchGraphQL(operationsDoc(x), "MyQuery", {});
 }
 
-export async function getPosts() {
-  const { errors, data } = await fetchMyQuery();
+export async function getPosts(x) {
+  const { errors, data } = await fetchMyQuery(x);
 
   if (errors) {
     // handle those errors like a pro
@@ -45,6 +45,13 @@ export async function getPosts() {
 
   // do something great with this precious data
   if (data) {
-    return data;
+    const returnData = data.social_Posts.map((c) => {
+      let temp = c.text.split("{{{{{n}}}}}");
+      temp = temp.map((c) => c.replace(/{{{{{doublequotes}}}}}/g, '"'));
+      console.log(temp);
+      c.text = temp;
+      return c;
+    });
+    return returnData;
   }
 }

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Box, Button, Typography, Divider, TextField } from "@mui/material";
 import { createPost, getPosts } from "../hasura/utils";
 
-export const CreatePostBox = ({ setPosts, user }) => {
+export const CreatePostBox = ({ setLoadPosts, user }) => {
   const [createPostBox, setCreatePostBox] = useState(false);
 
   const handleButtonClick = () => {
@@ -16,10 +16,28 @@ export const CreatePostBox = ({ setPosts, user }) => {
   const TextBox = () => {
     const [input, setInput] = useState();
 
+    const handleInputChange = (e) => {
+      setInput(e.target.value);
+    };
+
     const handlePost = () => {
-      createPost(input, user.id).then((x) => {
+      const i = input
+        .split("")
+        .map((c) => {
+          if (c === "\n") {
+            return "{{{{{n}}}}}";
+          } else if (c === '"') {
+            return "{{{{{doublequotes}}}}}";
+          } else {
+            return c;
+          }
+        })
+        .join("");
+      console.log(i);
+      console.log(user.id);
+      createPost(i, user.id).then((x) => {
         if (x === 1) {
-          getPosts().then((x) => setPosts(x));
+          setLoadPosts(true);
         }
       });
     };
@@ -32,7 +50,7 @@ export const CreatePostBox = ({ setPosts, user }) => {
           variant="filled"
           multiline
           minRows={3}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={handleInputChange}
         />
         <Button
           variant="contained"
