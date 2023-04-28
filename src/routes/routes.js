@@ -22,16 +22,16 @@ const router = createBrowserRouter([
   { path: "/timer", element: <Timer /> },
   { path: "/weather", element: <WeatherApp /> },
   { path: "/minesweeper", element: <Minesweeper /> },
-  // { path: "/social", element: <SocialApp /> },
-  // { path: "/social/login", element: <Login /> },
-  // { path: "/social/signup", element: <SignUp /> },
-  // {
-  //   path: "/social/signup/confirm/:name/:email/:username",
-  //   element: <Confirm />,
-  //   loader: ({ params }) => {
-  //     return params;
-  //   },
-  // },
+  { path: "/social", element: <SocialApp /> },
+  { path: "/social/login", element: <Login /> },
+  { path: "/social/signup", element: <SignUp /> },
+  {
+    path: "/social/signup/confirm/:name/:email/:username",
+    element: <Confirm />,
+    loader: ({ params }) => {
+      return params;
+    },
+  },
 ]);
 
 const Routes = () => {
