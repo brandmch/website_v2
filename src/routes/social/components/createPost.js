@@ -33,8 +33,6 @@ export const CreatePostBox = ({ setLoadPosts, user }) => {
           }
         })
         .join("");
-      console.log(i);
-      console.log(user.id);
       createPost(i, user.id).then((x) => {
         if (x === 1) {
           setLoadPosts(true);

@@ -49,11 +49,13 @@ const HomeScreen = () => {
   };
 
   return (
-    <Box backgroundColor="#000000" padding={3}>
+    <Box backgroundColor="#E2EAFF" padding={3}>
       <AccountMenu user={user} setUser={setUser} />
       <UserInfo />
       <CreatePostBox user={user} setLoadPosts={setLoadPosts} />
-      <Posts posts={posts} />
+      <Box marginX={20}>
+        <Posts posts={posts} />
+      </Box>
       <Button variant="contained" fullWidth onClick={loadMorePosts}>
         LOAD MORE
       </Button>

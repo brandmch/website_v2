@@ -46,10 +46,9 @@ export async function getPosts(x) {
   // do something great with this precious data
   if (data) {
     const returnData = data.social_Posts.map((c) => {
-      let temp = c.text.split("{{{{{n}}}}}");
-      temp = temp.map((c) => c.replace(/{{{{{doublequotes}}}}}/g, '"'));
-      console.log(temp);
-      c.text = temp;
+      c.text = c.text
+        .split("{{{{{n}}}}}")
+        .map((c) => c.replace(/{{{{{doublequotes}}}}}/g, '"'));
       return c;
     });
     return returnData;
