@@ -1,5 +1,5 @@
 import { Auth } from "aws-amplify";
-import { signIn } from "./login";
+import { signIn } from "../utils";
 import { startCreateUser } from "../../hasura/methods/mutation";
 
 export async function confirmSignUp(email, name, username, code) {
