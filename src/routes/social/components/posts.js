@@ -5,7 +5,9 @@ import randomKeyGenerator from "../../../utils/randomKeyGenerator";
 export const Posts = ({ posts }) => {
   const Paragraphs = ({ text }) => {
     return text.map((c) => (
-      <Typography key={randomKeyGenerator()}>{c === "" ? "\b" : c}</Typography>
+      <Typography key={randomKeyGenerator()} fontSize={20}>
+        {c === "" ? "\b" : c}
+      </Typography>
     ));
   };
 
