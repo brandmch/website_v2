@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Box, Button, Typography, Divider, TextField } from "@mui/material";
-import { createPost, getPosts } from "../hasura/utils";
+import { createPost, sparsePost } from "../hasura/utils";
 
 export const CreatePostBox = ({ setLoadPosts, user }) => {
   const [createPostBox, setCreatePostBox] = useState(false);
@@ -21,18 +21,8 @@ export const CreatePostBox = ({ setLoadPosts, user }) => {
     };
 
     const handlePost = () => {
-      const i = input
-        .split("")
-        .map((c) => {
-          if (c === "\n") {
-            return "{{{{{n}}}}}";
-          } else if (c === '"') {
-            return "{{{{{doublequotes}}}}}";
-          } else {
-            return c;
-          }
-        })
-        .join("");
+      const i = sparsePost(input);
+
       createPost(i, user.id).then((x) => {
         if (x === 1) {
           setLoadPosts(true);

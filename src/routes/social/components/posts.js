@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { parseDate } from "../../../utils/parseDate";
 import {
   Box,
@@ -6,11 +7,14 @@ import {
   Divider,
   Paper,
   IconButton,
+  TextField,
 } from "@mui/material";
 import randomKeyGenerator from "../../../utils/randomKeyGenerator";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { deletePost } from "../hasura/utils";
+import CloseIcon from "@mui/icons-material/Close";
+import CheckIcon from "@mui/icons-material/Check";
+import { deletePost, editPost, sparsePost } from "../hasura/utils";
 
 export const Posts = ({ posts, user, setLoadPosts }) => {
   const Paragraphs = ({ text }) => {
@@ -21,7 +25,7 @@ export const Posts = ({ posts, user, setLoadPosts }) => {
     ));
   };
 
-  function check(x) {
+  function checkIfPostIsUsers(x) {
     return x.map((c) => {
       let temp = { ...c };
       if (user && user.id === c.Posts_User.id) {
@@ -34,15 +38,41 @@ export const Posts = ({ posts, user, setLoadPosts }) => {
     });
   }
 
-  const handleClick = (button, id) => {
-    console.log(button, id);
-    if (button === "DELETE") {
-      deletePost(id).then((x) => setLoadPosts(true));
-    } else if (button === "EDIT") {
-    }
+  const EditPost = ({ setEdit, text, id }) => {
+    const [input, setInput] = useState(text.join("\n"));
+
+    const startEditPost = () => {
+      editPost(sparsePost(input), id).then((x) => {
+        setLoadPosts(true);
+      });
+    };
+
+    return (
+      <Box>
+        <TextField
+          label="EDIT"
+          variant="filled"
+          value={input}
+          sx={{ backgroundColor: "white" }}
+          multiline
+          fullWidth
+          onChange={(e) => setInput(e.target.value)}
+        />
+        <Box>
+          <IconButton onClick={() => setEdit(false)}>
+            <CloseIcon />
+          </IconButton>
+          <IconButton onClick={startEditPost}>
+            <CheckIcon />
+          </IconButton>
+        </Box>
+      </Box>
+    );
   };
 
   const Post = ({ props }) => {
+    const [edit, setEdit] = useState(false);
+    const [confirmDelete, setConfirmDelete] = useState(false);
     const { id, text, time, Posts_User, mine } = props;
     return (
       <Paper
@@ -52,28 +82,61 @@ export const Posts = ({ posts, user, setLoadPosts }) => {
       >
         <Typography>{Posts_User.name}</Typography>
         <Typography>{parseDate(time)}</Typography>
-        <Paragraphs text={text} />
+        {!edit ? (
+          <Box>
+            <Paragraphs text={text} />
+            {mine && (
+              <Box>
+                {!confirmDelete ? (
+                  <Box>
+                    <IconButton id="EDIT" onClick={() => setEdit(!edit)}>
+                      <EditIcon />
+                    </IconButton>
+                    <IconButton
+                      id="DELETE"
+                      onClick={() => setConfirmDelete(true)}
+                    >
+                      <DeleteIcon />
+                    </IconButton>
+                  </Box>
+                ) : (
+                  <Box>
+                    <Box display="flex" alignItems="center">
+                      <Typography>You sure?</Typography>
+                      <IconButton onClick={() => setConfirmDelete(false)}>
+                        <CloseIcon />
+                      </IconButton>
+                      <IconButton
+                        onClick={() =>
+                          deletePost(id).then((x) => setLoadPosts(true))
+                        }
+                      >
+                        <CheckIcon />
+                      </IconButton>
+                    </Box>
+                  </Box>
+                )}
+              </Box>
+            )}
+          </Box>
+        ) : (
+          <EditPost setEdit={setEdit} text={text} id={id} />
+        )}
         <Divider
           sx={{ backgroundColor: "black", margin: "5px 400px 5px 5px" }}
         />
         <Typography>-{Posts_User.username}</Typography>
-        {mine && (
-          <Box>
-            <IconButton id="EDIT" onClick={() => handleClick("EDIT", id)}>
-              <EditIcon />
-            </IconButton>
-            <IconButton id="DELETE" onClick={() => handleClick("DELETE", id)}>
-              <DeleteIcon />
-            </IconButton>
-          </Box>
-        )}
       </Paper>
     );
   };
 
   if (posts) {
-    return check(posts).map((x) => {
-      return <Post props={x} key={randomKeyGenerator()} />;
-    });
+    return (
+      <Box>
+        {checkIfPostIsUsers(posts).map((x) => {
+          return <Post props={x} key={randomKeyGenerator()} />;
+        })}
+      </Box>
+    );
   }
 };

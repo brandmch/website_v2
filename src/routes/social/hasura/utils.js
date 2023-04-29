@@ -4,6 +4,7 @@ import { getPosts } from "./methods/getPosts";
 import { createPost } from "./methods/createPost";
 import { deletePost } from "./methods/deletePost";
 import { editPost } from "./methods/editPost";
+import { sparsePost } from "./methods/sparsePost";
 
 export {
   getUserDataFromHasura,
@@ -12,4 +13,5 @@ export {
   createPost,
   deletePost,
   editPost,
+  sparsePost,
 };
