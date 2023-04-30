@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { parseDate } from "../../../utils/parseDate";
+import { parseDate } from "../../../../utils/parseDate";
 import {
   Box,
   Button,
@@ -9,12 +9,12 @@ import {
   IconButton,
   TextField,
 } from "@mui/material";
-import randomKeyGenerator from "../../../utils/randomKeyGenerator";
+import randomKeyGenerator from "../../../../utils/randomKeyGenerator";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CloseIcon from "@mui/icons-material/Close";
 import CheckIcon from "@mui/icons-material/Check";
-import { deletePost, editPost, sparsePost } from "../hasura/utils";
+import { deletePost, editPost, sparsePost } from "../../hasura/utils";
 
 export const Posts = ({ posts, user, setLoadPosts }) => {
   const Paragraphs = ({ text }) => {
@@ -76,7 +76,7 @@ export const Posts = ({ posts, user, setLoadPosts }) => {
     const { id, text, time, Posts_User, mine } = props;
     return (
       <Paper
-        elevation={5}
+        elevation={2}
         sx={{ padding: 3, borderRadius: 3, marginBottom: 3 }}
         key={id}
       >

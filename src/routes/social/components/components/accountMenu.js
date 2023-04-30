@@ -12,7 +12,7 @@ import Tooltip from "@mui/material/Tooltip";
 import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
-import { signOut } from "../auth/utils";
+import { signOut } from "../../auth/utils";
 
 export const AccountMenu = ({ user, setUser }) => {
   const [anchorEl, setAnchorEl] = useState();

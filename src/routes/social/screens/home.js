@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { Box, Button, Typography, Divider } from "@mui/material";
 import { getCurrentUser } from "../auth/utils";
-import { AccountMenu } from "../components/accountMenu";
 import { getUserDataFromHasura, getPosts } from "../hasura/utils";
-import { Posts } from "../components/posts";
-import { CreatePostBox } from "../components/createPost";
+import {
+  CommonButton,
+  CreatePostBox,
+  Posts,
+  AccountMenu,
+} from "../components/utils";
 
 const HomeScreen = () => {
   // user = {email, id, name, username}
@@ -49,17 +52,19 @@ const HomeScreen = () => {
   };
 
   return (
-    // <Box backgroundColor="#E2EAFF" padding={3}>
-    <Box backgroundColor="#000000" padding={3}>
+    <Box backgroundColor="#E2EAFF" padding={3}>
+      {/* <Box backgroundColor="#000000" padding={3}> */}
       <AccountMenu user={user} setUser={setUser} />
       <UserInfo />
-      <CreatePostBox user={user} setLoadPosts={setLoadPosts} />
-      <Box marginX={20}>
-        <Posts posts={posts} user={user} setLoadPosts={setLoadPosts} />
+      <Box display="flex" fullWidth flex={1}>
+        <Box flex={1} />
+        <Box flex={2}>
+          <CreatePostBox user={user} setLoadPosts={setLoadPosts} />
+          <Posts posts={posts} user={user} setLoadPosts={setLoadPosts} />
+          <CommonButton title="LOAD MORE" callback={loadMorePosts} />
+        </Box>
+        <Box flex={1} />
       </Box>
-      <Button variant="contained" fullWidth onClick={loadMorePosts}>
-        LOAD MORE
-      </Button>
     </Box>
   );
 };
