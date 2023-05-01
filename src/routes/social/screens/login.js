@@ -1,42 +1,32 @@
 import { useState, useEffect } from "react";
-import { Typography, Box, TextField, Button } from "@mui/material";
-import { signIn, getCurrentUser, signOut } from "../auth/utils";
+import { Box } from "@mui/material";
+import { signIn } from "../auth/utils";
+import { LoginSignUpBox } from "../components/components/login_signupBox";
 
 const Login = () => {
-  const [input, setInput] = useState({ email: "", password: "" });
-
-  const handleInput = (e) => {
-    let temp = { ...input };
-    temp[e.target.id] = e.target.value;
-    setInput(temp);
-  };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSignIn = () => {
-    signIn(input);
+    console.log(email, password);
+    signIn({ email: email, password: password });
   };
 
-  // getCurrentUser();
-
   return (
-    <Box backgroundColor="#000000" height="100vh">
-      <Box>
-        <Typography color="white">Hello!</Typography>
-        <TextField
-          sx={{ backgroundColor: "#FFFFFF" }}
-          label="Email"
-          id="email"
-          onChange={(e) => handleInput(e)}
-        />
-        <TextField
-          sx={{ backgroundColor: "#FFFFFF" }}
-          label="Password"
-          id="password"
-          onChange={(e) => handleInput(e)}
-        />
-        <Button variant="contained" onClick={handleSignIn}>
-          Sign In
-        </Button>
-      </Box>
+    <Box
+      backgroundColor="#E2EAFF"
+      minHeight="100vh"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+    >
+      <LoginSignUpBox
+        textFields={[
+          ["Email", "email", (e) => setEmail(e.target.value)],
+          ["Password", "password", (e) => setPassword(e.target.value)],
+        ]}
+        button={["Sign In", handleSignIn]}
+      />
     </Box>
   );
 };

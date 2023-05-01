@@ -47,7 +47,9 @@ export const AccountMenu = ({ user, setUser }) => {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32 }}>{firstInitial()}</Avatar>
+            <Avatar sx={{ width: 52, height: 52, backgroundColor: "#0046FF" }}>
+              {firstInitial()}
+            </Avatar>
           </IconButton>
         </Tooltip>
       </Box>
@@ -101,7 +103,11 @@ export const AccountMenu = ({ user, setUser }) => {
               </ListItemIcon>
               Add another account
             </MenuItem>
-            <MenuItem onClick={handleClose}>
+            <MenuItem
+              onClick={() => {
+                window.location.href = "/social/settings";
+              }}
+            >
               <ListItemIcon>
                 <Settings fontSize="small" />
               </ListItemIcon>

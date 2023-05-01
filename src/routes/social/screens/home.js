@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Box, Button, Typography, Divider } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 import { getCurrentUser } from "../auth/utils";
 import { getUserDataFromHasura, getPosts } from "../hasura/utils";
 import {
@@ -15,6 +15,7 @@ const HomeScreen = () => {
   const [posts, setPosts] = useState();
   const [loadPosts, setLoadPosts] = useState(true);
   const [postsOnPage, setPostsOnPage] = useState(5);
+  const [loadingPosts, setLoadingPosts] = useState(false);
 
   useEffect(() => {
     getCurrentUser().then((x) => {
@@ -30,38 +31,34 @@ const HomeScreen = () => {
     if (loadPosts) {
       getPosts(postsOnPage)
         .then((x) => setPosts(x))
-        .then((x) => setLoadPosts(false));
+        .then((x) => {
+          setLoadPosts(false);
+          setLoadingPosts(false);
+        });
     }
   }, [loadPosts]);
 
   const loadMorePosts = () => {
+    setLoadingPosts(true);
     setPostsOnPage(postsOnPage + 5);
     setLoadPosts(true);
-  };
-
-  const UserInfo = () => {
-    return user ? (
-      <Box>
-        <Typography color="white">Welcome {user.name}!</Typography>
-      </Box>
-    ) : (
-      <Box>
-        <Typography color="white">Welcome stranger!</Typography>
-      </Box>
-    );
   };
 
   return (
     <Box backgroundColor="#E2EAFF" padding={3}>
       {/* <Box backgroundColor="#000000" padding={3}> */}
-      <AccountMenu user={user} setUser={setUser} />
-      <UserInfo />
-      <Box display="flex" fullWidth flex={1}>
+      <Box display="flex" justifyContent="right">
+        <AccountMenu user={user} setUser={setUser} />
+      </Box>
+      <Box display="flex" fullWidth flex={1} marginTop={-5}>
         <Box flex={1} />
         <Box flex={2}>
           <CreatePostBox user={user} setLoadPosts={setLoadPosts} />
           <Posts posts={posts} user={user} setLoadPosts={setLoadPosts} />
-          <CommonButton title="LOAD MORE" callback={loadMorePosts} />
+          <CommonButton
+            title={loadingPosts ? <CircularProgress /> : "LOAD MORE"}
+            callback={loadMorePosts}
+          />
         </Box>
         <Box flex={1} />
       </Box>

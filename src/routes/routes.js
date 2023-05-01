@@ -10,6 +10,7 @@ import SocialApp from "./social/app_social";
 import Login from "./social/screens/login";
 import SignUp from "./social/screens/signUp";
 import Confirm from "./social/screens/confirm";
+import Settings from "./social/screens/settings";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
   { path: "/social", element: <SocialApp /> },
   { path: "/social/login", element: <Login /> },
   { path: "/social/signup", element: <SignUp /> },
+  { path: "/social/settings", element: <Settings /> },
   {
     path: "/social/signup/confirm/:name/:email/:username",
     element: <Confirm />,
