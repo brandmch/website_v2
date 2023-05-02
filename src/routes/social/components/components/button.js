@@ -5,7 +5,7 @@ export const CommonButton = ({ title, callback }) => {
     <Button
       variant="contained"
       fullWidth
-      sx={{ marginTop: 2, backgroundColor: "#0046FF" }}
+      sx={{ marginTop: 2, backgroundColor: "button" }}
       onClick={callback}
     >
       {title}

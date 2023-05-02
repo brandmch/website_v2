@@ -15,7 +15,7 @@ const Confirm = () => {
 
   return (
     <Box
-      backgroundColor="#E2EAFF"
+      backgroundColor="#background.primary"
       height="100vh"
       display="flex"
       justifyContent="center"

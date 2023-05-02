@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Box, CircularProgress } from "@mui/material";
+import { Box, CircularProgress, Button } from "@mui/material";
 import { getCurrentUser } from "../auth/utils";
 import { getUserDataFromHasura, getPosts } from "../hasura/utils";
 import {
@@ -45,9 +45,10 @@ const HomeScreen = () => {
   };
 
   return (
-    <Box backgroundColor="#E2EAFF" padding={3}>
+    <Box backgroundColor="background.primary" padding={3}>
       {/* <Box backgroundColor="#000000" padding={3}> */}
       <Box display="flex" justifyContent="right">
+        <Button>change</Button>
         <AccountMenu user={user} setUser={setUser} />
       </Box>
       <Box display="flex" fullWidth flex={1} marginTop={-5}>

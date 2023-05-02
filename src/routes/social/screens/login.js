@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Box } from "@mui/material";
 import { signIn } from "../auth/utils";
 import { LoginSignUpBox } from "../components/components/login_signupBox";
@@ -14,7 +14,7 @@ const Login = () => {
 
   return (
     <Box
-      backgroundColor="#E2EAFF"
+      backgroundColor="background.primary"
       minHeight="100vh"
       display="flex"
       justifyContent="center"

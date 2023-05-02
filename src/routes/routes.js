@@ -11,8 +11,10 @@ import Login from "./social/screens/login";
 import SignUp from "./social/screens/signUp";
 import Confirm from "./social/screens/confirm";
 import Settings from "./social/screens/settings";
-
+import { useContext, createContext, useState, useMemo } from "react";
+import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { SocialAppTheme } from "./social/theme";
 
 const router = createBrowserRouter([
   { path: "/", element: <Landing /> },
@@ -24,10 +26,19 @@ const router = createBrowserRouter([
   { path: "/timer", element: <Timer /> },
   { path: "/weather", element: <WeatherApp /> },
   { path: "/minesweeper", element: <Minesweeper /> },
-  { path: "/social", element: <SocialApp /> },
-  { path: "/social/login", element: <Login /> },
-  { path: "/social/signup", element: <SignUp /> },
-  { path: "/social/settings", element: <Settings /> },
+  {
+    path: "/social",
+    element: <SocialAppTheme component={<SocialApp />} />,
+  },
+  { path: "/social/login", element: <SocialAppTheme component={<Login />} /> },
+  {
+    path: "/social/signup",
+    element: <SocialAppTheme component={<SignUp />} />,
+  },
+  {
+    path: "/social/settings",
+    element: <SocialAppTheme component={<Settings />} />,
+  },
   {
     path: "/social/signup/confirm/:name/:email/:username",
     element: <Confirm />,

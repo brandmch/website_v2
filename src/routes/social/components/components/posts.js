@@ -16,8 +16,10 @@ import CloseIcon from "@mui/icons-material/Close";
 import CheckIcon from "@mui/icons-material/Check";
 import { deletePost, editPost, sparsePost } from "../../hasura/utils";
 import { randomColor } from "../../../../utils/randomColor";
+import { useTheme, ThemeProvider, createTheme } from "@mui/material/styles";
 
 export const Posts = ({ posts, user, setLoadPosts }) => {
+  const theme = useTheme();
   const onHover = () => {
     return {
       "&:hover": {
