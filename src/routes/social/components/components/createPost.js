@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Box, Button, Typography, Divider, TextField } from "@mui/material";
-import { createPost, sparsePost } from "../hasura/utils";
+import { createPost, sparsePost } from "../../hasura/utils";
+import { CommonButton } from "./button";
 
 export const CreatePostBox = ({ setLoadPosts, user }) => {
   const [createPostBox, setCreatePostBox] = useState(false);
@@ -26,6 +27,7 @@ export const CreatePostBox = ({ setLoadPosts, user }) => {
       createPost(i, user.id).then((x) => {
         if (x === 1) {
           setLoadPosts(true);
+          setCreatePostBox(false);
         }
       });
     };
@@ -33,30 +35,31 @@ export const CreatePostBox = ({ setLoadPosts, user }) => {
       <Box>
         <TextField
           label="Write something Awesome!"
-          sx={{ backgroundColor: "white" }}
+          sx={{ backgroundColor: "white", marginTop: 2 }}
           fullWidth
           variant="filled"
           multiline
           minRows={3}
           onChange={handleInputChange}
         />
-        <Button
-          variant="contained"
-          fullWidth
-          sx={{ marginTop: 2 }}
-          onClick={handlePost}
-        >
-          POST
-        </Button>
+        <CommonButton title="POST" callback={handlePost} />
       </Box>
     );
   };
 
   return (
     <Box padding={5}>
-      <Button variant="contained" onClick={handleButtonClick}>
-        {!user ? "Sign in to post!" : createPostBox ? "EXIT" : "Create Post"}
-      </Button>
+      <CommonButton
+        title={
+          !user
+            ? "Sign in to post!"
+            : createPostBox
+            ? "Nevermind"
+            : "Create Post"
+        }
+        callback={handleButtonClick}
+      />
+
       {createPostBox && <TextBox />}
     </Box>
   );

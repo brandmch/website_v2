@@ -7,14 +7,13 @@ import MenuItem from "@mui/material/MenuItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
 import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
-import { signOut } from "../auth/utils";
+import { signOut } from "../../auth/utils";
 
-export const AccountMenu = ({ user, setUser }) => {
+export const AccountMenu = ({ user }) => {
   const [anchorEl, setAnchorEl] = useState();
   const open = Boolean(anchorEl);
 
@@ -22,7 +21,7 @@ export const AccountMenu = ({ user, setUser }) => {
     if (user) {
       return user.name[0];
     } else {
-      return "??";
+      return "?";
     }
   };
 
@@ -47,7 +46,9 @@ export const AccountMenu = ({ user, setUser }) => {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32 }}>{firstInitial()}</Avatar>
+            <Avatar sx={{ width: 52, height: 52, backgroundColor: "#0046FF" }}>
+              {firstInitial()}
+            </Avatar>
           </IconButton>
         </Tooltip>
       </Box>
@@ -101,13 +102,21 @@ export const AccountMenu = ({ user, setUser }) => {
               </ListItemIcon>
               Add another account
             </MenuItem>
-            <MenuItem onClick={handleClose}>
+            <MenuItem
+              onClick={() => {
+                window.location.href = `/social/settings/${user.id}`;
+              }}
+            >
               <ListItemIcon>
                 <Settings fontSize="small" />
               </ListItemIcon>
               Settings
             </MenuItem>
-            <MenuItem onClick={() => signOut(setUser)}>
+            <MenuItem
+              onClick={() => {
+                signOut();
+              }}
+            >
               <ListItemIcon>
                 <Logout fontSize="small" />
               </ListItemIcon>
@@ -116,7 +125,7 @@ export const AccountMenu = ({ user, setUser }) => {
           </Box>
         ) : (
           <Box>
-            <MenuItem onClick={() => (window.location.href = "/social/login")}>
+            <MenuItem onClick={() => (window.location.href = "/social/login/")}>
               <ListItemIcon>
                 <Logout fontSize="small" />
               </ListItemIcon>

@@ -1,24 +1,23 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Typography, Box, TextField, Button } from "@mui/material";
-import { getCurrentUser, signUp, confirmSignUp } from "../auth/utils";
+import { signUp } from "../auth/utils";
+import { LoginSignUpBox } from "../components/components/login_signupBox";
 
 const SignUp = () => {
-  const [input, setInput] = useState({
-    email: "",
-    password: "",
-    username: "",
-    name: "",
-  });
-
-  const handleInput = (e) => {
-    let temp = { ...input };
-    temp[e.target.id] = e.target.value;
-    setInput(temp);
-  };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleSignUp = () => {
-    const { email, password, username, name } = input;
-    if (email !== "" && password !== "" && username !== "" && name !== "") {
+    if (
+      confirmPassword === password &&
+      email !== "" &&
+      password !== "" &&
+      username !== "" &&
+      name !== ""
+    ) {
       signUp({
         email: email,
         password: password,
@@ -33,38 +32,27 @@ const SignUp = () => {
   };
 
   return (
-    <Box backgroundColor="#000000" height="100vh">
-      <Typography>SIGN UP</Typography>
-      <Box display="flex" flexDirection="column" width="33vw">
-        <Typography color="white">Hello!</Typography>
-        <TextField
-          sx={{ backgroundColor: "#FFFFFF" }}
-          label="Name"
-          id="name"
-          onChange={(e) => handleInput(e)}
-        />
-        <TextField
-          sx={{ backgroundColor: "#FFFFFF" }}
-          label="Username"
-          id="username"
-          onChange={(e) => handleInput(e)}
-        />
-        <TextField
-          sx={{ backgroundColor: "#FFFFFF" }}
-          label="Email"
-          id="email"
-          onChange={(e) => handleInput(e)}
-        />
-        <TextField
-          sx={{ backgroundColor: "#FFFFFF" }}
-          label="Password"
-          id="password"
-          onChange={(e) => handleInput(e)}
-        />
-        <Button variant="contained" onClick={handleSignUp}>
-          Sign Up
-        </Button>
-      </Box>
+    <Box
+      backgroundColor="background.primary"
+      height="100vh"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+    >
+      <LoginSignUpBox
+        textFields={[
+          ["Name", "name", (e) => setName(e.target.value)],
+          ["Username", "username", (e) => setUsername(e.target.value)],
+          ["Email", "email", (e) => setEmail(e.target.value)],
+          ["Password", "password", (e) => setPassword(e.target.value)],
+          [
+            "Confirm Password",
+            "Confirm Password",
+            (e) => setConfirmPassword(e.target.value),
+          ],
+        ]}
+        button={["Sign Up", handleSignUp]}
+      />
     </Box>
   );
 };
