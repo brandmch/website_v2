@@ -105,7 +105,7 @@ export const AccountMenu = ({ user, setUser }) => {
             </MenuItem>
             <MenuItem
               onClick={() => {
-                window.location.href = "/social/settings";
+                window.location.href = `/social/settings/`;
               }}
             >
               <ListItemIcon>
@@ -122,7 +122,7 @@ export const AccountMenu = ({ user, setUser }) => {
           </Box>
         ) : (
           <Box>
-            <MenuItem onClick={() => (window.location.href = "/social/login")}>
+            <MenuItem onClick={() => (window.location.href = "/social/login/")}>
               <ListItemIcon>
                 <Logout fontSize="small" />
               </ListItemIcon>

@@ -1,15 +1,8 @@
 import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
 import { useContext, createContext, useState, useMemo } from "react";
-import Settings from "./screens/settings";
 
-const ThemeContext = createContext();
 export const SocialAppTheme = ({ component }) => {
-  const [mode, setMode] = useState("dark");
-
-  const switchMode = () => {
-    setMode((prev) => (prev === "dark" ? "light" : "dark"));
-  };
-
+  const [mode, setMode] = useState("light");
   const theme = useTheme();
   const socialTheme = useMemo(
     () =>
@@ -46,9 +39,5 @@ export const SocialAppTheme = ({ component }) => {
     [mode]
   );
 
-  return (
-    <ThemeContext.Provider value={mode}>
-      <ThemeProvider theme={socialTheme}>{component}</ThemeProvider>
-    </ThemeContext.Provider>
-  );
+  return <ThemeProvider theme={socialTheme}>{component}</ThemeProvider>;
 };
