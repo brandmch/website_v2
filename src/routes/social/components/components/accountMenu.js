@@ -7,14 +7,13 @@ import MenuItem from "@mui/material/MenuItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
 import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import { signOut } from "../../auth/utils";
 
-export const AccountMenu = ({ user, setUser }) => {
+export const AccountMenu = ({ user }) => {
   const [anchorEl, setAnchorEl] = useState();
   const open = Boolean(anchorEl);
 
@@ -22,7 +21,7 @@ export const AccountMenu = ({ user, setUser }) => {
     if (user) {
       return user.name[0];
     } else {
-      return "??";
+      return "?";
     }
   };
 
@@ -105,7 +104,7 @@ export const AccountMenu = ({ user, setUser }) => {
             </MenuItem>
             <MenuItem
               onClick={() => {
-                window.location.href = `/social/settings/`;
+                window.location.href = `/social/settings/${user.id}`;
               }}
             >
               <ListItemIcon>
@@ -113,7 +112,11 @@ export const AccountMenu = ({ user, setUser }) => {
               </ListItemIcon>
               Settings
             </MenuItem>
-            <MenuItem onClick={() => signOut(setUser)}>
+            <MenuItem
+              onClick={() => {
+                signOut();
+              }}
+            >
               <ListItemIcon>
                 <Logout fontSize="small" />
               </ListItemIcon>

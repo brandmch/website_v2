@@ -49,7 +49,7 @@ const HomeScreen = () => {
       {/* <Box backgroundColor="#000000" padding={3}> */}
       <Box display="flex" justifyContent="right">
         <Button>change</Button>
-        <AccountMenu user={user} setUser={setUser} />
+        <AccountMenu user={user} />
       </Box>
       <Box display="flex" fullWidth flex={1} marginTop={-5}>
         <Box flex={1} />

@@ -15,7 +15,7 @@ const Confirm = () => {
 
   return (
     <Box
-      backgroundColor="#background.primary"
+      backgroundColor="background.primary"
       height="100vh"
       display="flex"
       justifyContent="center"
@@ -24,6 +24,7 @@ const Confirm = () => {
       <LoginSignUpBox
         textFields={[["Code", "code", (e) => setCode(e.target.value)]]}
         button={["Confirm", handleConfirm]}
+        text="Check your email for your code!"
       />
     </Box>
   );

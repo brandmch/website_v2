@@ -45,7 +45,11 @@ const SignUp = () => {
           ["Username", "username", (e) => setUsername(e.target.value)],
           ["Email", "email", (e) => setEmail(e.target.value)],
           ["Password", "password", (e) => setPassword(e.target.value)],
-          ["Confirm Password", (e) => setConfirmPassword(e.target.value)],
+          [
+            "Confirm Password",
+            "Confirm Password",
+            (e) => setConfirmPassword(e.target.value),
+          ],
         ]}
         button={["Sign Up", handleSignUp]}
       />

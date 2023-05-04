@@ -7,6 +7,7 @@ import { editPost } from "./methods/editPost";
 import { sparsePost } from "./methods/sparsePost";
 import { changeDarkMode } from "./methods/darkMode";
 import { fetchGraphQL } from "./methods/fetchGraphQL";
+import { deleteUser_UserAndPosts } from "./methods/deleteUser";
 
 export {
   getUserDataFromHasura,
@@ -18,4 +19,5 @@ export {
   sparsePost,
   changeDarkMode,
   fetchGraphQL,
+  deleteUser_UserAndPosts,
 };

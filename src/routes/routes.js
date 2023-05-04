@@ -13,7 +13,8 @@ import Confirm from "./social/screens/confirm";
 import Settings from "./social/screens/settings";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { SocialAppTheme } from "./social/theme";
-import { useState } from "react";
+import { ChangePassword } from "./social/screens/changePassword";
+import { DeleteUserConfirmation } from "./social/screens/deleteUserConfirmation";
 
 const router = createBrowserRouter([
   { path: "/", element: <Landing /> },
@@ -38,12 +39,26 @@ const router = createBrowserRouter([
     element: <SocialAppTheme component={<SignUp />} />,
   },
   {
-    path: "/social/settings",
+    path: "/social/settings/:userid",
     element: <SocialAppTheme component={<Settings />} />,
+    loader: ({ params }) => {
+      return params;
+    },
   },
   {
     path: "/social/signup/confirm/:name/:email/:username",
     element: <SocialAppTheme component={<Confirm />} />,
+    loader: ({ params }) => {
+      return params;
+    },
+  },
+  {
+    path: "/social/changepassword",
+    element: <SocialAppTheme component={<ChangePassword />} />,
+  },
+  {
+    path: "/social/deleteuserconfirmation/:userid",
+    element: <SocialAppTheme component={<DeleteUserConfirmation />} />,
     loader: ({ params }) => {
       return params;
     },

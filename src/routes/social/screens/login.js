@@ -26,6 +26,7 @@ const Login = () => {
           ["Password", "password", (e) => setPassword(e.target.value)],
         ]}
         button={["Sign In", handleSignIn]}
+        bottomText={["Sign up!", "/social/signup"]}
       />
     </Box>
   );
