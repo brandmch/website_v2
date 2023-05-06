@@ -37,7 +37,7 @@ export const AccountMenu = ({ user }) => {
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
         {/* <Typography sx={{ minWidth: 100 }}>Contact</Typography>
         <Typography sx={{ minWidth: 100 }}>Profile</Typography> */}
-        <Tooltip title="Account settings">
+        <Tooltip title="Account">
           <IconButton
             onClick={handleClick}
             size="small"
@@ -89,19 +89,19 @@ export const AccountMenu = ({ user }) => {
       >
         {user ? (
           <Box>
-            <MenuItem onClick={handleClose}>
+            {/* <MenuItem onClick={handleClose}>
               <Avatar /> Profile
             </MenuItem>
             <MenuItem onClick={handleClose}>
               <Avatar /> My account
             </MenuItem>
-            <Divider />
-            <MenuItem onClick={handleClose}>
+            <Divider /> */}
+            {/* <MenuItem onClick={handleClose}>
               <ListItemIcon>
                 <PersonAdd fontSize="small" />
               </ListItemIcon>
               Add another account
-            </MenuItem>
+            </MenuItem> */}
             <MenuItem
               onClick={() => {
                 window.location.href = `/social/settings/${user.id}`;

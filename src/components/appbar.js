@@ -72,14 +72,14 @@ const AppBarCustom = ({ style = { color: "header" } }) => {
 
           {width > 900 ? (
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-              <IconButton
+              {/* <IconButton
                 size="large"
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={handleOpenNavMenu}
                 color="inherit"
-              ></IconButton>
+              ></IconButton> */}
             </Box>
           ) : (
             ""

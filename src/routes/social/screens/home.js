@@ -8,6 +8,8 @@ import {
   Posts,
   AccountMenu,
 } from "../components/utils";
+import AppBarCustom from "../../../components/appbar";
+import FooterCustom from "../../../components/footer";
 
 const HomeScreen = () => {
   // user = {email, id, name, username}
@@ -45,27 +47,41 @@ const HomeScreen = () => {
   };
 
   return (
-    <Box backgroundColor="background.primary" padding={3} minHeight="100vh">
-      <Box display="flex" justifyContent="right">
-        <AccountMenu user={user} />
-      </Box>
-      <Box display="flex" fullWidth flex={1} marginTop={-5}>
-        <Box flex={1} />
-        <Box flex={2}>
-          <CreatePostBox user={user} setLoadPosts={setLoadPosts} />
-          <Posts posts={posts} user={user} setLoadPosts={setLoadPosts} />
-          {loadingPosts ? (
-            <Box fullWidth display="flex" justifyContent="center">
-              <CircularProgress />
-            </Box>
-          ) : (
-            <CommonButton
-              title={loadingPosts ? <CircularProgress /> : "LOAD MORE"}
-              callback={loadMorePosts}
-            />
-          )}
+    <Box>
+      <AppBarCustom />
+      <Box backgroundColor="background.primary" padding={3} minHeight="100vh">
+        <Box display="flex">
+          <Box flex={1} />
+          <Box flex={3}>
+            <CreatePostBox user={user} setLoadPosts={setLoadPosts} />
+          </Box>
+          <Box
+            flex={1}
+            display="flex"
+            justifyContent="right"
+            alignItems="start"
+          >
+            <AccountMenu user={user} />
+          </Box>
         </Box>
-        <Box flex={1} />
+        <Box marginBottom={4} display="flex">
+          <Box flex={1} />
+          <Box flex={3}>
+            <Posts posts={posts} user={user} setLoadPosts={setLoadPosts} />
+            {loadingPosts ? (
+              <Box display="flex" justifyContent="center">
+                <CircularProgress />
+              </Box>
+            ) : (
+              <CommonButton
+                title={loadingPosts ? <CircularProgress /> : "LOAD MORE"}
+                callback={loadMorePosts}
+              />
+            )}
+          </Box>
+          <Box flex={1} />
+        </Box>
+        <FooterCustom url="https://github.com/brandmch/website_v2/tree/master/src/routes/social" />
       </Box>
     </Box>
   );

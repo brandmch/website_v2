@@ -15,32 +15,61 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { SocialAppTheme } from "./social/theme";
 import { ChangePassword } from "./social/screens/changePassword";
 import { DeleteUserConfirmation } from "./social/screens/deleteUserConfirmation";
+import ErrorElement from "./errorElement";
 
 const router = createBrowserRouter([
-  { path: "/", element: <Landing /> },
-  { path: "/drummachine", element: <DrumMachine /> },
-  { path: "/javascriptcalulator", element: <JavascriptCalulator /> },
-  { path: "/markdownpreviewer", element: <MarkdownPreviewer /> },
-  { path: "/randomquotemachine", element: <RandomQuoteMachine /> },
-  { path: "/randomquotemachine", element: <RandomQuoteMachine /> },
-  { path: "/timer", element: <Timer /> },
-  { path: "/weather", element: <WeatherApp /> },
-  { path: "/minesweeper", element: <Minesweeper /> },
+  { path: "/", element: <Landing />, errorElement: <ErrorElement /> },
+  {
+    path: "/drummachine",
+    element: <DrumMachine />,
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "/javascriptcalulator",
+    element: <JavascriptCalulator />,
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "/markdownpreviewer",
+    element: <MarkdownPreviewer />,
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "/randomquotemachine",
+    element: <RandomQuoteMachine />,
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "/randomquotemachine",
+    element: <RandomQuoteMachine />,
+    errorElement: <ErrorElement />,
+  },
+  { path: "/timer", element: <Timer />, errorElement: <ErrorElement /> },
+  { path: "/weather", element: <WeatherApp />, errorElement: <ErrorElement /> },
+  {
+    path: "/minesweeper",
+    element: <Minesweeper />,
+    errorElement: <ErrorElement />,
+  },
   {
     path: "/social",
     element: <SocialAppTheme component={<SocialApp />} />,
+    errorElement: <ErrorElement />,
   },
   {
     path: "/social/login",
     element: <SocialAppTheme component={<Login />} />,
+    errorElement: <ErrorElement />,
   },
   {
     path: "/social/signup",
     element: <SocialAppTheme component={<SignUp />} />,
+    errorElement: <ErrorElement />,
   },
   {
     path: "/social/settings/:userid",
     element: <SocialAppTheme component={<Settings />} />,
+    errorElement: <ErrorElement />,
     loader: ({ params }) => {
       return params;
     },
@@ -48,6 +77,7 @@ const router = createBrowserRouter([
   {
     path: "/social/signup/confirm/:name/:email/:username",
     element: <SocialAppTheme component={<Confirm />} />,
+    errorElement: <ErrorElement />,
     loader: ({ params }) => {
       return params;
     },
@@ -55,10 +85,12 @@ const router = createBrowserRouter([
   {
     path: "/social/changepassword",
     element: <SocialAppTheme component={<ChangePassword />} />,
+    errorElement: <ErrorElement />,
   },
   {
     path: "/social/deleteuserconfirmation/:userid",
     element: <SocialAppTheme component={<DeleteUserConfirmation />} />,
+    errorElement: <ErrorElement />,
     loader: ({ params }) => {
       return params;
     },

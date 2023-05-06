@@ -1,5 +1,5 @@
 import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
-import { useContext, createContext, useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 
 export const SocialAppTheme = ({ component }) => {
   const [mode, setMode] = useState("light");
@@ -19,6 +19,7 @@ export const SocialAppTheme = ({ component }) => {
                 },
                 background: { primary: "#E2EAFF", paper: "#FFFFFF" },
                 button: "#0046FF",
+                textField: { fontColor: "#000000", color: "#000000" },
               }
             : {
                 // palette values for dark mode
@@ -28,8 +29,11 @@ export const SocialAppTheme = ({ component }) => {
                 },
                 background: { primary: "#000000", paper: "#00278D" },
                 button: "#E2EAFF",
-                textField: { fontColor: "#000000" },
+                textField: { fontColor: "#000000", color: "#000000" },
               }),
+          header: {
+            main: "#000000",
+          },
         },
         typography: {
           fontFamily: ["Ubuntu"],
