@@ -44,7 +44,7 @@ export const Posts = ({ posts, user, setLoadPosts }) => {
 
   const Paragraphs = ({ text }) => {
     return text.map((c) => (
-      <Typography key={randomKeyGenerator()} fontSize={20}>
+      <Typography key={randomKeyGenerator()} fontSize={22}>
         {c === "" ? "\b" : c}
       </Typography>
     ));
@@ -100,7 +100,7 @@ export const Posts = ({ posts, user, setLoadPosts }) => {
 
     return (
       <Paper
-        elevation={2}
+        elevation={1}
         sx={{ padding: 3, borderRadius: 3, marginBottom: 3 }}
         key={id}
       >

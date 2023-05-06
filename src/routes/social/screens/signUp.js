@@ -24,6 +24,7 @@ const SignUp = () => {
         username: username,
         name: name,
       }).then((x) => {
+        console.log(x);
         if (x.username) {
           window.location.href = `/social/signup/confirm/${name}/${email}/${username}`;
         }
@@ -47,7 +48,7 @@ const SignUp = () => {
           ["Password", "password", (e) => setPassword(e.target.value)],
           [
             "Confirm Password",
-            "Confirm Password",
+            "confirmpassword",
             (e) => setConfirmPassword(e.target.value),
           ],
         ]}

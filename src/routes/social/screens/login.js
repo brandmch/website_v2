@@ -6,10 +6,14 @@ import { LoginSignUpBox } from "../components/components/login_signupBox";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [badEorP, setBadEorP] = useState(false);
 
   const handleSignIn = () => {
-    console.log(email, password);
-    signIn({ email: email, password: password });
+    signIn({ email: email, password: password }).then((x) => {
+      if (x === 1) {
+        setBadEorP(true);
+      }
+    });
   };
 
   return (
@@ -27,6 +31,8 @@ const Login = () => {
         ]}
         button={["Sign In", handleSignIn]}
         bottomText={["Sign up!", "/social/signup"]}
+        errorStatus={badEorP}
+        errorMessage="Incorrect email or password!"
       />
     </Box>
   );
