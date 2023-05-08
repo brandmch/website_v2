@@ -20,7 +20,6 @@ const HomeScreen = () => {
   const [loadingPosts, setLoadingPosts] = useState(true);
 
   const { width, height } = useWindowSize();
-  console.log(width);
 
   useEffect(() => {
     getCurrentUser().then((x) => {
@@ -38,9 +37,9 @@ const HomeScreen = () => {
         .then((x) => setPosts(x))
         .then((x) => {
           setLoadPosts(false);
+          setLoadingPosts(false);
         });
     }
-    setLoadingPosts(false);
   }, [loadPosts]);
 
   const loadMorePosts = () => {
