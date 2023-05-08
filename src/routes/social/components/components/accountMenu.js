@@ -37,7 +37,7 @@ export const AccountMenu = ({ user }) => {
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
         {/* <Typography sx={{ minWidth: 100 }}>Contact</Typography>
         <Typography sx={{ minWidth: 100 }}>Profile</Typography> */}
-        <Tooltip title="Account settings">
+        <Tooltip title="Account">
           <IconButton
             onClick={handleClick}
             size="small"
@@ -46,7 +46,13 @@ export const AccountMenu = ({ user }) => {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <Avatar sx={{ width: 52, height: 52, backgroundColor: "#0046FF" }}>
+            <Avatar
+              sx={{
+                width: 52,
+                height: 52,
+                backgroundColor: !user ? "#0046FF" : user.color,
+              }}
+            >
               {firstInitial()}
             </Avatar>
           </IconButton>
@@ -89,19 +95,19 @@ export const AccountMenu = ({ user }) => {
       >
         {user ? (
           <Box>
-            <MenuItem onClick={handleClose}>
+            {/* <MenuItem onClick={handleClose}>
               <Avatar /> Profile
             </MenuItem>
             <MenuItem onClick={handleClose}>
               <Avatar /> My account
             </MenuItem>
-            <Divider />
-            <MenuItem onClick={handleClose}>
+            <Divider /> */}
+            {/* <MenuItem onClick={handleClose}>
               <ListItemIcon>
                 <PersonAdd fontSize="small" />
               </ListItemIcon>
               Add another account
-            </MenuItem>
+            </MenuItem> */}
             <MenuItem
               onClick={() => {
                 window.location.href = `/social/settings/${user.id}`;

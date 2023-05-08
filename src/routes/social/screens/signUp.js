@@ -10,6 +10,9 @@ const SignUp = () => {
   const [name, setName] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const [passwordsDontMatch, setPasswordsDontMatch] = useState(false);
+  const [invalidPassword, setInvalidPassword] = useState(false);
+
   const handleSignUp = () => {
     if (
       confirmPassword === password &&
@@ -24,11 +27,31 @@ const SignUp = () => {
         username: username,
         name: name,
       }).then((x) => {
+        console.log(x);
         if (x.username) {
           window.location.href = `/social/signup/confirm/${name}/${email}/${username}`;
+        } else if (x === 4) {
+          setInvalidPassword(true);
         }
       });
+    } else if (password !== confirmPassword) {
+      setPasswordsDontMatch(true);
     }
+  };
+
+  const errorStatus = () => {
+    return passwordsDontMatch
+      ? passwordsDontMatch
+      : invalidPassword
+      ? invalidPassword
+      : null;
+  };
+  const errorMessage = () => {
+    return passwordsDontMatch
+      ? "Passwords do not match or bad email"
+      : invalidPassword
+      ? "Password must be at least 8 characters, contain 1 number, 1 special character, 1 uppercase, 1 lowercase"
+      : null;
   };
 
   return (
@@ -47,11 +70,13 @@ const SignUp = () => {
           ["Password", "password", (e) => setPassword(e.target.value)],
           [
             "Confirm Password",
-            "Confirm Password",
+            "confirmpassword",
             (e) => setConfirmPassword(e.target.value),
           ],
         ]}
         button={["Sign Up", handleSignUp]}
+        errorStatus={errorStatus()}
+        errorMessage={errorMessage()}
       />
     </Box>
   );

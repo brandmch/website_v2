@@ -1,5 +1,5 @@
 import { Auth } from "aws-amplify";
-import { signIn } from "../utils";
+import { signIn, sparseError } from "../utils";
 import { startCreateUser } from "../../hasura/methods/mutation";
 
 export async function confirmSignUp(email, name, username, code) {
@@ -13,5 +13,6 @@ export async function confirmSignUp(email, name, username, code) {
     });
   } catch (error) {
     console.log("error confirming sign up", error);
+    return sparseError(error);
   }
 }

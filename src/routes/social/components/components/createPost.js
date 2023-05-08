@@ -41,6 +41,7 @@ export const CreatePostBox = ({ setLoadPosts, user }) => {
           multiline
           minRows={3}
           onChange={handleInputChange}
+          InputLabelProps={{ style: { color: "#777776" } }}
         />
         <CommonButton title="POST" callback={handlePost} />
       </Box>

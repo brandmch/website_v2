@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 
 export const DeleteUserConfirmation = () => {
   const [input, setInput] = useState("");
+  const [incorrectInput, setIncorrectInput] = useState(false);
 
   let userid = useParams().userid;
 
@@ -20,6 +21,8 @@ export const DeleteUserConfirmation = () => {
             deleteUser_UserAndPosts(userid);
           }
         });
+      } else {
+        setIncorrectInput(true);
       }
     },
   ];
@@ -38,7 +41,9 @@ export const DeleteUserConfirmation = () => {
         textFields={textBox}
         button={button}
         text={text}
-        bottomText={["I changed my mind!", "/social/settings"]}
+        bottomText={["I changed my mind!", `/social/settings/${userid}`]}
+        errorStatus={incorrectInput}
+        errorMessage="Incorrect input"
       />
     </Box>
   );

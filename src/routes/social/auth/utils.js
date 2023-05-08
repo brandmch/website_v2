@@ -5,6 +5,8 @@ import { signIn } from "./methods/login";
 import { signOut } from "./methods/signout";
 import { changePassword } from "./methods/changePassword";
 import { deleteUser } from "./methods/deleteUser";
+import { sparseError } from "./methods/sparseError";
+import { resendConfirmationCode } from "./methods/resendConfirmationCode";
 
 export {
   getCurrentUser,
@@ -14,4 +16,6 @@ export {
   signOut,
   changePassword,
   deleteUser,
+  sparseError,
+  resendConfirmationCode,
 };

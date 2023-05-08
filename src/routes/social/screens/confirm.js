@@ -1,16 +1,21 @@
 import { useState } from "react";
-import { Typography, Box, TextField, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import { confirmSignUp } from "../auth/utils";
 import { useParams } from "react-router-dom";
 import { LoginSignUpBox } from "../components/components/login_signupBox";
 
 const Confirm = () => {
   const [code, setCode] = useState("");
+  const [incorrectCode, setIncorrectCode] = useState(false);
 
   let { name, email, username } = useParams();
 
   const handleConfirm = () => {
-    confirmSignUp(email, name, username, code);
+    confirmSignUp(email, name, username, code).then((x) => {
+      if (x === 3) {
+        setIncorrectCode(true);
+      }
+    });
   };
 
   return (
@@ -25,6 +30,9 @@ const Confirm = () => {
         textFields={[["Code", "code", (e) => setCode(e.target.value)]]}
         button={["Confirm", handleConfirm]}
         text="Check your email for your code!"
+        errorMessage="Incorrect Code"
+        errorStatus={incorrectCode}
+        username={username}
       />
     </Box>
   );
