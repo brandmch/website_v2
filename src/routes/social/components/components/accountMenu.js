@@ -46,7 +46,13 @@ export const AccountMenu = ({ user }) => {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <Avatar sx={{ width: 52, height: 52, backgroundColor: "#0046FF" }}>
+            <Avatar
+              sx={{
+                width: 52,
+                height: 52,
+                backgroundColor: !user ? "#0046FF" : user.color,
+              }}
+            >
               {firstInitial()}
             </Avatar>
           </IconButton>

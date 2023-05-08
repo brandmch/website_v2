@@ -8,6 +8,8 @@ import { sparsePost } from "./methods/sparsePost";
 import { changeDarkMode } from "./methods/darkMode";
 import { fetchGraphQL } from "./methods/fetchGraphQL";
 import { deleteUser_UserAndPosts } from "./methods/deleteUser";
+import { getHasuraUserByID } from "./methods/getUserByID";
+import { changeColorHasura } from "./methods/changeColor";
 
 export {
   getUserDataFromHasura,
@@ -20,4 +22,6 @@ export {
   changeDarkMode,
   fetchGraphQL,
   deleteUser_UserAndPosts,
+  getHasuraUserByID,
+  changeColorHasura,
 };

@@ -1,16 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Box, Typography, Button, Paper } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { HexColorPicker } from "react-colorful";
+import { getHasuraUserByID, changeColorHasura } from "../hasura/utils";
 
 //nightmode, changeColor, changePassword, deleteAccount
 
 const Settings = () => {
   const [color, setColor] = useState("#0046FF");
   const [showColors, setShowColors] = useState(false);
-  console.log(color);
+  const [user, setUser] = useState();
 
   let userid = useParams().userid;
+
+  useEffect(() => {
+    getHasuraUserByID(userid).then((x) => setUser(x.social_Users[0]));
+  }, []);
 
   const changePassword = () => {
     window.location.href = `/social/changepassword`;
@@ -20,8 +25,14 @@ const Settings = () => {
     window.location.href = `/social/deleteuserconfirmation/${userid}`;
   };
 
+  const changeColor = () => {
+    changeColorHasura(user.id, color).then(
+      () => (window.location.href = `/social`)
+    );
+  };
+
   const options = [
-    ["Change color", () => {}],
+    ["Change color", changeColor],
     ["Change password", changePassword],
     ["Delete account", deleteAccount],
   ];
@@ -67,7 +78,7 @@ const Settings = () => {
           Settings
         </Typography>
         {options.map((curr) => (
-          <Option x={curr} />
+          <Option x={curr} key={curr[0]} />
         ))}
       </Paper>
       <HexColorPicker color={color} onChange={setColor} />

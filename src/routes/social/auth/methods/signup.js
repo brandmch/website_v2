@@ -1,4 +1,5 @@
 import { Auth } from "aws-amplify";
+import { sparseError } from "./sparseError";
 
 export async function signUp({ email, password, username, name }) {
   try {
@@ -17,6 +18,6 @@ export async function signUp({ email, password, username, name }) {
     });
     return user;
   } catch (error) {
-    return error;
+    return sparseError(error);
   }
 }

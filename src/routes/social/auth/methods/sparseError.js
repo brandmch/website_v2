@@ -7,5 +7,7 @@ export function sparseError(str) {
     ? 2
     : /Invalid verification code provided, please try agai/.test(str.toString())
     ? 3
+    : /InvalidPasswordException: Password did not conform with policy: Password not long enough/
+    ? 4
     : str;
 }
