@@ -54,13 +54,18 @@ const HomeScreen = () => {
         <Box display="flex">
           <Box flex={1} />
           <Box flex={3}>
-            <CreatePostBox user={user} setLoadPosts={setLoadPosts} />
+            <CreatePostBox
+              user={user}
+              setLoadPosts={setLoadPosts}
+              size="desktop"
+            />
           </Box>
           <Box
             flex={1}
             display="flex"
             justifyContent="right"
-            alignItems="start"
+            alignItems="flex-start"
+            marginTop={1}
           >
             <AccountMenu user={user} />
           </Box>
@@ -89,19 +94,15 @@ const HomeScreen = () => {
   const Mobile = () => {
     return (
       <Box>
+        <Box display="flex" justifyContent="right">
+          <AccountMenu user={user} />
+        </Box>
         <Box display="flex">
-          <Box flex={1} />
-          <Box flex={5}>
-            <CreatePostBox user={user} setLoadPosts={setLoadPosts} />
-          </Box>
-          <Box
-            flex={1}
-            display="flex"
-            justifyContent="right"
-            alignItems="start"
-          >
-            <AccountMenu user={user} />
-          </Box>
+          <CreatePostBox
+            user={user}
+            setLoadPosts={setLoadPosts}
+            size="mobile"
+          />
         </Box>
         <Box marginBottom={4} display="flex">
           <Box flex={3}>
