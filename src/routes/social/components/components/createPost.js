@@ -3,17 +3,7 @@ import { Box, Button, Typography, Divider, TextField } from "@mui/material";
 import { createPost, sparsePost } from "../../hasura/utils";
 import { CommonButton } from "./button";
 
-export const CreatePostBox = ({ setLoadPosts, user }) => {
-  const [createPostBox, setCreatePostBox] = useState(false);
-
-  const handleButtonClick = () => {
-    if (user) {
-      setCreatePostBox(!createPostBox);
-    } else {
-      window.location.href = "/social/login";
-    }
-  };
-
+export const CreatePostBox = ({ setLoadPosts, user, size }) => {
   const TextBox = () => {
     const [input, setInput] = useState();
 
@@ -27,7 +17,6 @@ export const CreatePostBox = ({ setLoadPosts, user }) => {
       createPost(i, user.id).then((x) => {
         if (x === 1) {
           setLoadPosts(true);
-          setCreatePostBox(false);
         }
       });
     };
@@ -48,20 +37,37 @@ export const CreatePostBox = ({ setLoadPosts, user }) => {
     );
   };
 
-  return (
-    <Box padding={5}>
-      <CommonButton
-        title={
-          !user
-            ? "Sign in to post!"
-            : createPostBox
-            ? "Nevermind"
-            : "Create Post"
-        }
-        callback={handleButtonClick}
-      />
+  const Desktop = () => {
+    return (
+      <Box paddingBottom={5}>
+        <Box>
+          {user ? (
+            <TextBox />
+          ) : (
+            <CommonButton
+              title="Sign in to post!"
+              callback={() => (window.location.href = "/social/login")}
+            />
+          )}
+        </Box>
+      </Box>
+    );
+  };
 
-      {createPostBox && <TextBox />}
-    </Box>
-  );
+  const Mobile = () => {
+    return (
+      <Box paddingBottom={5} width="100vw">
+        {user ? (
+          <TextBox />
+        ) : (
+          <CommonButton
+            title="Sign in to post!"
+            callback={() => (window.location.href = "/social/login")}
+          />
+        )}
+      </Box>
+    );
+  };
+
+  return size === "desktop" ? <Desktop /> : <Mobile />;
 };
