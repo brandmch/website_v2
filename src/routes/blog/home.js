@@ -3,6 +3,8 @@ import { Box, Typography, Button } from "@mui/material";
 import { getSummaries } from "./hasura/getSummaries";
 import randomKeyGenerator from "../../utils/randomKeyGenerator";
 import monthNameParser from "../../utils/monthNumToName";
+import AppBarCustom from "../../components/appbar";
+import useWindowSize from "../../utils/useWindowSize";
 
 const Post = ({ p }) => {
   return (
@@ -13,6 +15,7 @@ const Post = ({ p }) => {
         marginBottom: 3,
         borderBottom: "1px solid black",
         maxWidth: 1000,
+        cursor: "pointer",
       }}
       onClick={() => (window.location.href = `/blog/${p.time}/`)}
     >
@@ -22,6 +25,8 @@ const Post = ({ p }) => {
     </Box>
   );
 };
+
+const Posts = ({ x }) => {};
 
 const Intro = () => {
   return (
@@ -39,18 +44,23 @@ const Intro = () => {
       <Typography variant="h5" gutterBottom>
         Welcome!
       </Typography>
-      <Typography variant="subtitle2" textAlign="justify">
-        Did you ever hear the tragedy of Darth Plagueis The Wise? I thought not.
-        It’s not a story the Jedi would tell you. It’s a Sith legend. Darth
-        Plagueis was a Dark Lord of the Sith, so powerful and so wise he could
-        use the Force to influence the midichlorians to create life… He had such
-        a knowledge of the dark side that he could even keep the ones he cared
-        about from dying. The dark side of the Force is a pathway to many
-        abilities some consider to be unnatural. He became so powerful… the only
-        thing he was afraid of was losing his power, which eventually, of
-        course, he did. Unfortunately, he taught his apprentice everything he
-        knew, then his apprentice killed him in his sleep. Ironic. He could save
-        others from death, but not himself.
+      <Typography variant="subtitle2" textAlign="justify" marginTop={1}>
+        On this site you will find blog posts about information I find useful.
+      </Typography>
+      <Typography variant="subtitle2" textAlign="justify" marginTop={1}>
+        As I continue to learn, I thought it would be great to catalogue any
+        information I find interesting or useful.
+      </Typography>
+      <Typography variant="subtitle2" textAlign="justify" marginTop={1}>
+        I want to share this information with the world. I hope it will help
+        others learn about the same topics I have learned myself
+      </Typography>
+      <Typography variant="subtitle2" textAlign="justify" marginTop={1}>
+        If there is anything in particular you would like to learn more about,
+        please share! Chances are I'd like to learn to.
+      </Typography>
+      <Typography variant="subtitle2" textAlign="justify" marginTop={1}>
+        Cheers!
       </Typography>
     </Box>
   );
@@ -60,33 +70,77 @@ const BlogHome = () => {
   const [posts, setPosts] = useState();
   const [numPosts, setNumPosts] = useState(5);
 
+  const { width, height } = useWindowSize();
+
   useEffect(() => {
     getSummaries(numPosts, 0).then((x) => setPosts(x.blog_blog_posts));
-  }, []);
+  }, [numPosts]);
 
-  return (
-    <Box
-      minHeight="100vh"
-      maxWidth="100vw"
-      padding={5}
-      display="flex"
-      justifyContent="center"
-      flex={1}
-    >
-      <Box flex={1}>
-        <Intro />
-      </Box>
-      <Box
-        flex={3}
-        borderLeft="1px solid black"
-        borderRight="1px solid black"
-        paddingX={3}
-      >
+  const Posts = () => {
+    return (
+      <Box>
         {posts &&
           posts.map((curr) => <Post key={randomKeyGenerator()} p={curr} />)}
-        <Button variant="outlined">Load More</Button>
+        <Button
+          variant="outlined"
+          fullWidth
+          sx={{ borderColor: "black", color: "black" }}
+          onClick={() => setNumPosts(numPosts + 5)}
+        >
+          Load More
+        </Button>
       </Box>
-      <Box flex={1}></Box>
+    );
+  };
+
+  const Desktop = () => {
+    return (
+      <Box
+        minHeight="100vh"
+        maxWidth="100vw"
+        padding={5}
+        display="flex"
+        justifyContent="center"
+        flex={1}
+      >
+        <Box flex={1}>
+          <Intro />
+        </Box>
+        <Box
+          flex={3}
+          borderLeft="1px solid black"
+          borderRight="1px solid black"
+          paddingX={3}
+        >
+          <Posts />
+        </Box>
+        <Box flex={width > 1100 ? 1 : null}></Box>
+      </Box>
+    );
+  };
+
+  const Mobile = () => {
+    return (
+      <Box
+        minHeight="100vh"
+        maxWidth="100vw"
+        padding={5}
+        justifyContent="center"
+      >
+        <Box>
+          <Intro />
+        </Box>
+        <Box paddingX={3}>
+          <Posts />
+        </Box>
+      </Box>
+    );
+  };
+
+  return (
+    <Box>
+      <AppBarCustom />
+      {width > 850 ? <Desktop /> : <Mobile />}
     </Box>
   );
 };

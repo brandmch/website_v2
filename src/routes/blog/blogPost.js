@@ -7,23 +7,8 @@ import { getSinglePost } from "./hasura/getPost";
 import randomKeyGenerator from "../../utils/randomKeyGenerator";
 import { useParams } from "react-router-dom";
 import CircleIcon from "@mui/icons-material/Circle";
-
-const Summary = ({ p }) => {
-  return (
-    <Box
-      sx={{
-        padding: 2,
-        marginRight: 3,
-        marginBottom: 3,
-        borderBottom: "1px solid black",
-      }}
-      onClick={() => (window.location.href = `/blog/${p.time}/`)}
-    >
-      <Typography variant="h5">{p.title}</Typography>
-      <Typography variant="subtitle2">{p.date}</Typography>
-    </Box>
-  );
-};
+import AppBarCustom from "../../components/appbar";
+import useWindowSize from "../../utils/useWindowSize";
 
 const CodeBlock = ({ text }) => {
   text = text[0].slice(14, text[0].length - 3);
@@ -162,6 +147,7 @@ export const BlogPost = () => {
   const [summaries, setSummaries] = useState();
   const [offsetSummaries, setOffSetSummaries] = useState(0);
   const { postid } = useParams();
+  const { width } = useWindowSize();
 
   useEffect(() => {
     getSinglePost(postid).then((x) => setPost(x.blog_blog_posts));
@@ -183,16 +169,27 @@ export const BlogPost = () => {
     }
   };
 
-  return (
-    <Box
-      minHeight="100vh"
-      maxWidth="100vw"
-      padding={5}
-      display="flex"
-      justifyContent="center"
-      flex={1}
-    >
-      <Box flex={1}>
+  const Summary = ({ p }) => {
+    return (
+      <Box
+        sx={{
+          padding: 2,
+          marginRight: width > 850 ? 3 : 0,
+          marginBottom: 3,
+          borderBottom: "1px solid black",
+          cursor: "pointer",
+        }}
+        onClick={() => (window.location.href = `/blog/${p.time}/`)}
+      >
+        <Typography variant="h5">{p.title}</Typography>
+        <Typography variant="subtitle2">{p.date}</Typography>
+      </Box>
+    );
+  };
+
+  const Summaries = () => {
+    return (
+      <Box>
         {summaries &&
           summaries.map((curr) => (
             <Summary key={randomKeyGenerator()} p={curr} />
@@ -236,26 +233,77 @@ export const BlogPost = () => {
           </Box>
         </Box>
       </Box>
-      {post && (
-        <Box
-          borderLeft="1px solid black"
-          borderRight="1px solid black"
-          paddingX={3}
-          flex={3}
-        >
-          <Typography variant="h2" gutterBottom>
-            {post[0].title}
-          </Typography>
+    );
+  };
 
-          {post.map((curr) => (
-            <Post key={randomKeyGenerator()} text={curr.text} />
-          ))}
-          <Box marginBottom={2}>
-            <Typography variant="caption">BM - {post[0].date}</Typography>
-          </Box>
+  const Desktop = () => {
+    return (
+      <Box
+        minHeight="100vh"
+        maxWidth="100vw"
+        padding={5}
+        display="flex"
+        justifyContent="center"
+        flex={1}
+      >
+        <Box flex={1}>
+          <Summaries />
         </Box>
-      )}
-      <Box flex={1} />
+        {post && (
+          <Box
+            borderLeft="1px solid black"
+            borderRight="1px solid black"
+            paddingX={3}
+            flex={3}
+          >
+            <Typography variant="h2" gutterBottom>
+              {post[0].title}
+            </Typography>
+
+            {post.map((curr) => (
+              <Post key={randomKeyGenerator()} text={curr.text} />
+            ))}
+            <Box marginBottom={2}>
+              <Typography variant="caption">BM - {post[0].date}</Typography>
+            </Box>
+          </Box>
+        )}
+        <Box flex={width > 1000 ? 1 : null} />
+      </Box>
+    );
+  };
+
+  const Mobile = () => {
+    return (
+      <Box
+        minHeight="100vh"
+        maxWidth="100vw"
+        padding={5}
+        justifyContent="center"
+      >
+        {post && (
+          <Box borderBottom="1px solid black" paddingX={3}>
+            <Typography variant="h2" gutterBottom>
+              {post[0].title}
+            </Typography>
+
+            {post.map((curr) => (
+              <Post key={randomKeyGenerator()} text={curr.text} />
+            ))}
+            <Box marginBottom={2}>
+              <Typography variant="caption">BM - {post[0].date}</Typography>
+            </Box>
+          </Box>
+        )}
+        <Summaries />
+      </Box>
+    );
+  };
+
+  return (
+    <Box>
+      <AppBarCustom />
+      {width > 830 ? <Desktop /> : <Mobile />}
     </Box>
   );
 };
