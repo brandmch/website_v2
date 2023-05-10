@@ -16,6 +16,9 @@ import { SocialAppTheme } from "./social/theme";
 import { ChangePassword } from "./social/screens/changePassword";
 import { DeleteUserConfirmation } from "./social/screens/deleteUserConfirmation";
 import ErrorElement from "./errorElement";
+import { BlogHome } from "./blog/home";
+import { BlogPost } from "./blog/blogPost";
+import { PostPost } from "./blog/postPost";
 
 const router = createBrowserRouter([
   { path: "/", element: <Landing />, errorElement: <ErrorElement /> },
@@ -94,6 +97,24 @@ const router = createBrowserRouter([
     loader: ({ params }) => {
       return params;
     },
+  },
+  {
+    path: "/blog",
+    element: <BlogHome />,
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "/blog/:postid",
+    element: <BlogPost />,
+    errorElement: <ErrorElement />,
+    loader: ({ params }) => {
+      return params;
+    },
+  },
+  {
+    path: `${process.env.REACT_APP_BLOG_POST_URL}`,
+    element: <PostPost />,
+    errorElement: <ErrorElement />,
   },
 ]);
 
