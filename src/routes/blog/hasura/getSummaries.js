@@ -3,7 +3,7 @@ import { fetchGraphQL } from "../../social/hasura/utils";
 const operationsDoc = `
     query MyQuery {
       blog_blog_posts(order_by: {id: desc}) {
-        text
+        summary
         time
         title
       }
@@ -14,7 +14,7 @@ function fetchMyQuery() {
   return fetchGraphQL(operationsDoc, "MyQuery", {});
 }
 
-export async function getAllPosts() {
+export async function getSummaries() {
   const { errors, data } = await fetchMyQuery();
 
   if (errors) {

@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
-import { Box, TextField, Button } from "@mui/material";
+import { Box, TextField, Button, Typography } from "@mui/material";
 import { postPost } from "./hasura/postPost";
 import { sparsePost } from "../social/hasura/utils";
 
 export const PostPost = () => {
   const [input, setInput] = useState("");
+  const [summary, setSummary] = useState("");
   const [title, setTitle] = useState("");
 
   const handlePost = () => {
-    postPost(title, sparsePost(input), Date.now());
+    postPost(title, sparsePost(input), Date.now(), summary);
   };
   return (
     <Box
@@ -20,6 +21,7 @@ export const PostPost = () => {
       flexDirection="column"
       padding={5}
     >
+      <Typography color="white">Bullet pont = {"{{{{{b}}}}}"}</Typography>
       <TextField
         label="title"
         sx={{
@@ -29,6 +31,16 @@ export const PostPost = () => {
           label: { color: "black" },
         }}
         onChange={(e) => setTitle(e.target.value)}
+      />
+      <TextField
+        label="summary"
+        sx={{
+          backgroundColor: "#FFFFFF",
+          marginTop: 1,
+          input: { color: "black" },
+          label: { color: "black" },
+        }}
+        onChange={(e) => setSummary(e.target.value)}
       />
       <TextField
         label="Ruh roh"

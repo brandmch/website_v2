@@ -112,7 +112,7 @@ const router = createBrowserRouter([
     },
   },
   {
-    path: "/blog/post",
+    path: `${process.env.REACT_APP_BLOG_POST_URL}`,
     element: <PostPost />,
     errorElement: <ErrorElement />,
   },
