@@ -1,27 +1,27 @@
 export default function monthNameParser(x) {
   return x === 0
     ? "January"
-    : x === 2
+    : x === 1
     ? "February"
-    : 3
+    : x === 2
     ? "March"
-    : 4
+    : x === 3
     ? "April"
-    : 5
+    : x === 4
     ? "May"
-    : 6
+    : x === 5
     ? "June"
-    : 7
+    : x === 6
     ? "July"
-    : 8
+    : x === 7
     ? "August"
-    : 9
+    : x === 8
     ? "September"
-    : 10
+    : x === 9
     ? "October"
-    : 11
+    : x === 10
     ? "November"
-    : 12
+    : x === 11
     ? "December"
     : "";
 }

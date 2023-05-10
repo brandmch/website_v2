@@ -7,6 +7,7 @@ query MyQuery {
       time
       title
       summary
+      date
     }
   }
   

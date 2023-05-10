@@ -22,6 +22,7 @@ export const PostPost = () => {
       padding={5}
     >
       <Typography color="white">Bullet pont = {"{{{{{b}}}}}"}</Typography>
+      <Typography color="white">Tab = {"{{{{{t}}}}}"}</Typography>
       <TextField
         label="title"
         sx={{
