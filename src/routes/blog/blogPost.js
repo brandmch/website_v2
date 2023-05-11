@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import CircleIcon from "@mui/icons-material/Circle";
 import AppBarCustom from "../../components/appbar";
 import useWindowSize from "../../utils/useWindowSize";
+import SearchBar from "./components/searchBar";
 
 const CodeBlock = ({ text, width }) => {
   text = text[0].slice(14, text[0].length - 3);
@@ -178,7 +179,7 @@ export const BlogPost = () => {
         sx={{
           padding: 2,
           marginRight: width > 850 ? 3 : 0,
-          marginBottom: 3,
+
           borderBottom: "1px solid black",
           cursor: "pointer",
           overflow: "hidden",
@@ -198,13 +199,7 @@ export const BlogPost = () => {
           summaries.map((curr) => (
             <Summary key={randomKeyGenerator()} p={curr} />
           ))}
-        <Box
-          display="flex"
-          justifyContent="center"
-          padding={2}
-          marginRight={3}
-          marginTop={-3}
-        >
+        <Box display="flex" justifyContent="center" padding={2} marginRight={3}>
           <Box
             fontSize={30}
             onClick={lessSummaries}
@@ -249,17 +244,28 @@ export const BlogPost = () => {
         flex={1}
         padding={3}
       >
-        <Box flex={1} maxWidth="20vw" width="20vw">
+        <Box flex={5} maxWidth="25vw" width="25vw">
+          <Box
+            sx={{
+              paddingX: 1,
+              paddingY: 2,
+              marginRight: 3,
+              paddingBottom: 3,
+              borderBottom: "1px solid black",
+            }}
+          >
+            <SearchBar />
+          </Box>
           <Summaries />
         </Box>
         {post && (
           <Box
+            flex={13}
             borderLeft="1px solid black"
             borderRight="1px solid black"
             paddingX={3}
-            flex={3}
-            maxWidth="60vw"
-            width="60vw"
+            maxWidth="65vw"
+            width="65vw"
           >
             <Typography variant="h2" gutterBottom>
               {post[0].title}
@@ -273,7 +279,7 @@ export const BlogPost = () => {
             </Box>
           </Box>
         )}
-        <Box flex={1} width="20vw" maxWidth="20vw" />
+        <Box flex={2} width="10vw" maxWidth="10vw" padding={3} />
       </Box>
     );
   };
@@ -295,6 +301,18 @@ export const BlogPost = () => {
             </Box>
           </Box>
         )}
+        <Box
+          sx={{
+            marginRight: "auto",
+            marginLeft: "auto",
+            paddingX: 3,
+            marginTop: 3,
+            paddingBottom: 3,
+            borderBottom: "1px solid black",
+          }}
+        >
+          <SearchBar />
+        </Box>
         <Summaries />
       </Box>
     );

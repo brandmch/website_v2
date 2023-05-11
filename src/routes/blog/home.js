@@ -5,18 +5,18 @@ import randomKeyGenerator from "../../utils/randomKeyGenerator";
 import monthNameParser from "../../utils/monthNumToName";
 import AppBarCustom from "../../components/appbar";
 import useWindowSize from "../../utils/useWindowSize";
+import { getTitlesForSearchBar } from "./hasura/getTitlesForSearchBar";
 
 import SearchBar from "./components/searchBar";
 
-const Post = ({ p }) => {
+const Post = ({ p, lastPost }) => {
   return (
     <Box
       elevation={3}
       sx={{
         padding: 2,
-        marginBottom: 3,
-        borderBottom: "1px solid black",
-        maxWidth: 1000,
+        borderBottom: p.time !== lastPost ? "1px solid black" : null,
+        // maxWidth: 1000,
         cursor: "pointer",
       }}
       onClick={() => (window.location.href = `/blog/${p.time}/`)}
@@ -84,11 +84,17 @@ const BlogHome = () => {
     return (
       <Box>
         {posts &&
-          posts.map((curr) => <Post key={randomKeyGenerator()} p={curr} />)}
+          posts.map((curr) => (
+            <Post
+              key={randomKeyGenerator()}
+              p={curr}
+              lastPost={posts[posts.length - 1].time}
+            />
+          ))}
         <Button
           variant="outlined"
           fullWidth
-          sx={{ borderColor: "black", color: "black" }}
+          sx={{ borderColor: "black", color: "black", marginTop: 3 }}
           onClick={() => setNumPosts(numPosts + 5)}
         >
           Load More
@@ -102,25 +108,36 @@ const BlogHome = () => {
       <Box
         minHeight="100vh"
         maxWidth="100vw"
-        padding={5}
+        padding={4}
         display="flex"
         justifyContent="center"
         flex={1}
       >
-        <Box flex={1} maxWidth="20vw" width="20vw">
+        <Box flex={5} maxWidth="25vw" width="25vw">
+          <Box
+            sx={{
+              padding: 2,
+              marginRight: 3,
+              marginBottom: 3,
+              paddingBottom: 3,
+              borderBottom: "1px solid black",
+            }}
+          >
+            <SearchBar />
+          </Box>
           <Intro size="desktop" />
         </Box>
         <Box
-          flex={3}
+          flex={13}
           borderLeft="1px solid black"
           borderRight="1px solid black"
           paddingX={3}
-          maxWidth="60vw"
-          width="60vw"
+          maxWidth="65vw"
+          width="65vw"
         >
           <Posts />
         </Box>
-        <Box flex={width > 1100 ? 1 : null} width="20vw" maxWidth="20vw"></Box>
+        <Box flex={2} width="10vw" maxWidth="10vw" padding={3}></Box>
       </Box>
     );
   };
@@ -141,11 +158,25 @@ const BlogHome = () => {
             ? 2
             : 1
         }
-        display="flex"
-        flexDirection="column"
-        justifyContent="center"
-        alignItems="center"
+        // display="flex"
+        // flexDirection="column"
+        // justifyContent="center"
+        // alignItems="center"
       >
+        <Box
+          sx={{
+            // marginRight: "auto",
+            // marginLeft: "auto",
+            // width: "80vw",
+            // marginBottom: 3,
+            paddingX: 3,
+            marginTop: 1,
+            paddingBottom: 3,
+            borderBottom: "1px solid black",
+          }}
+        >
+          <SearchBar />
+        </Box>
         <Box>
           <Posts />
         </Box>
