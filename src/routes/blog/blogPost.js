@@ -257,12 +257,12 @@ export const BlogPost = () => {
         </Box>
         {post && (
           <Box
-            flex={13}
+            flex={12}
             borderLeft="1px solid black"
             borderRight="1px solid black"
             paddingX={3}
-            maxWidth="65vw"
-            width="65vw"
+            maxWidth="60vw"
+            width="60vw"
           >
             <Typography variant="h2" gutterBottom>
               {post[0].title}
@@ -276,7 +276,7 @@ export const BlogPost = () => {
             </Box>
           </Box>
         )}
-        <Box flex={2} width="10vw" maxWidth="10vw" padding={3} />
+        <Box flex={3} width="15vw" maxWidth="15vw" padding={3} />
       </Box>
     );
   };

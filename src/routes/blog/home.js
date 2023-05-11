@@ -128,16 +128,16 @@ const BlogHome = () => {
           <Intro size="desktop" />
         </Box>
         <Box
-          flex={13}
+          flex={12}
           borderLeft="1px solid black"
           borderRight="1px solid black"
           paddingX={3}
-          maxWidth="65vw"
-          width="65vw"
+          maxWidth="60vw"
+          width="60vw"
         >
           <Posts />
         </Box>
-        <Box flex={2} width="10vw" maxWidth="10vw" padding={3}></Box>
+        <Box flex={3} width="15vw" maxWidth="15vw" padding={3}></Box>
       </Box>
     );
   };
