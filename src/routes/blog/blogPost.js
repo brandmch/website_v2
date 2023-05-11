@@ -51,19 +51,16 @@ const InlineCode = ({ text }) => {
   text = text.replace(/{{{{{doublequotes}}}}}/g, '"');
 
   text = text.split("```").map((c, i) => {
-    let temp = c.trim();
     const style = {
-      marginLeft: 6,
-      marginRight: 6,
       fontSize: 15,
       backgroundColor: "#F8F8F8",
     };
     return i % 2 === 0
-      ? temp
+      ? c
       : React.createElement(
           "code",
           { style: style, key: randomKeyGenerator() },
-          temp
+          c
         );
   });
 
