@@ -10,7 +10,7 @@ import CircleIcon from "@mui/icons-material/Circle";
 import AppBarCustom from "../../components/appbar";
 import useWindowSize from "../../utils/useWindowSize";
 
-const CodeBlock = ({ text }) => {
+const CodeBlock = ({ text, width }) => {
   text = text[0].slice(14, text[0].length - 3);
   text = text.split("{{{{{n}}}}}");
 
@@ -22,7 +22,8 @@ const CodeBlock = ({ text }) => {
       paddingX={1}
       paddingTop={1}
       paddingBottom={0.5}
-      margin={4}
+      marginX={width > 600 ? 4 : 1}
+      marginY={width > 600 ? 4 : width > 500 ? 3 : width > 400 ? 2 : 1}
       maxWidth="100vw"
       padding={2}
       key={randomKeyGenerator()}
@@ -87,7 +88,7 @@ const BulletListItem = ({ p }) => {
   );
 };
 
-const Post = ({ text }) => {
+const Post = ({ text, width }) => {
   let textJawn = [];
 
   text = text.split("{{{{{n}}}}}");
@@ -111,7 +112,7 @@ const Post = ({ text }) => {
 
   const Paragraph = ({ p }) => {
     if (Array.isArray(p)) {
-      return <CodeBlock text={p} />;
+      return <CodeBlock text={p} width={width} />;
     } else if (p.startsWith("##")) {
       p = p.split("").slice(2).join("");
       return (
@@ -265,7 +266,7 @@ export const BlogPost = () => {
             </Typography>
 
             {post.map((curr) => (
-              <Post key={randomKeyGenerator()} text={curr.text} />
+              <Post key={randomKeyGenerator()} text={curr.text} width={width} />
             ))}
             <Box marginBottom={2}>
               <Typography variant="caption">BM - {post[0].date}</Typography>
@@ -287,7 +288,7 @@ export const BlogPost = () => {
             </Typography>
 
             {post.map((curr) => (
-              <Post key={randomKeyGenerator()} text={curr.text} />
+              <Post key={randomKeyGenerator()} text={curr.text} width={width} />
             ))}
             <Box marginBottom={2}>
               <Typography variant="caption">BM - {post[0].date}</Typography>

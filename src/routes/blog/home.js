@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Typography, Button } from "@mui/material";
 import { getSummaries } from "./hasura/getSummaries";
 import randomKeyGenerator from "../../utils/randomKeyGenerator";
 import monthNameParser from "../../utils/monthNumToName";
 import AppBarCustom from "../../components/appbar";
 import useWindowSize from "../../utils/useWindowSize";
+
+import SearchBar from "./components/searchBar";
 
 const Post = ({ p }) => {
   return (
