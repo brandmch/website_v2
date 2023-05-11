@@ -281,7 +281,7 @@ export const BlogPost = () => {
     return (
       <Box minHeight="100vh" maxWidth="100vw" justifyContent="center">
         {post && (
-          <Box borderBottom="1px solid black" paddingX={3}>
+          <Box borderBottom="1px solid black" padding={3}>
             <Typography variant="h2" gutterBottom>
               {post[0].title}
             </Typography>
