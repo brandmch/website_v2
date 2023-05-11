@@ -23,6 +23,8 @@ const CodeBlock = ({ text }) => {
       paddingTop={1}
       paddingBottom={0.5}
       margin={4}
+      maxWidth="100vw"
+      padding={2}
       key={randomKeyGenerator()}
       whiteSpace="nowrap"
       overflow="scroll"
@@ -33,7 +35,7 @@ const CodeBlock = ({ text }) => {
         temp = temp.replace(/{{{{{t}}}}}/g, "");
         return (
           <Box key={randomKeyGenerator()} marginBottom={1} marginLeft={n * 2}>
-            <code style={{ fontSize: 14, backgroundColor: "#F8F8F8" }}>
+            <code style={{ fontSize: 16, backgroundColor: "#F8F8F8" }}>
               {temp}
             </code>
           </Box>
@@ -51,7 +53,7 @@ const InlineCode = ({ text }) => {
     const style = {
       marginLeft: 6,
       marginRight: 6,
-      fontSize: 14,
+      fontSize: 15,
       backgroundColor: "#F8F8F8",
     };
     return i % 2 === 0
@@ -178,6 +180,7 @@ export const BlogPost = () => {
           marginBottom: 3,
           borderBottom: "1px solid black",
           cursor: "pointer",
+          overflow: "hidden",
         }}
         onClick={() => (window.location.href = `/blog/${p.time}/`)}
       >
@@ -239,14 +242,13 @@ export const BlogPost = () => {
   const Desktop = () => {
     return (
       <Box
-        minHeight="100vh"
         maxWidth="100vw"
-        padding={5}
         display="flex"
         justifyContent="center"
         flex={1}
+        padding={3}
       >
-        <Box flex={1}>
+        <Box flex={1} maxWidth="20vw" width="20vw">
           <Summaries />
         </Box>
         {post && (
@@ -255,6 +257,8 @@ export const BlogPost = () => {
             borderRight="1px solid black"
             paddingX={3}
             flex={3}
+            maxWidth="60vw"
+            width="60vw"
           >
             <Typography variant="h2" gutterBottom>
               {post[0].title}
@@ -268,19 +272,14 @@ export const BlogPost = () => {
             </Box>
           </Box>
         )}
-        <Box flex={width > 1000 ? 1 : null} />
+        <Box flex={1} width="20vw" maxWidth="20vw" />
       </Box>
     );
   };
 
   const Mobile = () => {
     return (
-      <Box
-        minHeight="100vh"
-        maxWidth="100vw"
-        padding={5}
-        justifyContent="center"
-      >
+      <Box minHeight="100vh" maxWidth="100vw" justifyContent="center">
         {post && (
           <Box borderBottom="1px solid black" paddingX={3}>
             <Typography variant="h2" gutterBottom>
@@ -301,9 +300,9 @@ export const BlogPost = () => {
   };
 
   return (
-    <Box>
+    <Box minHeight="100vh">
       <AppBarCustom />
-      {width > 830 ? <Desktop /> : <Mobile />}
+      {width > 1000 ? <Desktop /> : <Mobile />}
     </Box>
   );
 };

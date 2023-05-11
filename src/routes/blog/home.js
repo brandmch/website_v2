@@ -103,7 +103,7 @@ const BlogHome = () => {
         justifyContent="center"
         flex={1}
       >
-        <Box flex={1}>
+        <Box flex={1} maxWidth="20vw" width="20vw">
           <Intro />
         </Box>
         <Box
@@ -111,10 +111,12 @@ const BlogHome = () => {
           borderLeft="1px solid black"
           borderRight="1px solid black"
           paddingX={3}
+          maxWidth="60vw"
+          width="60vw"
         >
           <Posts />
         </Box>
-        <Box flex={width > 1100 ? 1 : null}></Box>
+        <Box flex={width > 1100 ? 1 : null} width="20vw" maxWidth="20vw"></Box>
       </Box>
     );
   };
