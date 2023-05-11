@@ -26,14 +26,13 @@ const Post = ({ p }) => {
   );
 };
 
-const Posts = ({ x }) => {};
-
-const Intro = () => {
+const Intro = ({ size }) => {
   return (
     <Box
       sx={{
         padding: 2,
-        marginRight: 3,
+        marginRight: size === "desktop" ? 3 : 0,
+        marginTop: size === "mobile" ? 3 : 0,
         marginBottom: 3,
         borderBottom: "1px solid black",
       }}
@@ -70,6 +69,9 @@ const BlogHome = () => {
   const [posts, setPosts] = useState();
   const [numPosts, setNumPosts] = useState(5);
 
+  //Get titles for search bar
+  //if posts >= titles.length, change LOADMORE button to "That's it!"
+
   const { width, height } = useWindowSize();
 
   useEffect(() => {
@@ -103,18 +105,20 @@ const BlogHome = () => {
         justifyContent="center"
         flex={1}
       >
-        <Box flex={1}>
-          <Intro />
+        <Box flex={1} maxWidth="20vw" width="20vw">
+          <Intro size="desktop" />
         </Box>
         <Box
           flex={3}
           borderLeft="1px solid black"
           borderRight="1px solid black"
           paddingX={3}
+          maxWidth="60vw"
+          width="60vw"
         >
           <Posts />
         </Box>
-        <Box flex={width > 1100 ? 1 : null}></Box>
+        <Box flex={width > 1100 ? 1 : null} width="20vw" maxWidth="20vw"></Box>
       </Box>
     );
   };
@@ -124,14 +128,27 @@ const BlogHome = () => {
       <Box
         minHeight="100vh"
         maxWidth="100vw"
-        padding={5}
+        padding={
+          width > 850
+            ? 5
+            : width > 700
+            ? 4
+            : width > 550
+            ? 3
+            : width > 400
+            ? 2
+            : 1
+        }
+        display="flex"
+        flexDirection="column"
         justifyContent="center"
+        alignItems="center"
       >
         <Box>
-          <Intro />
-        </Box>
-        <Box paddingX={3}>
           <Posts />
+        </Box>
+        <Box>
+          <Intro size="mobile" />
         </Box>
       </Box>
     );
@@ -140,7 +157,7 @@ const BlogHome = () => {
   return (
     <Box>
       <AppBarCustom />
-      {width > 850 ? <Desktop /> : <Mobile />}
+      {width > 1100 ? <Desktop /> : <Mobile />}
     </Box>
   );
 };
