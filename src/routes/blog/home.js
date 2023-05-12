@@ -9,6 +9,7 @@ import { getTitlesForSearchBar } from "./hasura/getTitlesForSearchBar";
 import "./app.css";
 
 import SearchBar from "./components/searchBar";
+import { ThemeContext } from "@emotion/react";
 
 const Post = ({ p, lastPost }) => {
   return (
@@ -47,19 +48,18 @@ const Intro = ({ size }) => {
         Welcome!
       </Typography>
       <Typography variant="subtitle2" textAlign="justify" marginTop={1}>
-        On this site you will find blog posts about information I find useful.
+        Here, I will be sharing information that I find useful or interesting,
+        based on topics that I am currently exploring and learning about. As an
+        avid learner, I am constantly seeking new information and ideas, and I
+        am eager to share that knowledge with the world.
       </Typography>
       <Typography variant="subtitle2" textAlign="justify" marginTop={1}>
-        As I continue to learn, I thought it would be great to catalogue any
-        information I find interesting or useful.
+        Whether you are a fellow learner or just someone who is interested in
+        new ideas, I hope you will find something of value here.
       </Typography>
       <Typography variant="subtitle2" textAlign="justify" marginTop={1}>
-        I want to share this information with the world. I hope it will help
-        others learn about the same topics I have learned myself
-      </Typography>
-      <Typography variant="subtitle2" textAlign="justify" marginTop={1}>
-        If there is anything in particular you would like to learn more about,
-        please share! Chances are I'd like to learn to.
+        So, sit back, relax, and explore the world of ideas with me. Together,
+        we can learn and grow, one post at a time!
       </Typography>
       <Typography variant="subtitle2" textAlign="justify" marginTop={1}>
         Cheers!
@@ -70,7 +70,7 @@ const Intro = ({ size }) => {
 
 const BlogHome = () => {
   const [posts, setPosts] = useState();
-  const [numPosts, setNumPosts] = useState(5);
+  const [numPosts, setNumPosts] = useState(10);
   const [loading, setLoading] = useState(true);
 
   //Get titles for search bar
@@ -99,7 +99,7 @@ const BlogHome = () => {
           variant="outlined"
           fullWidth
           sx={{ borderColor: "black", color: "black", marginTop: 3 }}
-          onClick={() => setNumPosts(numPosts + 5)}
+          onClick={() => setNumPosts(numPosts + 10)}
         >
           Load More
         </Button>
