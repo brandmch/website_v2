@@ -147,11 +147,14 @@ export const BlogPost = () => {
   const [post, setPost] = useState();
   const [summaries, setSummaries] = useState();
   const [offsetSummaries, setOffSetSummaries] = useState(0);
+  const [loading, setLoading] = useState(true);
   const { postid } = useParams();
   const { width } = useWindowSize();
 
   useEffect(() => {
-    getSinglePost(postid).then((x) => setPost(x.blog_blog_posts));
+    getSinglePost(postid)
+      .then((x) => setPost(x.blog_blog_posts))
+      .then((x) => setLoading(false));
     getSummaries(5, offsetSummaries).then((x) => {
       if (x.blog_blog_posts.length > 0) {
         setSummaries(x.blog_blog_posts);
@@ -264,16 +267,28 @@ export const BlogPost = () => {
             maxWidth="60vw"
             width="60vw"
           >
-            <Typography variant="h2" gutterBottom>
-              {post[0].title}
-            </Typography>
+            {loading ? (
+              <Typography className="swag" textAlign="center">
+                LOADING...
+              </Typography>
+            ) : (
+              <Box>
+                <Typography variant="h2" gutterBottom>
+                  {post[0].title}
+                </Typography>
 
-            {post.map((curr) => (
-              <Post key={randomKeyGenerator()} text={curr.text} width={width} />
-            ))}
-            <Box marginBottom={2}>
-              <Typography variant="caption">BM - {post[0].date}</Typography>
-            </Box>
+                {post.map((curr) => (
+                  <Post
+                    key={randomKeyGenerator()}
+                    text={curr.text}
+                    width={width}
+                  />
+                ))}
+                <Box marginBottom={2}>
+                  <Typography variant="caption">BM - {post[0].date}</Typography>
+                </Box>
+              </Box>
+            )}
           </Box>
         )}
         <Box flex={3} width="15vw" maxWidth="15vw" padding={3} />
@@ -284,6 +299,11 @@ export const BlogPost = () => {
   const Mobile = () => {
     return (
       <Box minHeight="100vh" maxWidth="100vw" justifyContent="center">
+        {loading ? (
+          <Typography className="swag" textAlign="center" marginTop={3}>
+            LOADING...
+          </Typography>
+        ) : null}
         {post && (
           <Box borderBottom="1px solid black" padding={3}>
             <Typography variant="h2" gutterBottom>

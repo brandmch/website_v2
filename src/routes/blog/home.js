@@ -6,6 +6,7 @@ import monthNameParser from "../../utils/monthNumToName";
 import AppBarCustom from "../../components/appbar";
 import useWindowSize from "../../utils/useWindowSize";
 import { getTitlesForSearchBar } from "./hasura/getTitlesForSearchBar";
+import "./app.css";
 
 import SearchBar from "./components/searchBar";
 
@@ -70,6 +71,7 @@ const Intro = ({ size }) => {
 const BlogHome = () => {
   const [posts, setPosts] = useState();
   const [numPosts, setNumPosts] = useState(5);
+  const [loading, setLoading] = useState(true);
 
   //Get titles for search bar
   //if posts >= titles.length, change LOADMORE button to "That's it!"
@@ -77,7 +79,9 @@ const BlogHome = () => {
   const { width, height } = useWindowSize();
 
   useEffect(() => {
-    getSummaries(numPosts, 0).then((x) => setPosts(x.blog_blog_posts));
+    getSummaries(numPosts, 0)
+      .then((x) => setPosts(x.blog_blog_posts))
+      .then((x) => setLoading(false));
   }, [numPosts]);
 
   const Posts = () => {
@@ -135,7 +139,13 @@ const BlogHome = () => {
           maxWidth="60vw"
           width="60vw"
         >
-          <Posts />
+          {!loading ? (
+            <Posts />
+          ) : (
+            <Typography className="swag" textAlign="center">
+              LOADING...
+            </Typography>
+          )}
         </Box>
         <Box flex={3} width="15vw" maxWidth="15vw" padding={3}></Box>
       </Box>
@@ -158,17 +168,9 @@ const BlogHome = () => {
             ? 2
             : 1
         }
-        // display="flex"
-        // flexDirection="column"
-        // justifyContent="center"
-        // alignItems="center"
       >
         <Box
           sx={{
-            // marginRight: "auto",
-            // marginLeft: "auto",
-            // width: "80vw",
-            // marginBottom: 3,
             paddingX: 3,
             marginTop: 1,
             paddingBottom: 3,
@@ -178,7 +180,13 @@ const BlogHome = () => {
           <SearchBar />
         </Box>
         <Box>
-          <Posts />
+          {!loading ? (
+            <Posts />
+          ) : (
+            <Typography className="swag" textAlign="center">
+              LOADING...
+            </Typography>
+          )}
         </Box>
         <Box>
           <Intro size="mobile" />
