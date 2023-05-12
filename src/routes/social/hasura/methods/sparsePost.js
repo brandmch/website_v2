@@ -6,6 +6,8 @@ export function sparsePost(text) {
         return "{{{{{n}}}}}";
       } else if (c === '"') {
         return "{{{{{doublequotes}}}}}";
+      } else if (c === "\\") {
+        return "{{{{{backslash}}}}}";
       } else {
         return c;
       }

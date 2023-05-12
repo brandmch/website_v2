@@ -17,7 +17,7 @@ const CodeBlock = ({ text, width }) => {
 
   return (
     <Box
-      border="1px solid black"
+      // border="1px solid ##E4E4E4"
       borderRadius={1}
       backgroundColor="#F8F8F8"
       paddingX={1}
@@ -33,6 +33,7 @@ const CodeBlock = ({ text, width }) => {
     >
       {text.map((c) => {
         let temp = c.replace(/{{{{{doublequotes}}}}}/g, '"');
+        temp = temp.replace(/{{{{{backslash}}}}}/g, "\\");
         let n = [...temp.matchAll(/{{{{{t}}}}}/g)].length;
         temp = temp.replace(/{{{{{t}}}}}/g, "");
         return (
@@ -49,6 +50,7 @@ const CodeBlock = ({ text, width }) => {
 
 const InlineCode = ({ text }) => {
   text = text.replace(/{{{{{doublequotes}}}}}/g, '"');
+  text = text.replace(/{{{{{backslash}}}}}/g, "\\");
 
   text = text.split("```").map((c, i) => {
     const style = {
@@ -125,6 +127,7 @@ const Post = ({ text, width }) => {
       return <InlineCode text={p} />;
     }
     p = p.replace(/{{{{{doublequotes}}}}}/g, '"');
+    p = p.replace(/{{{{{backslash}}}}}/g, "\\");
 
     return (
       <Box marginBottom={2}>
