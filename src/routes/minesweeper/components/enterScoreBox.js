@@ -32,11 +32,12 @@ const EnterScoreBox = ({ state, setState }) => {
   return (
     <Box display="flex" flexDirection="column">
       <TextField
-        variant="filled"
+        id="enterName"
         label="ENTER NAME"
+        variant="filled"
         value={name}
-        sx={{ backgroundColor: "#FFFFFF" }}
         onChange={(e) => handleNameChange(e.target.value)}
+        sx={{ backgroundColor: "#FFFFFF" }}
       />
       <Button variant="contained" onClick={handleSubmit}>
         SUBMIT
