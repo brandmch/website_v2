@@ -23,11 +23,11 @@ const EnterScoreBox = ({ state, setState }) => {
     );
   };
 
-  const handleNameChange = (e) => {
+  function handleNameChange(e) {
     if (e.length <= 8) {
       setName(e);
     }
-  };
+  }
 
   return (
     <Box display="flex" flexDirection="column">
