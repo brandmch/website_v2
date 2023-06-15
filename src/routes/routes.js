@@ -19,6 +19,7 @@ import ErrorElement from "./errorElement";
 import { BlogHome } from "./blog/home";
 import { BlogPost } from "./blog/blogPost";
 import { PostPost } from "./blog/postPost";
+import Snake from "./snake/snake";
 
 const router = createBrowserRouter([
   { path: "/", element: <Landing />, errorElement: <ErrorElement /> },
@@ -114,6 +115,11 @@ const router = createBrowserRouter([
   {
     path: `${process.env.REACT_APP_BLOG_POST_URL}`,
     element: <PostPost />,
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "/snake",
+    element: <Snake />,
     errorElement: <ErrorElement />,
   },
 ]);

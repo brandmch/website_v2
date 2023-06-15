@@ -23,6 +23,7 @@ export const CreatePostBox = ({ setLoadPosts, user, size }) => {
     return (
       <Box>
         <TextField
+          id="text"
           label="Write something Awesome!"
           sx={{ backgroundColor: "white", marginTop: 2 }}
           fullWidth
