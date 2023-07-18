@@ -19,7 +19,7 @@ import ErrorElement from "./errorElement";
 import { BlogHome } from "./blog/home";
 import { BlogPost } from "./blog/blogPost";
 import { PostPost } from "./blog/postPost";
-import Snake from "./snake/snake";
+import SnakeHomeScreen from "./snake/snake";
 
 const router = createBrowserRouter([
   { path: "/", element: <Landing />, errorElement: <ErrorElement /> },
@@ -119,7 +119,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/snake",
-    element: <Snake />,
+    element: <SnakeHomeScreen />,
     errorElement: <ErrorElement />,
   },
 ]);
