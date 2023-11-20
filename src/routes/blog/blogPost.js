@@ -88,6 +88,14 @@ const BulletListItem = ({ p }) => {
   );
 };
 
+const Tab = ({ p }) => {
+  return (
+    <Box marginLeft={5}>
+      <Typography>{p}</Typography>
+    </Box>
+  );
+};
+
 const Post = ({ text, width }) => {
   let textJawn = [];
 
@@ -125,6 +133,9 @@ const Post = ({ text, width }) => {
       return <BulletListItem p={p} />;
     } else if (/```/.test(p)) {
       return <InlineCode text={p} />;
+    } else if (p.startsWith("{{{{{t}}}}}")) {
+      p = p.split("").slice(11).join("");
+      return <Tab p={p} />;
     }
     p = p.replace(/{{{{{doublequotes}}}}}/g, '"');
     p = p.replace(/{{{{{backslash}}}}}/g, "\\");
