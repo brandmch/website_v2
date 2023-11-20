@@ -1,9 +1,7 @@
-import capitalize from "../../../utils/capitalize";
 const woData = require("../woData.json");
 
 export default class WorkoutRoutine {
   constructor(targets) {
-    console.log("new routine...");
     this.targets = [...targets].map((c) => c.toLowerCase());
     this.possibleWorkouts = this.filterWOs();
     this.currentRoutine = this.getRandomWorkouts();
@@ -14,7 +12,6 @@ export default class WorkoutRoutine {
   }
 
   filterWOs() {
-    console.log("filtering.....");
     let possibleWorkoutsObj = {};
     this.targets.map((c) => (possibleWorkoutsObj[c] = []));
     return woData.reduce(
@@ -43,5 +40,14 @@ export default class WorkoutRoutine {
       randomWorkouts.push(this.possibleWorkouts[thisTarget][randomIndex]);
     }
     return randomWorkouts;
+  }
+
+  reroll(current, index) {
+    let randomWorkouts = [...this.currentRoutine];
+    const possibleWorkouts = this.possibleWorkouts[current.target];
+    const newIndex = Math.floor(Math.random() * possibleWorkouts.length);
+    const newExercise = possibleWorkouts[newIndex];
+    randomWorkouts[index] = newExercise;
+    this.currentRoutine = randomWorkouts;
   }
 }

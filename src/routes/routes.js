@@ -23,6 +23,7 @@ import {
 import {
   WorkoutGeneratorLanding,
   WorkoutScreen,
+  SignUpScreen,
 } from "./workoutGenerator/routes";
 import { MainScreen } from "./footballAnalyzer/main";
 const router = createBrowserRouter([
@@ -135,6 +136,11 @@ const router = createBrowserRouter([
     },
   },
   {
+    path: `${process.env.REACT_APP_SECRET_SITE4}`,
+    element: <SignUpScreen />,
+    errorElement: <ErrorElement />,
+  },
+  {
     path: "/football",
     element: <MainScreen />,
     errorElement: <ErrorElement />,
@@ -144,5 +150,4 @@ const router = createBrowserRouter([
 const Routes = () => {
   return <RouterProvider router={router} />;
 };
-
 export default Routes;
