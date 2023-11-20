@@ -4,9 +4,15 @@ import randomKeyGenerator from "../../../utils/randomKeyGenerator";
 
 const items = [
   {
+    title: "JavaScript Developer",
+    company: "Macro Solutions",
+    dates: "Jul 2023 - Present",
+    duties: [],
+  },
+  {
     title: "Software Developer",
     company: "OtherWhy LLC",
-    dates: "Mar 2022 - Present",
+    dates: "Mar 2022 - Jul 2023",
     duties: [
       "Built the scaffolding for a new web app using React, TypeScript, GraphQL Apollo, AWS Amplify, AWS Cognito, MUI, and Github",
       "Helped design and implement cloud infrastructure with Amazon services such as AWS Amplify and AWS Cognito",

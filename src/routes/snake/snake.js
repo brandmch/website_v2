@@ -1,12 +1,19 @@
 import { useState, useEffect } from "react";
 import { Box, Typography } from "@mui/material";
+import PlayArea from "./playArea";
 
-const Snake = () => {
+const SnakeHomeScreen = () => {
   return (
-    <Box>
-      <Typography>SNAKE!!! OOORAH</Typography>
+    <Box
+      backgroundColor="black"
+      alignItems="center"
+      minHeight={"100vh"}
+      display="flex"
+      justifyContent="center"
+    >
+      <PlayArea />
     </Box>
   );
 };
 
-export default Snake;
+export default SnakeHomeScreen;

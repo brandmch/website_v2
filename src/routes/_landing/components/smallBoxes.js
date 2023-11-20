@@ -78,7 +78,7 @@ const Skills = () => {
 
 const projects = [
   ,
-  // ["Snake", <CodeIcon />, "/snake"],
+  ["Snake", <CodeIcon />, "/snake"],
   ["Social", <CodeIcon />, "/social"],
   ["Minesweeper", <CodeIcon />, "/minesweeper"],
   ["Weather App", <CodeIcon />, "/weather"],
