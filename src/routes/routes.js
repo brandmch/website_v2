@@ -6,21 +6,25 @@ import RandomQuoteMachine from "./randomQuoteMachine/randomQuoteMachine";
 import Timer from "./Timer/timer";
 import WeatherApp from "./weather/weather";
 import Minesweeper from "./minesweeper/App_minesweeper";
-import SocialApp from "./social/app_social";
-import Login from "./social/screens/login";
-import SignUp from "./social/screens/signUp";
-import Confirm from "./social/screens/confirm";
-import Settings from "./social/screens/settings";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { SocialAppTheme } from "./social/theme";
-import { ChangePassword } from "./social/screens/changePassword";
-import { DeleteUserConfirmation } from "./social/screens/deleteUserConfirmation";
 import ErrorElement from "./errorElement";
-import { BlogHome } from "./blog/home";
-import { BlogPost } from "./blog/blogPost";
-import { PostPost } from "./blog/postPost";
+import { BlogHome, BlogPost, PostPost } from "./blog/routes";
 import SnakeHomeScreen from "./snake/snake";
-
+import {
+  SocialApp,
+  Login,
+  SignUp,
+  Confirm,
+  Settings,
+  SocialAppTheme,
+  ChangePassword,
+  DeleteUserConfirmation,
+} from "./social/routes";
+import {
+  WorkoutGeneratorLanding,
+  WorkoutScreen,
+} from "./workoutGenerator/routes";
+import { MainScreen } from "./footballAnalyzer/main";
 const router = createBrowserRouter([
   { path: "/", element: <Landing />, errorElement: <ErrorElement /> },
   {
@@ -36,11 +40,6 @@ const router = createBrowserRouter([
   {
     path: "/markdownpreviewer",
     element: <MarkdownPreviewer />,
-    errorElement: <ErrorElement />,
-  },
-  {
-    path: "/randomquotemachine",
-    element: <RandomQuoteMachine />,
     errorElement: <ErrorElement />,
   },
   {
@@ -113,13 +112,31 @@ const router = createBrowserRouter([
     },
   },
   {
-    path: `${process.env.REACT_APP_BLOG_POST_URL}`,
+    path: `${process.env.REACT_APP_SECRET_SITE1}`,
     element: <PostPost />,
     errorElement: <ErrorElement />,
   },
   {
     path: "/snake",
     element: <SnakeHomeScreen />,
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: `${process.env.REACT_APP_SECRET_SITE2}`,
+    element: <WorkoutGeneratorLanding />,
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: `${process.env.REACT_APP_SECRET_SITE3}`,
+    element: <WorkoutScreen />,
+    errorElement: <ErrorElement />,
+    loader: ({ params }) => {
+      return params;
+    },
+  },
+  {
+    path: "/football",
+    element: <MainScreen />,
     errorElement: <ErrorElement />,
   },
 ]);

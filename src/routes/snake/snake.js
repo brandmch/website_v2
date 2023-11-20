@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Box, Typography } from "@mui/material";
-import PlayArea from "./grid";
+import PlayArea from "./playArea";
 
 const SnakeHomeScreen = () => {
   return (

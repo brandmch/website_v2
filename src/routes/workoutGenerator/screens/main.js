@@ -1,7 +1,7 @@
 import { Box, Typography, Switch, Button } from "@mui/material";
-import CustomizedMenus from "./dropDownMenu";
+import CustomizedMenus from "../components/dropDownMenu";
 import { useState } from "react";
-const woData = require("./woData.json");
+const woData = require("../woData.json");
 // woData.length = 1327
 
 // Generate a random workout
