@@ -24,6 +24,20 @@ import {
   WorkoutScreen,
   SignUpScreen,
 } from "./workoutGenerator/routes";
+import CodeIcon from "@mui/icons-material/Code";
+
+const links = [
+  ["Blog", <CodeIcon />, "/blog"],
+  ["Social", <CodeIcon />, "/social"],
+  ["Minesweeper", <CodeIcon />, "/minesweeper"],
+  ["Weather App", <CodeIcon />, "/weather"],
+  ["Timer", <CodeIcon />, "/timer"],
+  ["JavaScript Calculator", <CodeIcon />, "/javascriptcalulator"],
+  ["Drum Machine", <CodeIcon />, "/drummachine"],
+  ["Markdown Previewer", <CodeIcon />, "/markdownpreviewer"],
+  ["Random Quote Machine", <CodeIcon />, "/randomquotemachine"],
+];
+
 const router = createBrowserRouter([
   { path: "/", element: <Landing />, errorElement: <ErrorElement /> },
   {
@@ -138,4 +152,4 @@ const router = createBrowserRouter([
 const Routes = () => {
   return <RouterProvider router={router} />;
 };
-export default Routes;
+export { Routes, links };
