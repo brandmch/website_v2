@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Box, TextField, Button, Typography } from "@mui/material";
 import { postPost } from "./hasura/postPost";
 import { sparsePost } from "../social/hasura/utils";

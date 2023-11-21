@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import { Box, Button, Typography } from "@mui/material";
-import { getAllPosts } from "./hasura/getAllPosts";
+import { Box, Typography } from "@mui/material";
 import { getSummaries } from "./hasura/getSummaries";
 import { getSinglePost } from "./hasura/getPost";
 import randomKeyGenerator from "../../utils/randomKeyGenerator";
@@ -11,16 +10,12 @@ import AppBarCustom from "../../components/appbar";
 import useWindowSize from "../../utils/useWindowSize";
 import SearchBar from "./components/searchBar";
 
-// @@@ between text @@@ = bold
-// ## before text = header
-
 const CodeBlock = ({ text, width }) => {
   text = text[0].slice(14, text[0].length - 3);
   text = text.split("{{{{{n}}}}}");
 
   return (
     <Box
-      // border="1px solid ##E4E4E4"
       borderRadius={1}
       backgroundColor="#F8F8F8"
       paddingX={1}
