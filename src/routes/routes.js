@@ -25,7 +25,6 @@ import {
   WorkoutScreen,
   SignUpScreen,
 } from "./workoutGenerator/routes";
-import { MainScreen } from "./footballAnalyzer/main";
 const router = createBrowserRouter([
   { path: "/", element: <Landing />, errorElement: <ErrorElement /> },
   {
