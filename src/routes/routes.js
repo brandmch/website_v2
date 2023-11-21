@@ -9,7 +9,6 @@ import Minesweeper from "./minesweeper/App_minesweeper";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorElement from "./errorElement";
 import { BlogHome, BlogPost, PostPost } from "./blog/routes";
-import SnakeHomeScreen from "./snake/snake";
 import {
   SocialApp,
   Login,
@@ -25,7 +24,6 @@ import {
   WorkoutScreen,
   SignUpScreen,
 } from "./workoutGenerator/routes";
-import { MainScreen } from "./footballAnalyzer/main";
 const router = createBrowserRouter([
   { path: "/", element: <Landing />, errorElement: <ErrorElement /> },
   {
