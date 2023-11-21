@@ -13,8 +13,8 @@ import {
   Certifications,
   ContactInfo,
   Skills,
-  Projects,
   Hobbies,
+  Projects,
 } from "./components/smallBoxes";
 
 import { randomColor } from "../../utils/randomColor";

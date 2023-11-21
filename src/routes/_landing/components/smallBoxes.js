@@ -1,6 +1,7 @@
 import React from "react";
 
 import SmallInfoBox from "./smallInfoBox";
+import { links } from "../../routes";
 
 // All Icons
 import CodeIcon from "@mui/icons-material/Code";
@@ -76,21 +77,8 @@ const Skills = () => {
   return <SmallInfoBox title="Languages & Frameworks" data={skills} />;
 };
 
-const projects = [
-  ,
-  ["Snake", <CodeIcon />, "/snake"],
-  ["Social", <CodeIcon />, "/social"],
-  ["Minesweeper", <CodeIcon />, "/minesweeper"],
-  ["Weather App", <CodeIcon />, "/weather"],
-  ["Timer", <CodeIcon />, "/timer"],
-  ["JavaScript Calculator", <CodeIcon />, "/javascriptcalulator"],
-  ["Drum Machine", <CodeIcon />, "/drummachine"],
-  ["Markdown Previewer", <CodeIcon />, "/markdownpreviewer"],
-  ["Random Quote Machine", <CodeIcon />, "/randomquotemachine"],
-];
-
 const Projects = () => {
-  return <SmallInfoBox title="Projects" data={projects} />;
+  return <SmallInfoBox title="Projects" data={links} />;
 };
 
 const items = [
@@ -105,4 +93,4 @@ const Hobbies = () => {
   return <SmallInfoBox title="Hobbies" data={items} />;
 };
 
-export { Certifications, ContactInfo, Skills, Projects, Hobbies };
+export { Certifications, ContactInfo, Skills, Hobbies, Projects };
