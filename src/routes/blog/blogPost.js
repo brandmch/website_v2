@@ -11,6 +11,9 @@ import AppBarCustom from "../../components/appbar";
 import useWindowSize from "../../utils/useWindowSize";
 import SearchBar from "./components/searchBar";
 
+// @@@ between text @@@ = bold
+// ## before text = header
+
 const CodeBlock = ({ text, width }) => {
   text = text[0].slice(14, text[0].length - 3);
   text = text.split("{{{{{n}}}}}");
@@ -75,7 +78,7 @@ const BulletListItem = ({ p }) => {
       <Box marginLeft={3} display="flex">
         <CircleIcon sx={{ fontSize: 8, marginRight: 2, marginTop: 1 }} />
         <Box>
-          <InlineCode text={p} />
+          <InlineCode text={parseText(p)} />
         </Box>
       </Box>
     );
@@ -83,7 +86,7 @@ const BulletListItem = ({ p }) => {
   return (
     <Box marginLeft={4} display="flex">
       <CircleIcon sx={{ fontSize: 8, marginRight: 2, marginTop: 1 }} />
-      <Typography fontSize={17}>{p}</Typography>
+      <Typography fontSize={17}>{parseText(p)}</Typography>
     </Box>
   );
 };
@@ -95,6 +98,45 @@ const Tab = ({ p }) => {
     </Box>
   );
 };
+
+function parseText(text) {
+  if (text.startsWith("##")) {
+    text = text.split("").slice(2).join("");
+    return (
+      <Typography variant="h4" marginY={3}>
+        {text}
+      </Typography>
+    );
+  } else if (text.startsWith("{{{{{b}}}}}")) {
+    text = text.split("").slice(11).join("");
+    return <BulletListItem p={text} />;
+  } else if (/```/.test(text)) {
+    return <InlineCode text={text} />;
+  } else if (text.startsWith("{{{{{t}}}}}")) {
+    text = text.split("").slice(11).join("");
+    return <Tab p={text} />;
+  } else if (/@@@/.test(text)) {
+    const startsWithBold = text[0] === "@";
+    text = text.split("@@@").reduce((a, c) => {
+      return c !== "" ? [...a, c] : a;
+    }, []);
+    if (startsWithBold) {
+      return text.map((c, i) =>
+        i % 2 === 0 ? (
+          <Typography fontWeight="bold">{c}</Typography>
+        ) : (
+          <Typography>{c}</Typography>
+        )
+      );
+    }
+  }
+
+  text = text.replace(/{{{{{doublequotes}}}}}/g, '"');
+  text = text.replace(/{{{{{backslash}}}}}/g, "\\");
+  return text;
+}
+
+// blogpostpost confirmation
 
 const Post = ({ text, width }) => {
   let textJawn = [];
@@ -121,24 +163,9 @@ const Post = ({ text, width }) => {
   const Paragraph = ({ p }) => {
     if (Array.isArray(p)) {
       return <CodeBlock text={p} width={width} />;
-    } else if (p.startsWith("##")) {
-      p = p.split("").slice(2).join("");
-      return (
-        <Typography variant="h4" marginY={3}>
-          {p}
-        </Typography>
-      );
-    } else if (p.startsWith("{{{{{b}}}}}")) {
-      p = p.split("").slice(11).join("");
-      return <BulletListItem p={p} />;
-    } else if (/```/.test(p)) {
-      return <InlineCode text={p} />;
-    } else if (p.startsWith("{{{{{t}}}}}")) {
-      p = p.split("").slice(11).join("");
-      return <Tab p={p} />;
     }
-    p = p.replace(/{{{{{doublequotes}}}}}/g, '"');
-    p = p.replace(/{{{{{backslash}}}}}/g, "\\");
+
+    p = parseText(p);
 
     return (
       <Box marginBottom={2}>

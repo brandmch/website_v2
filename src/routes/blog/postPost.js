@@ -23,6 +23,9 @@ export const PostPost = () => {
     >
       <Typography color="white">Bullet pont = {"{{{{{b}}}}}"}</Typography>
       <Typography color="white">Tab = {"{{{{{t}}}}}"}</Typography>
+      <Typography color="white">Bold = {"@@@"} Before&After</Typography>
+      <Typography color="white">Header = ##</Typography>
+      <Typography color="white">Code = ``` Before&After</Typography>
       <TextField
         label="title"
         sx={{
