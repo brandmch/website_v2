@@ -136,8 +136,6 @@ function parseText(text) {
   return text;
 }
 
-// blogpostpost confirmation
-
 const Post = ({ text, width }) => {
   let textJawn = [];
 

@@ -7,10 +7,21 @@ export const PostPost = () => {
   const [input, setInput] = useState("");
   const [summary, setSummary] = useState("");
   const [title, setTitle] = useState("");
+  const [sendingPost, setSendingPost] = useState(false);
 
-  const handlePost = () => {
-    postPost(title, sparsePost(input), Date.now(), summary);
+  const handlePost = async () => {
+    setSendingPost(true);
+    const post = await postPost(
+      title,
+      sparsePost(input),
+      Date.now(),
+      summary
+    ).then(({ success, data }) => {
+      setSendingPost(false);
+      console.log(success ? "Success!" : "ERROR", data);
+    });
   };
+
   return (
     <Box
       minHeight="100vh"
@@ -57,9 +68,13 @@ export const PostPost = () => {
           input: { color: "black" },
           label: { color: "black" },
         }}
-        onChange={(e) => setInput(e.target.value)}
+        onChange={(e) => {
+          setInput(e.target.value);
+          setSendingPost(false);
+        }}
       />
       <Button onClick={handlePost}>Post</Button>
+      {sendingPost && <Typography color="lightgreen">Sending...</Typography>}
     </Box>
   );
 };
