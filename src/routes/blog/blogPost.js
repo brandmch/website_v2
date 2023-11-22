@@ -69,6 +69,7 @@ const InlineCode = ({ text }) => {
 };
 
 const BulletListItem = ({ p }) => {
+  console.log(p);
   if (/```/.test(p)) {
     return (
       <Box marginLeft={3} display="flex">
@@ -96,6 +97,7 @@ const Tab = ({ p }) => {
 };
 
 function parseText(text) {
+  text = text.trim();
   if (text.startsWith("##")) {
     text = text.split("").slice(2).join("");
     return (
