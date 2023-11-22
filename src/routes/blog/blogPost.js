@@ -96,6 +96,7 @@ const Tab = ({ p }) => {
 };
 
 function parseText(text) {
+  text = text.trim();
   if (text.startsWith("##")) {
     text = text.split("").slice(2).join("");
     return (
@@ -104,7 +105,6 @@ function parseText(text) {
       </Typography>
     );
   } else if (/{{{{{b}}}}}/.test(text)) {
-    console.log(text);
     text = text.split("").slice(11).join("");
     return <BulletListItem p={text} />;
   } else if (/```/.test(text)) {
