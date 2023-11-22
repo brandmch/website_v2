@@ -9,7 +9,6 @@ import Minesweeper from "./minesweeper/App_minesweeper";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorElement from "./errorElement";
 import { BlogHome, BlogPost, PostPost } from "./blog/routes";
-import SnakeHomeScreen from "./snake/snake";
 import {
   SocialApp,
   Login,
@@ -25,6 +24,20 @@ import {
   WorkoutScreen,
   SignUpScreen,
 } from "./workoutGenerator/routes";
+import CodeIcon from "@mui/icons-material/Code";
+
+const links = [
+  ["Blog", <CodeIcon />, "/blog"],
+  ["Social", <CodeIcon />, "/social"],
+  ["Minesweeper", <CodeIcon />, "/minesweeper"],
+  ["Weather App", <CodeIcon />, "/weather"],
+  ["Timer", <CodeIcon />, "/timer"],
+  ["JavaScript Calculator", <CodeIcon />, "/javascriptcalulator"],
+  ["Drum Machine", <CodeIcon />, "/drummachine"],
+  ["Markdown Previewer", <CodeIcon />, "/markdownpreviewer"],
+  ["Random Quote Machine", <CodeIcon />, "/randomquotemachine"],
+];
+
 const router = createBrowserRouter([
   { path: "/", element: <Landing />, errorElement: <ErrorElement /> },
   {
@@ -117,11 +130,6 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
   },
   {
-    path: "/snake",
-    element: <SnakeHomeScreen />,
-    errorElement: <ErrorElement />,
-  },
-  {
     path: `${process.env.REACT_APP_SECRET_SITE2}`,
     element: <WorkoutGeneratorLanding />,
     errorElement: <ErrorElement />,
@@ -139,14 +147,9 @@ const router = createBrowserRouter([
     element: <SignUpScreen />,
     errorElement: <ErrorElement />,
   },
-  {
-    path: "/football",
-    element: <MainScreen />,
-    errorElement: <ErrorElement />,
-  },
 ]);
 
 const Routes = () => {
   return <RouterProvider router={router} />;
 };
-export default Routes;
+export { Routes, links };

@@ -30,10 +30,8 @@ export async function postPost(title, text, time, summary) {
   );
 
   if (errors) {
-    // handle those errors like a pro
-    console.error(errors);
+    return { success: false, data: errors };
+  } else {
+    return { success: true, data: data };
   }
-
-  // do something great with this precious data
-  console.log(data);
 }
