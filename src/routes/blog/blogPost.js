@@ -69,7 +69,6 @@ const InlineCode = ({ text }) => {
 };
 
 const BulletListItem = ({ p }) => {
-  console.log(p);
   if (/```/.test(p)) {
     return (
       <Box marginLeft={3} display="flex">
@@ -106,7 +105,6 @@ function parseText(text) {
       </Typography>
     );
   } else if (/{{{{{b}}}}}/.test(text)) {
-    console.log(text);
     text = text.split("").slice(11).join("");
     return <BulletListItem p={text} />;
   } else if (/```/.test(text)) {
