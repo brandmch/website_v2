@@ -47,6 +47,7 @@ const CodeBlock = ({ text, width }) => {
 };
 
 const InlineCode = ({ text }) => {
+  console.log(text);
   text = text.replace(/{{{{{doublequotes}}}}}/g, '"');
   text = text.replace(/{{{{{backslash}}}}}/g, "\\");
 
@@ -73,7 +74,7 @@ const BulletListItem = ({ p }) => {
       <Box marginLeft={3} display="flex">
         <CircleIcon sx={{ fontSize: 8, marginRight: 2, marginTop: 1 }} />
         <Box>
-          <InlineCode text={parseText(p)} />
+          <InlineCode text={p} />
         </Box>
       </Box>
     );
@@ -102,7 +103,8 @@ function parseText(text) {
         {text}
       </Typography>
     );
-  } else if (text.startsWith("{{{{{b}}}}}")) {
+  } else if (/{{{{{b}}}}}/.test(text)) {
+    console.log(text);
     text = text.split("").slice(11).join("");
     return <BulletListItem p={text} />;
   } else if (/```/.test(text)) {
@@ -125,9 +127,11 @@ function parseText(text) {
       );
     }
   }
-
-  text = text.replace(/{{{{{doublequotes}}}}}/g, '"');
-  text = text.replace(/{{{{{backslash}}}}}/g, "\\");
+  if (/{{{{{doublequotes}}}}}/.test(text) || /{{{{{backslash}}}}}/.test(text)) {
+    text = text
+      .replace(/{{{{{doublequotes}}}}}/g, '"')
+      .replace(/{{{{{backslash}}}}}/g, "\\");
+  }
   return text;
 }
 
@@ -158,11 +162,9 @@ const Post = ({ text, width }) => {
       return <CodeBlock text={p} width={width} />;
     }
 
-    p = parseText(p);
-
     return (
       <Box marginBottom={2}>
-        <Typography fontSize={17}>{p}</Typography>
+        <Typography fontSize={17}>{parseText(p)}</Typography>
       </Box>
     );
   };
