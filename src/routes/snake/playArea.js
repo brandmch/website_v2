@@ -22,7 +22,7 @@ const PlayArea = () => {
   const [x, xx] = useState([[10, 10]]);
   const [running, setRunning] = useState(false);
   const [direction, setDirection] = useState("");
-  const [egg, setEgg] = useState([50, 50]);
+  const [egg, setEgg] = useState([20, 20]);
 
   let snakeBodyLocationsStr = `#${x.join("#")}#`;
 

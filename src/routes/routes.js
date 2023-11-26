@@ -25,8 +25,10 @@ import {
   SignUpScreen,
 } from "./workoutGenerator/routes";
 import CodeIcon from "@mui/icons-material/Code";
+import SnakeHomeScreen from "./snake/snake";
 
 const links = [
+  ["Snake", <CodeIcon />, "/snake"],
   ["Blog", <CodeIcon />, "/blog"],
   ["Social", <CodeIcon />, "/social"],
   ["Minesweeper", <CodeIcon />, "/minesweeper"],
@@ -145,6 +147,11 @@ const router = createBrowserRouter([
   {
     path: `${process.env.REACT_APP_SECRET_SITE4}`,
     element: <SignUpScreen />,
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "/snake",
+    element: <SnakeHomeScreen />,
     errorElement: <ErrorElement />,
   },
 ]);
