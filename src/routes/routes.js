@@ -25,8 +25,10 @@ import {
   SignUpScreen,
 } from "./workoutGenerator/routes";
 import CodeIcon from "@mui/icons-material/Code";
+import SimpleScrumMain from "./superSimpleScrum/main";
 
 const links = [
+  ["Super Simple Scrum", <CodeIcon />, "/simpleScrum"],
   ["Blog", <CodeIcon />, "/blog"],
   ["Social", <CodeIcon />, "/social"],
   ["Minesweeper", <CodeIcon />, "/minesweeper"],
@@ -145,6 +147,11 @@ const router = createBrowserRouter([
   {
     path: `${process.env.REACT_APP_SECRET_SITE4}`,
     element: <SignUpScreen />,
+    errorElement: <ErrorElement />,
+  },
+  {
+    path: "/simpleScrum",
+    element: <SimpleScrumMain />,
     errorElement: <ErrorElement />,
   },
 ]);
