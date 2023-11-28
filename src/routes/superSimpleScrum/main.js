@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Box, Typography, TextField, Button } from "@mui/material";
-import { ScrumBoard } from "./columns/scrumBoard";
+import { ScrumBoard } from "./components/scrumBoard";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 const data = require("./testData.json");
 const fakeData = [
   {
@@ -82,21 +84,23 @@ const SimpleScrumMain = () => {
       <Typography>Triple D Scrum</Typography>
       <TextField label="Add task" onChange={(e) => setInput(e.target.value)} />
       <Button onClick={handleClick_newTask} variant="contained" />
-      <Box display="flex">
-        {categories.map((cat, i) => (
-          <Box width={250} textAlign="center" padding={2} key={i}>
-            <Typography>{cat}</Typography>
-            <Box border="1px solid black" borderRadius={1}>
-              <ScrumBoard
-                category={cat}
-                storyData={categorizedData[cat]}
-                state={state}
-                index={i}
-              />
+      <DndProvider backend={HTML5Backend}>
+        <Box display="flex">
+          {categories.map((cat, i) => (
+            <Box width={250} textAlign="center" padding={2} key={i}>
+              <Typography>{cat}</Typography>
+              <Box border="1px solid black" borderRadius={1}>
+                <ScrumBoard
+                  storyData={categorizedData[cat]}
+                  state={state}
+                  categoryIndex={i}
+                  categoryTitle={cat}
+                />
+              </Box>
             </Box>
-          </Box>
-        ))}
-      </Box>
+          ))}
+        </Box>
+      </DndProvider>
     </Box>
   );
 };

@@ -1,7 +1,7 @@
-const randomKeyGenerator = () => {
+const randomKeyGenerator = (length) => {
   let s = "";
 
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < length; i++) {
     s = `${s}${String.fromCharCode(Math.random() * 94 + 33)}`;
   }
 
