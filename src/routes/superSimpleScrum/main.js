@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Box, Typography, TextField, Button } from "@mui/material";
 import { ScrumBoard } from "./components/scrumBoard";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-const data = require("./testData.json");
+
 const fakeData = [
   {
     tasks: ["Fix a bug"],
