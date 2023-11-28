@@ -3,6 +3,8 @@ import { Box, Typography, Button, TextField } from "@mui/material";
 import React from "react";
 import { DraggableBox } from "./draggableBox";
 
+// removes the white spaces from 1 category in 1 story
+// allows for the proper white-spacing upon refresh
 function removeWhiteSpace(state, index) {
   let tempState = [...state];
   const categories = ["tasks", "todos", "doings", "dones"];
@@ -24,6 +26,10 @@ const Task = ({
   taskIndex,
 }) => {
   const [input, setInput] = useState("");
+  // kind of confusing:
+  // moveTo and dragged are part of the <DraggableBox> object
+  // moveTo is the coordinates of the new location of the dragged box
+  // dragged is the coordinates of the og location of the dragged box
   const [moveTo, setBoxes] = useState({
     categoryTitle,
     categoryIndex,
@@ -31,6 +37,9 @@ const Task = ({
     taskIndex,
   });
 
+  // when a task is dropped,
+  // this function takes the coordinates of dragged and moveTo
+  // and updates state accordingly
   const handleDrop = (dragged) => {
     let newData = [...state.data];
     const removedTask = newData[dragged.storyIndex][
@@ -50,6 +59,7 @@ const Task = ({
     state.setData(newData);
   };
 
+  // takes the input and creates a new todo
   const handleClick_newTodo = () => {
     let tempState = [...state.data];
     tempState[storyIndex].todos = [input, ...tempState[storyIndex].todos];

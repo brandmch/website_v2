@@ -26,6 +26,10 @@ const fakeData = [
 ];
 
 const categories = ["tasks", "todos", "doings", "dones"];
+
+// This function adds blank strings to the arrays,
+// making them all equal length,
+// so each category in each story is the same height
 function padData(storyData) {
   const maxLength = Math.max(
     ...categories.map((category) => storyData[category].length)
@@ -43,6 +47,8 @@ function padData(storyData) {
 const SimpleScrumMain = () => {
   const [input, setInput] = useState("");
   const [data, setData] = useState(fakeData);
+
+  // holds the state in one object for simplicity
   const state = {
     input: input,
     setInput: setInput,
@@ -50,6 +56,8 @@ const SimpleScrumMain = () => {
     setData: setData,
   };
 
+  // takes the input and creates a new task
+  // placing it in the todo column in the propper story
   const handleClick_newTask = () => {
     setData([
       ...data,
@@ -63,6 +71,8 @@ const SimpleScrumMain = () => {
     setInput("");
   };
 
+  // for display purposes, this function reorganizes the data into categories
+  // so the browser can display the data via category columns
   const categorizedData = data
     .map((curr) => {
       return padData(curr);
