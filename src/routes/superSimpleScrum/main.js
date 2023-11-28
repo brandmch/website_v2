@@ -1,24 +1,57 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Box, Typography, TextField, Button } from "@mui/material";
 import { ScrumBoard } from "./components/scrumBoard";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import { getUsers } from "./hasura/getUserData";
+import { getStories } from "./hasura/getStories";
+import { getTasks } from "./hasura/getTasks";
+
+// const fakeData = [
+//   {
+//     tasks: ["Fix a bug"],
+//     todos: ["Do this", "Do that"],
+//     doings: ["doing this", "doing that", "doing itall"],
+//     dones: ["this one is done"],
+//   },
+//   {
+//     tasks: ["Add a nice new Feature!"],
+//     todos: ["Do this", "Do that", "Much to do!"],
+//     doings: ["doing this"],
+//     dones: ["this one is done", "Another one is done! Long live the king!"],
+//   },
+//   {
+//     tasks: ["Yet to be tasked out"],
+//     todos: [],
+//     doings: [],
+//     dones: [],
+//   },
+// ];
+
+const transformData = (inputData) => {
+  const transformedData = {};
+
+  inputData.forEach((item) => {
+    const { tasks, storyid, id, category } = item;
+
+    if (!transformedData[storyid]) {
+      transformedData[storyid] = {
+        tasks: [],
+        todos: [],
+        doings: [],
+        dones: [],
+      };
+    }
+
+    transformedData[storyid][categories[category]] = tasks;
+  });
+
+  return Object.values(transformedData);
+};
 
 const fakeData = [
   {
-    tasks: ["Fix a bug"],
-    todos: ["Do this", "Do that"],
-    doings: ["doing this", "doing that", "doing itall"],
-    dones: ["this one is done"],
-  },
-  {
-    tasks: ["Add a nice new Feature!"],
-    todos: ["Do this", "Do that", "Much to do!"],
-    doings: ["doing this"],
-    dones: ["this one is done", "Another one is done! Long live the king!"],
-  },
-  {
-    tasks: ["Yet to be tasked out"],
+    tasks: [],
     todos: [],
     doings: [],
     dones: [],
@@ -47,6 +80,10 @@ function padData(storyData) {
 const SimpleScrumMain = () => {
   const [input, setInput] = useState("");
   const [data, setData] = useState(fakeData);
+  const [user, setUser] = useState();
+  console.log(user);
+
+  const email = "brandonmchugh36@gmail.com";
 
   // holds the state in one object for simplicity
   const state = {
@@ -55,6 +92,23 @@ const SimpleScrumMain = () => {
     data: data,
     setData: setData,
   };
+
+  useEffect(() => {
+    getUsers(email)
+      .then((res) => {
+        setUser(res);
+        return res;
+      })
+      .then((res) => {
+        getStories(res.id).then((x) => {
+          getTasks(x).then((hmm) => {
+            console.log(hmm);
+            const filteredTasks = transformData(hmm);
+            setData(filteredTasks);
+          });
+        });
+      });
+  }, []);
 
   // takes the input and creates a new task
   // placing it in the todo column in the propper story
