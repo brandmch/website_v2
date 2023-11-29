@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Box, CircularProgress } from "@mui/material";
-import { getCurrentUser } from "../auth/utils";
+import { getCurrentUser } from "../../../auth/auth-methods";
 import { getUserDataFromHasura, getPosts } from "../hasura/utils";
 import {
   CommonButton,

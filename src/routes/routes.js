@@ -18,7 +18,7 @@ import {
   SocialAppTheme,
   ChangePassword,
   DeleteUserConfirmation,
-} from "./social/routes";
+} from "../auth/auth-screens";
 import {
   WorkoutGeneratorLanding,
   WorkoutScreen,
@@ -73,13 +73,13 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
   },
   {
-    path: "/social/login",
-    element: <SocialAppTheme component={<Login />} />,
+    path: "/login",
+    element: <Login />,
     errorElement: <ErrorElement />,
   },
   {
-    path: "/social/signup",
-    element: <SocialAppTheme component={<SignUp />} />,
+    path: "/signup",
+    element: <SignUp />,
     errorElement: <ErrorElement />,
   },
   {
@@ -91,21 +91,21 @@ const router = createBrowserRouter([
     },
   },
   {
-    path: "/social/signup/confirm/:name/:email/:username",
-    element: <SocialAppTheme component={<Confirm />} />,
+    path: "/signup/confirm/:name/:email/:username",
+    element: <Confirm />,
     errorElement: <ErrorElement />,
     loader: ({ params }) => {
       return params;
     },
   },
   {
-    path: "/social/changepassword",
-    element: <SocialAppTheme component={<ChangePassword />} />,
+    path: "/changepassword",
+    element: <ChangePassword />,
     errorElement: <ErrorElement />,
   },
   {
-    path: "/social/deleteuserconfirmation/:userid",
-    element: <SocialAppTheme component={<DeleteUserConfirmation />} />,
+    path: "/deleteuserconfirmation/:userid",
+    element: <DeleteUserConfirmation />,
     errorElement: <ErrorElement />,
     loader: ({ params }) => {
       return params;

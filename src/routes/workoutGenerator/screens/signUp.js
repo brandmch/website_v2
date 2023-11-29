@@ -1,5 +1,5 @@
 import { Box, TextField } from "@mui/material";
-import { signUp } from "../../social/auth/utils";
+import { signUp } from "../../../auth/auth-methods";
 
 export const SignUpScreen = () => {
   return (
