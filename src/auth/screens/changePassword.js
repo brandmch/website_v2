@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { LoginSignUpBox } from "../components/components/login_signupBox";
+import { LoginSignUpBox } from "../../routes/social/components/components/login_signupBox";
 import { Box } from "@mui/material";
-import { changePassword, signOut } from "../auth/utils";
+import { changePassword, signOut } from "../auth-methods";
 
 export const ChangePassword = () => {
   const [currP, setCurrP] = useState("");

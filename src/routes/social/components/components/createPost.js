@@ -47,7 +47,7 @@ export const CreatePostBox = ({ setLoadPosts, user, size }) => {
           ) : (
             <CommonButton
               title="Sign in to post!"
-              callback={() => (window.location.href = "/social/login")}
+              callback={() => (window.location.href = "/login")}
             />
           )}
         </Box>
@@ -63,7 +63,7 @@ export const CreatePostBox = ({ setLoadPosts, user, size }) => {
         ) : (
           <CommonButton
             title="Sign in to post!"
-            callback={() => (window.location.href = "/social/login")}
+            callback={() => (window.location.href = "/login")}
           />
         )}
       </Box>

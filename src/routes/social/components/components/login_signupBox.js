@@ -1,7 +1,7 @@
 import { Box, TextField, Paper, Typography, Button } from "@mui/material";
 import { CommonButton } from "./button";
 import { useTheme } from "@mui/material/styles";
-import { resendConfirmationCode } from "../../auth/utils";
+import { resendConfirmationCode } from "../../../../auth/auth-methods";
 
 export const LoginSignUpBox = ({
   textFields,
