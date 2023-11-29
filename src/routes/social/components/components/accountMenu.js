@@ -120,7 +120,7 @@ export const AccountMenu = ({ user }) => {
             </MenuItem>
             <MenuItem
               onClick={() => {
-                signOut();
+                signOut("/social/login");
               }}
             >
               <ListItemIcon>

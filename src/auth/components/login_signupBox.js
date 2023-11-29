@@ -1,5 +1,5 @@
 import { Box, TextField, Paper, Typography, Button } from "@mui/material";
-import { CommonButton } from "./button";
+import { CommonButton } from "../../routes/social/components/components/button";
 import { useTheme } from "@mui/material/styles";
 import { resendConfirmationCode } from "../../auth/utils";
 

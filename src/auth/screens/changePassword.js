@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { LoginSignUpBox } from "../components/components/login_signupBox";
+import { LoginSignUpBox } from "../components/login_signupBox";
 import { Box } from "@mui/material";
 import { changePassword, signOut } from "../auth/utils";
 
@@ -30,7 +30,7 @@ export const ChangePassword = () => {
         } else if (x === 2) {
           setLimitExceeded(true);
         } else if (x === "SUCCESS") {
-          signOut();
+          signOut("/social/login");
         }
       });
     } else if (!/^[\S]+.*[\S]+$/.test(currP)) {

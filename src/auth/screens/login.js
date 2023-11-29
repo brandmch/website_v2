@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Box } from "@mui/material";
 import { signIn } from "../auth/utils";
-import { LoginSignUpBox } from "../components/components/login_signupBox";
+import { LoginSignUpBox } from "../components/login_signupBox";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -9,7 +9,7 @@ const Login = () => {
   const [badEorP, setBadEorP] = useState(false);
 
   const handleSignIn = () => {
-    signIn({ email: email, password: password }).then((x) => {
+    signIn({ email: email, password: password }, "/social").then((x) => {
       if (x === 1) {
         setBadEorP(true);
       }

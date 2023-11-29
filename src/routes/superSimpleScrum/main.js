@@ -6,6 +6,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import { getUsers } from "./hasura/getUserData";
 import { getStories } from "./hasura/getStories";
 import { getTasks } from "./hasura/getTasks";
+import { signIn, signOut, getCurrentUser } from "./auth";
 
 // const fakeData = [
 //   {
@@ -81,9 +82,11 @@ const SimpleScrumMain = () => {
   const [input, setInput] = useState("");
   const [data, setData] = useState(fakeData);
   const [user, setUser] = useState();
-  console.log(user);
 
   const email = "brandonmchugh36@gmail.com";
+  const password = "Brandmch1!";
+  const username = "bmwow";
+  const name = "Brandon";
 
   // holds the state in one object for simplicity
   const state = {
@@ -94,6 +97,10 @@ const SimpleScrumMain = () => {
   };
 
   useEffect(() => {
+    // signIn({ email, password }).then((x) => console.log(x));
+    // signOut().then((x) => console.log(x));
+    getCurrentUser().then((x) => console.log(x));
+
     getUsers(email)
       .then((res) => {
         setUser(res);
@@ -102,7 +109,6 @@ const SimpleScrumMain = () => {
       .then((res) => {
         getStories(res.id).then((x) => {
           getTasks(x).then((hmm) => {
-            console.log(hmm);
             const filteredTasks = transformData(hmm);
             setData(filteredTasks);
           });

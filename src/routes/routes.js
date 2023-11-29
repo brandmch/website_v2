@@ -9,16 +9,7 @@ import Minesweeper from "./minesweeper/App_minesweeper";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorElement from "./errorElement";
 import { BlogHome, BlogPost, PostPost } from "./blog/routes";
-import {
-  SocialApp,
-  Login,
-  SignUp,
-  Confirm,
-  Settings,
-  SocialAppTheme,
-  ChangePassword,
-  DeleteUserConfirmation,
-} from "./social/routes";
+import { SocialApp, Settings, SocialAppTheme } from "./social/routes";
 import {
   WorkoutGeneratorLanding,
   WorkoutScreen,
@@ -26,6 +17,13 @@ import {
 } from "./workoutGenerator/routes";
 import CodeIcon from "@mui/icons-material/Code";
 import SimpleScrumMain from "./superSimpleScrum/main";
+import {
+  ChangePassword,
+  Confirm,
+  DeleteUserConfirmation,
+  Login,
+  SignUp,
+} from "../auth/screens";
 
 const links = [
   ["Super Simple Scrum", <CodeIcon />, "/simpleScrum"],
