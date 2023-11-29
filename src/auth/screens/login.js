@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Box } from "@mui/material";
 import { signIn } from "../auth-methods";
-import { LoginSignUpBox } from "../../routes/social/components/components/login_signupBox";
+import { LoginSignUpBox } from "../components/login_signupBox";
 
 const Login = () => {
   const [email, setEmail] = useState("");

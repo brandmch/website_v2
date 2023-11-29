@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Box } from "@mui/material";
-import { LoginSignUpBox } from "../../routes/social/components/components/login_signupBox";
+import { LoginSignUpBox } from "../components/login_signupBox";
 import { deleteUser } from "../auth-methods";
 import { deleteUser_UserAndPosts } from "../../routes/social/hasura/utils";
 import { useParams } from "react-router-dom";

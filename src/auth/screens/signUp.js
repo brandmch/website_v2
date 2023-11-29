@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Typography, Box, TextField, Button } from "@mui/material";
 import { signUp } from "../auth-methods";
-import { LoginSignUpBox } from "../../routes/social/components/components/login_signupBox";
+import { LoginSignUpBox } from "../components/login_signupBox";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");

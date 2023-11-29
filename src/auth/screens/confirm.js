@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Box } from "@mui/material";
 import { confirmSignUp } from "../auth-methods";
 import { useParams } from "react-router-dom";
-import { LoginSignUpBox } from "../../routes/social/components/components/login_signupBox";
+import { LoginSignUpBox } from "../components/login_signupBox";
 
 const Confirm = () => {
   const [code, setCode] = useState("");
