@@ -18,11 +18,11 @@ const Settings = () => {
   }, []);
 
   const changePassword = () => {
-    window.location.href = `/social/changepassword`;
+    window.location.href = `/changepassword`;
   };
 
   const deleteAccount = () => {
-    window.location.href = `/social/deleteuserconfirmation/${userid}`;
+    window.location.href = `/deleteuserconfirmation/${userid}`;
   };
 
   const changeColor = () => {
@@ -95,7 +95,7 @@ export default Settings;
   <Typography color="text.primary">changepassword</Typography>
   <Button
     onClick={() => {
-      window.location.href = `/social/changepassword`;
+      window.location.href = `/changepassword`;
     }}
   >
     GO
@@ -105,7 +105,7 @@ export default Settings;
   <Typography color="text.primary">delete account</Typography>
   <Button
     onClick={() => {
-      window.location.href = `/social/deleteuserconfirmation/${userid}`;
+      window.location.href = `/deleteuserconfirmation/${userid}`;
     }}
   >
     GO

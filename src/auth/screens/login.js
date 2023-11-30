@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Box } from "@mui/material";
-import { signIn } from "../auth/utils";
+import { signIn } from "../auth-methods";
 import { LoginSignUpBox } from "../components/login_signupBox";
 
 const Login = () => {
@@ -30,7 +30,7 @@ const Login = () => {
           ["Password", "password", (e) => setPassword(e.target.value)],
         ]}
         button={["Sign In", handleSignIn]}
-        bottomText={["Sign up!", "/social/signup"]}
+        bottomText={["Sign up!", "/signup"]}
         errorStatus={badEorP}
         errorMessage="Incorrect email or password!"
       />

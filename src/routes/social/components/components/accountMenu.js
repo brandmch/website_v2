@@ -11,7 +11,7 @@ import Tooltip from "@mui/material/Tooltip";
 import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
-import { signOut } from "../../auth/utils";
+import { signOut } from "../../../../auth/auth-methods";
 
 export const AccountMenu = ({ user }) => {
   const [anchorEl, setAnchorEl] = useState();
@@ -131,13 +131,13 @@ export const AccountMenu = ({ user }) => {
           </Box>
         ) : (
           <Box>
-            <MenuItem onClick={() => (window.location.href = "/social/login/")}>
+            <MenuItem onClick={() => (window.location.href = "/login/")}>
               <ListItemIcon>
                 <Logout fontSize="small" />
               </ListItemIcon>
               Sign In
             </MenuItem>{" "}
-            <MenuItem onClick={() => (window.location.href = "/social/signup")}>
+            <MenuItem onClick={() => (window.location.href = "/signup")}>
               <ListItemIcon>
                 <Logout fontSize="small" />
               </ListItemIcon>
