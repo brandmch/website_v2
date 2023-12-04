@@ -16,21 +16,17 @@ async function fetchGraphQL(operationsDoc, operationName, variables) {
 }
 
 const operationsDoc = (taskids) => `
-query MyQuery {
-    scrum_categories(
-      where: {storyid: {_in: [${taskids}]}} 
-      order_by: [{ storyid: asc }, { category: asc }]
-    ) {
-      tasks
-      storyid
-      id
-      category
-    }
-  } 
+query getTasks {
+  scrum_tasks(where: {id: {_in: [${taskids}]}}) {
+    text
+    id
+  }
+}
+
  `;
 
 function fetchMyQuery(taskids) {
-  return fetchGraphQL(operationsDoc(taskids), "MyQuery", {});
+  return fetchGraphQL(operationsDoc(taskids), "getTasks", {});
 }
 
 export async function getTasks(taskids) {
@@ -41,6 +37,6 @@ export async function getTasks(taskids) {
     return { error: -1 };
   }
   if (data) {
-    return data.scrum_categories;
+    return data.scrum_tasks;
   }
 }

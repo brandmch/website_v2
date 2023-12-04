@@ -6,60 +6,22 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import { getUsers } from "./hasura/getUserData";
 import { getStories } from "./hasura/getStories";
 import { getTasks } from "./hasura/getTasks";
+import { createStory } from "./hasura/createStory";
 import { signIn, signOut, getCurrentUser } from "./auth";
-
-// const fakeData = [
-//   {
-//     tasks: ["Fix a bug"],
-//     todos: ["Do this", "Do that"],
-//     doings: ["doing this", "doing that", "doing itall"],
-//     dones: ["this one is done"],
-//   },
-//   {
-//     tasks: ["Add a nice new Feature!"],
-//     todos: ["Do this", "Do that", "Much to do!"],
-//     doings: ["doing this"],
-//     dones: ["this one is done", "Another one is done! Long live the king!"],
-//   },
-//   {
-//     tasks: ["Yet to be tasked out"],
-//     todos: [],
-//     doings: [],
-//     dones: [],
-//   },
-// ];
-
-const transformData = (inputData) => {
-  const transformedData = {};
-
-  inputData.forEach((item) => {
-    const { tasks, storyid, id, category } = item;
-
-    if (!transformedData[storyid]) {
-      transformedData[storyid] = {
-        tasks: [],
-        todos: [],
-        doings: [],
-        dones: [],
-      };
-    }
-
-    transformedData[storyid][categories[category]] = tasks;
-  });
-
-  return Object.values(transformedData);
-};
-
-const fakeData = [
-  {
-    tasks: [],
-    todos: [],
-    doings: [],
-    dones: [],
-  },
-];
+import { createUser_simpleScrum } from "./hasura/createUser";
+import { createTask } from "./hasura/createTask";
+import { updateStoryTasks } from "./hasura/updateStories";
 
 const categories = ["tasks", "todos", "doings", "dones"];
+const fakeData = [
+  {
+    id: null,
+    tasks: ["Temp task!"],
+    todos: ["Temp todo!"],
+    doings: ["Temp doing!"],
+    dones: ["Temp dones!"],
+  },
+];
 
 // This function adds blank strings to the arrays,
 // making them all equal length,
@@ -82,11 +44,7 @@ const SimpleScrumMain = () => {
   const [input, setInput] = useState("");
   const [data, setData] = useState(fakeData);
   const [user, setUser] = useState();
-
-  const email = "brandonmchugh36@gmail.com";
-  const password = "Brandmch1!";
-  const username = "bmwow";
-  const name = "Brandon";
+  const [newData, setNewData] = useState(false);
 
   // holds the state in one object for simplicity
   const state = {
@@ -94,42 +52,108 @@ const SimpleScrumMain = () => {
     setInput: setInput,
     data: data,
     setData: setData,
+    setNewData: setNewData,
   };
 
   useEffect(() => {
-    // signIn({ email, password }).then((x) => console.log(x));
-    // signOut().then((x) => console.log(x));
-    getCurrentUser().then((x) => console.log(x));
-
-    getUsers(email)
-      .then((res) => {
-        setUser(res);
-        return res;
-      })
-      .then((res) => {
-        getStories(res.id).then((x) => {
-          getTasks(x).then((hmm) => {
-            const filteredTasks = transformData(hmm);
-            setData(filteredTasks);
-          });
+    getCurrentUser().then((x) => {
+      if (x) {
+        getUsers(x.attributes.email).then((res) => {
+          setUser(res);
+          return res;
         });
-      });
+      }
+    });
   }, []);
+
+  const handleSignOut = () => {
+    signOut().then((x) => {
+      setUser(null);
+      setData(fakeData);
+    });
+  };
 
   // takes the input and creates a new task
   // placing it in the todo column in the propper story
+  // adds it to hasura
   const handleClick_newTask = () => {
-    setData([
-      ...data,
-      {
-        tasks: [input],
-        todos: [],
-        doings: [],
-        dones: [],
-      },
-    ]);
+    const newStory = {
+      tasks: [input],
+      todos: [],
+      doings: [],
+      dones: [],
+    };
+    setData([...data, newStory]);
+    createTask(input).then((taskID) => {
+      createStory(user.id, taskID);
+    });
     setInput("");
   };
+
+  // get data from hasura and setData
+  useEffect(() => {
+    if (user) {
+      getStories(user.id).then((stories) => {
+        const fetchData = async () => {
+          const tempArr = [];
+
+          await Promise.all(
+            stories.map(async (story) => {
+              let tempData = { ...fakeData[0] };
+              tempData.id = story.id;
+              const tasksPromise = getTasks(story.tasks);
+              const todosPromise = getTasks(story.todos);
+              const doingsPromise = getTasks(story.doings);
+              const donesPromise = getTasks(story.dones);
+              tempData.tasks = await tasksPromise;
+              tempData.todos = await todosPromise;
+              tempData.doings = await doingsPromise;
+              tempData.dones = await donesPromise;
+              tempArr.push(tempData);
+            })
+          );
+
+          setData(tempArr);
+        };
+
+        fetchData();
+      });
+    }
+  }, [user]);
+
+  // any time the data gets updated, update hasura
+  useEffect(() => {
+    if (newData) {
+      let newTask;
+      let arrToUpdate;
+      for (let i = 0; i < data.length; i++) {
+        for (let y in data[i]) {
+          if (Array.isArray(data[i][y])) {
+            data[i][y].forEach((x) => {
+              if (!x.id && x.text) {
+                arrToUpdate = [...data[i][y]];
+                console.log(data[i][y]);
+                newTask = {
+                  storyid: data[i].id,
+                  taskid: null,
+                  text: x.text,
+                  category: y,
+                };
+              }
+            });
+          }
+        }
+      }
+      createTask(newTask.text).then((taskID) => {
+        const updatedArr = arrToUpdate.map((task) =>
+          task.id ? task.id : taskID
+        );
+        updateStoryTasks(newTask.storyid, newTask.category, updatedArr);
+      });
+    }
+
+    setNewData(false);
+  }, [data]);
 
   // for display purposes, this function reorganizes the data into categories
   // so the browser can display the data via category columns
@@ -140,10 +164,10 @@ const SimpleScrumMain = () => {
     .reduce(
       (acc, curr) => {
         let tempObj = { ...acc };
-        tempObj.tasks = [...tempObj.tasks, curr.tasks];
-        tempObj.todos = [...tempObj.todos, curr.todos];
-        tempObj.doings = [...tempObj.doings, curr.doings];
-        tempObj.dones = [...tempObj.dones, curr.dones];
+        tempObj.tasks = [...tempObj.tasks, curr.tasks.map((c) => c.text)];
+        tempObj.todos = [...tempObj.todos, curr.todos.map((c) => c.text)];
+        tempObj.doings = [...tempObj.doings, curr.doings.map((c) => c.text)];
+        tempObj.dones = [...tempObj.dones, curr.dones.map((c) => c.text)];
         return tempObj;
       },
       { tasks: [], todos: [], doings: [], dones: [] }
@@ -151,8 +175,27 @@ const SimpleScrumMain = () => {
 
   return (
     <Box>
+      <Button
+        onClick={() => (window.location.href = `/login/simpleScrum`)}
+        variant="contained"
+      >
+        LOG IN
+      </Button>
+      <Button onClick={handleSignOut} variant="contained">
+        SIGNOOT
+      </Button>
+      <Button
+        onClick={() => (window.location.href = `/signup/simpleScrum`)}
+        variant="contained"
+      >
+        SUGBYO
+      </Button>
       <Typography>Triple D Scrum</Typography>
-      <TextField label="Add task" onChange={(e) => setInput(e.target.value)} />
+      <TextField
+        label="Add task"
+        onChange={(e) => setInput(e.target.value)}
+        value={input}
+      />
       <Button onClick={handleClick_newTask} variant="contained" />
       <DndProvider backend={HTML5Backend}>
         <Box display="flex">

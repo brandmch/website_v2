@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Box, Typography, Button, TextField } from "@mui/material";
 import React from "react";
 import { DraggableBox } from "./draggableBox";
+import { createTask } from "../../hasura/createTask";
 
 // removes the white spaces from 1 category in 1 story
 // allows for the proper white-spacing upon refresh
@@ -52,26 +53,51 @@ const Task = ({
     );
 
     newData[moveTo.storyIndex][moveTo.categoryTitle].unshift(removedTask[0]);
-    console.log(newData);
     newData = removeWhiteSpace(newData, moveTo.storyIndex);
     newData = removeWhiteSpace(newData, dragged.storyIndex);
 
     state.setData(newData);
+    state.setNewData(true);
   };
 
   // takes the input and creates a new todo
   const handleClick_newTodo = () => {
     let tempState = [...state.data];
-    tempState[storyIndex].todos = [input, ...tempState[storyIndex].todos];
+    tempState[storyIndex].todos = [
+      { id: null, text: input },
+      ...tempState[storyIndex].todos,
+    ];
     tempState = removeWhiteSpace(tempState, storyIndex);
     state.setData(tempState);
+    state.setNewData(true);
     setInput("");
   };
 
-  return data === "" ? (
+  return !data ? (
     <DraggableBox key={moveTo} id={moveTo} onDrop={handleDrop}>
       <Box height={152} marginBottom={1.5} padding={1} margin={1.5} />
     </DraggableBox>
+  ) : categoryIndex === 0 ? (
+    <Box
+      height={150}
+      border="1px solid red"
+      borderRadius={1}
+      textAlign="left"
+      padding={1}
+      marginBottom={1.5}
+      margin={1.5}
+    >
+      <Typography>{data}</Typography>
+      {categoryIndex === 0 && (
+        <Box>
+          <TextField
+            label="Add task"
+            onChange={(e) => setInput(e.target.value)}
+          />
+          <Button variant="contained" onClick={handleClick_newTodo}></Button>
+        </Box>
+      )}
+    </Box>
   ) : (
     <DraggableBox key={moveTo} id={moveTo} onDrop={handleDrop}>
       <Box
@@ -84,15 +110,6 @@ const Task = ({
         margin={1.5}
       >
         <Typography>{data}</Typography>
-        {categoryIndex === 0 && (
-          <Box>
-            <TextField
-              label="Add task"
-              onChange={(e) => setInput(e.target.value)}
-            />
-            <Button variant="contained" onClick={handleClick_newTodo}></Button>
-          </Box>
-        )}
       </Box>
     </DraggableBox>
   );

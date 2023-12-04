@@ -26,13 +26,6 @@ import {
 } from "./workoutGenerator/routes";
 import CodeIcon from "@mui/icons-material/Code";
 import SimpleScrumMain from "./superSimpleScrum/main";
-import {
-  ChangePassword,
-  Confirm,
-  DeleteUserConfirmation,
-  Login,
-  SignUp,
-} from "../auth/screens";
 
 const links = [
   ["Super Simple Scrum", <CodeIcon />, "/simpleScrum"],
@@ -82,13 +75,19 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
   },
   {
-    path: "/login",
+    path: "/login/:returnpage",
     element: <Login />,
     errorElement: <ErrorElement />,
+    loader: ({ params }) => {
+      return params;
+    },
   },
   {
-    path: "/signup",
+    path: "/signup/:returnPage",
     element: <SignUp />,
+    loader: ({ params }) => {
+      return params;
+    },
     errorElement: <ErrorElement />,
   },
   {
@@ -100,7 +99,7 @@ const router = createBrowserRouter([
     },
   },
   {
-    path: "/signup/confirm/:name/:email/:username",
+    path: "/signup/confirm/:name/:email/:username/:returnPage",
     element: <Confirm />,
     errorElement: <ErrorElement />,
     loader: ({ params }) => {

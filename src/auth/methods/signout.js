@@ -1,9 +1,11 @@
 import { Auth } from "aws-amplify";
 
-export async function signOut() {
+export async function signOut(returnPage = null) {
   try {
     await Auth.signOut().then((x) => {
-      window.location.href = "/login";
+      if (returnPage) {
+        window.location.href = returnPage;
+      }
     });
   } catch (error) {
     console.log("error signing out: ", error);

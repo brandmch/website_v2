@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Typography, Box, TextField, Button } from "@mui/material";
 import { signUp } from "../auth-methods";
 import { LoginSignUpBox } from "../components/login_signupBox";
+import { useParams } from "react-router-dom";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -12,6 +13,8 @@ const SignUp = () => {
 
   const [passwordsDontMatch, setPasswordsDontMatch] = useState(false);
   const [invalidPassword, setInvalidPassword] = useState(false);
+
+  const { returnPage } = useParams();
 
   const handleSignUp = () => {
     if (
@@ -29,7 +32,7 @@ const SignUp = () => {
       }).then((x) => {
         console.log(x);
         if (x.username) {
-          window.location.href = `/signup/confirm/${name}/${email}/${username}`;
+          window.location.href = `/signup/confirm/${name}/${email}/${username}/${returnPage}`;
         } else if (x === 4) {
           setInvalidPassword(true);
         }

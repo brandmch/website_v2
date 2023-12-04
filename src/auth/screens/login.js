@@ -2,14 +2,16 @@ import { useState } from "react";
 import { Box } from "@mui/material";
 import { signIn } from "../auth-methods";
 import { LoginSignUpBox } from "../components/login_signupBox";
+import { useParams } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [badEorP, setBadEorP] = useState(false);
+  const { returnpage } = useParams();
 
   const handleSignIn = () => {
-    signIn({ email: email, password: password }, "/social").then((x) => {
+    signIn({ email: email, password: password }, `/${returnpage}`).then((x) => {
       if (x === 1) {
         setBadEorP(true);
       }

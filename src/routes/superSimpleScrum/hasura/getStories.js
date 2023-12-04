@@ -16,17 +16,21 @@ async function fetchGraphQL(operationsDoc, operationName, variables) {
 }
 
 const operationsDoc = (userid) => `
-  query MyQuery {
-    scrum_stories(where: {userid: {_eq: ${userid}}}) {
-      id
-      userid
-    }
+query getStories {
+  scrum_stories(where: {userid: {_eq: ${userid}}}) {
+    todos
+    tasks
+    id
+    dones
+    doings
+    userid
   }
-  
+}
+
       `;
 
 function fetchMyQuery(userid) {
-  return fetchGraphQL(operationsDoc(userid), "MyQuery", {});
+  return fetchGraphQL(operationsDoc(userid), "getStories", {});
 }
 
 export async function getStories(userid) {
@@ -37,6 +41,6 @@ export async function getStories(userid) {
     return { error: -1 };
   }
   if (data) {
-    return data.scrum_stories.reduce((acc, story) => [...acc, story.id], []);
+    return data.scrum_stories;
   }
 }

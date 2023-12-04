@@ -8,10 +8,10 @@ const Confirm = () => {
   const [code, setCode] = useState("");
   const [incorrectCode, setIncorrectCode] = useState(false);
 
-  let { name, email, username } = useParams();
+  let { name, email, username, returnPage } = useParams();
 
   const handleConfirm = () => {
-    confirmSignUp(email, name, username, code).then((x) => {
+    confirmSignUp(email, name, username, code, returnPage).then((x) => {
       if (x === 3) {
         setIncorrectCode(true);
       }
