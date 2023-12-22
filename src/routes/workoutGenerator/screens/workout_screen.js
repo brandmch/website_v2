@@ -4,7 +4,7 @@ import capitalize from "../../../utils/capitalize";
 import { useState } from "react";
 import { useEffect } from "react";
 import WorkoutRoutine from "../components/workout_class";
-import { signUp } from "../../social/auth/utils";
+import { signUp } from "../../../auth/auth-methods";
 
 export const WorkoutScreen = () => {
   const { created } = useParams();

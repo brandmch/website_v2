@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Paper, Divider } from "@mui/material";
+import { Box, Typography, Paper } from "@mui/material";
 import List from "./list";
 
 const SmallInfoBox = ({ title, data, marginTop = 4 }) => {

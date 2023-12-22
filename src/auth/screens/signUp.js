@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Typography, Box, TextField, Button } from "@mui/material";
-import { signUp } from "../auth/utils";
-import { LoginSignUpBox } from "../components/components/login_signupBox";
+import { signUp } from "../auth-methods";
+import { LoginSignUpBox } from "../components/login_signupBox";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -29,7 +29,7 @@ const SignUp = () => {
       }).then((x) => {
         console.log(x);
         if (x.username) {
-          window.location.href = `/social/signup/confirm/${name}/${email}/${username}`;
+          window.location.href = `/signup/confirm/${name}/${email}/${username}`;
         } else if (x === 4) {
           setInvalidPassword(true);
         }

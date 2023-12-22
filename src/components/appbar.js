@@ -9,6 +9,7 @@ import Button from "@mui/material/Button";
 import useWindowSize from "../utils/useWindowSize";
 
 const pages = [
+  ["SuperSimpleScrum", "https://www.supersimplescrum.com/"],
   ["Blog", "/blog"],
   ["LinkedIn", "https://www.linkedin.com/in/mchugh-brandon/"],
   ["GitHub", "https://github.com/brandmch"],

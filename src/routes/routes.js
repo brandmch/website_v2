@@ -18,15 +18,12 @@ import {
   SocialAppTheme,
   ChangePassword,
   DeleteUserConfirmation,
-} from "./social/routes";
-import {
-  WorkoutGeneratorLanding,
-  WorkoutScreen,
-  SignUpScreen,
-} from "./workoutGenerator/routes";
+} from "../auth/auth-screens";
+import { WorkoutGeneratorLanding, WorkoutScreen, SignUpScreen } from "./workoutGenerator/routes";
 import CodeIcon from "@mui/icons-material/Code";
 
 const links = [
+  ["SuperSimpleScrum", <CodeIcon />, "https://www.supersimplescrum.com"],
   ["Blog", <CodeIcon />, "/blog"],
   ["Social", <CodeIcon />, "/social"],
   ["Minesweeper", <CodeIcon />, "/minesweeper"],
@@ -40,6 +37,7 @@ const links = [
 
 const router = createBrowserRouter([
   { path: "/", element: <Landing />, errorElement: <ErrorElement /> },
+
   {
     path: "/drummachine",
     element: <DrumMachine />,
@@ -73,13 +71,13 @@ const router = createBrowserRouter([
     errorElement: <ErrorElement />,
   },
   {
-    path: "/social/login",
-    element: <SocialAppTheme component={<Login />} />,
+    path: "/login",
+    element: <Login />,
     errorElement: <ErrorElement />,
   },
   {
-    path: "/social/signup",
-    element: <SocialAppTheme component={<SignUp />} />,
+    path: "/signup",
+    element: <SignUp />,
     errorElement: <ErrorElement />,
   },
   {
@@ -91,21 +89,21 @@ const router = createBrowserRouter([
     },
   },
   {
-    path: "/social/signup/confirm/:name/:email/:username",
-    element: <SocialAppTheme component={<Confirm />} />,
+    path: "/signup/confirm/:name/:email/:username",
+    element: <Confirm />,
     errorElement: <ErrorElement />,
     loader: ({ params }) => {
       return params;
     },
   },
   {
-    path: "/social/changepassword",
-    element: <SocialAppTheme component={<ChangePassword />} />,
+    path: "/changepassword",
+    element: <ChangePassword />,
     errorElement: <ErrorElement />,
   },
   {
-    path: "/social/deleteuserconfirmation/:userid",
-    element: <SocialAppTheme component={<DeleteUserConfirmation />} />,
+    path: "/deleteuserconfirmation/:userid",
+    element: <DeleteUserConfirmation />,
     errorElement: <ErrorElement />,
     loader: ({ params }) => {
       return params;
