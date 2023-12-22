@@ -19,14 +19,11 @@ import {
   ChangePassword,
   DeleteUserConfirmation,
 } from "../auth/auth-screens";
-import {
-  WorkoutGeneratorLanding,
-  WorkoutScreen,
-  SignUpScreen,
-} from "./workoutGenerator/routes";
+import { WorkoutGeneratorLanding, WorkoutScreen, SignUpScreen } from "./workoutGenerator/routes";
 import CodeIcon from "@mui/icons-material/Code";
 
 const links = [
+  ["SuperSimpleScrum", <CodeIcon />, "https://www.supersimplescrum.com"],
   ["Blog", <CodeIcon />, "/blog"],
   ["Social", <CodeIcon />, "/social"],
   ["Minesweeper", <CodeIcon />, "/minesweeper"],
@@ -40,6 +37,7 @@ const links = [
 
 const router = createBrowserRouter([
   { path: "/", element: <Landing />, errorElement: <ErrorElement /> },
+
   {
     path: "/drummachine",
     element: <DrumMachine />,
