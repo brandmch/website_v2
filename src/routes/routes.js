@@ -21,8 +21,11 @@ import {
 } from "../auth/auth-screens";
 import { WorkoutGeneratorLanding, WorkoutScreen, SignUpScreen } from "./workoutGenerator/routes";
 import CodeIcon from "@mui/icons-material/Code";
+import { QRCodeMain } from "./qrCode/qrCodeDisplay";
+import { SendAMessage } from "./qrCode/sendAMessage";
 
 const links = [
+  ["Guess What?", <CodeIcon />, "/sendAMessage"],
   ["SuperSimpleScrum", <CodeIcon />, "https://www.supersimplescrum.com"],
   ["Blog", <CodeIcon />, "/blog"],
   ["Social", <CodeIcon />, "/social"],
@@ -37,6 +40,15 @@ const links = [
 
 const router = createBrowserRouter([
   { path: "/", element: <Landing />, errorElement: <ErrorElement /> },
+  {
+    path: "/guessWhat/:message",
+    element: <QRCodeMain />,
+    errorElement: <ErrorElement />,
+    loader: ({ params }) => {
+      return params;
+    },
+  },
+  { path: "/sendamessage", element: <SendAMessage />, errorElement: <ErrorElement /> },
 
   {
     path: "/drummachine",
