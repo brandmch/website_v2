@@ -7,6 +7,7 @@ import AppBarCustom from "../../components/appbar";
 import useWindowSize from "../../utils/useWindowSize";
 import { getTitlesForSearchBar } from "./hasura/getTitlesForSearchBar";
 import "./app.css";
+import FooterCustom from "../../components/footer";
 
 import SearchBar from "./components/searchBar";
 import { ThemeContext } from "@emotion/react";
@@ -48,18 +49,17 @@ const Intro = ({ size }) => {
         Welcome!
       </Typography>
       <Typography variant="subtitle2" textAlign="justify" marginTop={1}>
-        Here, I will be sharing information that I find useful or interesting,
-        based on topics that I am currently exploring and learning about. As an
-        avid learner, I am constantly seeking new information and ideas, and I
-        am eager to share that knowledge with the world.
+        Here, I will be sharing information that I find useful or interesting, based on topics that
+        I am currently exploring and learning about. As an avid learner, I am constantly seeking new
+        information and ideas, and I am eager to share that knowledge with the world.
       </Typography>
       <Typography variant="subtitle2" textAlign="justify" marginTop={1}>
-        Whether you are a fellow learner or just someone who is interested in
-        new ideas, I hope you will find something of value here.
+        Whether you are a fellow learner or just someone who is interested in new ideas, I hope you
+        will find something of value here.
       </Typography>
       <Typography variant="subtitle2" textAlign="justify" marginTop={1}>
-        So, sit back, relax, and explore the world of ideas with me. Together,
-        we can learn and grow, one post at a time!
+        So, sit back, relax, and explore the world of ideas with me. Together, we can learn and
+        grow, one post at a time!
       </Typography>
       <Typography variant="subtitle2" textAlign="justify" marginTop={1}>
         Cheers!
@@ -89,11 +89,7 @@ const BlogHome = () => {
       <Box>
         {posts &&
           posts.map((curr) => (
-            <Post
-              key={randomKeyGenerator()}
-              p={curr}
-              lastPost={posts[posts.length - 1].time}
-            />
+            <Post key={randomKeyGenerator()} p={curr} lastPost={posts[posts.length - 1].time} />
           ))}
         <Button
           variant="outlined"
@@ -157,17 +153,7 @@ const BlogHome = () => {
       <Box
         minHeight="100vh"
         maxWidth="100vw"
-        padding={
-          width > 850
-            ? 5
-            : width > 700
-            ? 4
-            : width > 550
-            ? 3
-            : width > 400
-            ? 2
-            : 1
-        }
+        padding={width > 850 ? 5 : width > 700 ? 4 : width > 550 ? 3 : width > 400 ? 2 : 1}
       >
         <Box
           sx={{
@@ -199,6 +185,7 @@ const BlogHome = () => {
     <Box>
       <AppBarCustom />
       {width > 1100 ? <Desktop /> : <Mobile />}
+      <FooterCustom />
     </Box>
   );
 };

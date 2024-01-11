@@ -2,7 +2,7 @@ import Landing from "./_landing/landing";
 import DrumMachine from "./drumMachine/drumMachine";
 import JavascriptCalulator from "./javascriptCalculator/javascriptcalculator";
 import MarkdownPreviewer from "./markdownPreviewer/markdownPreviewer";
-import RandomQuoteMachine from "./randomQuoteMachine/randomQuoteMachine";
+import { RandomQuoteMachine } from "./randomQuoteMachine/randomQuoteMachine";
 import Timer from "./Timer/timer";
 import WeatherApp from "./weather/weather";
 import Minesweeper from "./minesweeper/App_minesweeper";
@@ -23,13 +23,14 @@ import { WorkoutGeneratorLanding, WorkoutScreen, SignUpScreen } from "./workoutG
 import CodeIcon from "@mui/icons-material/Code";
 import { QRCodeMain } from "./qrCode/qrCodeDisplay";
 import { SendAMessage } from "./qrCode/sendAMessage";
+import { NewLanding } from "./_landing/new_landing";
 
 const links = [
-  ["Guess What?", <CodeIcon />, "/sendAMessage"],
   ["SuperSimpleScrum", <CodeIcon />, "https://www.supersimplescrum.com"],
+  ["Minesweeper", <CodeIcon />, "/minesweeper"],
+  ["Guess What?", <CodeIcon />, "/sendAMessage"],
   ["Blog", <CodeIcon />, "/blog"],
   ["Social", <CodeIcon />, "/social"],
-  ["Minesweeper", <CodeIcon />, "/minesweeper"],
   ["Weather App", <CodeIcon />, "/weather"],
   ["Timer", <CodeIcon />, "/timer"],
   ["JavaScript Calculator", <CodeIcon />, "/javascriptcalulator"],
@@ -40,6 +41,7 @@ const links = [
 
 const router = createBrowserRouter([
   { path: "/", element: <Landing />, errorElement: <ErrorElement /> },
+  { path: "/newLanding", element: <NewLanding />, errorElement: <ErrorElement /> },
   {
     path: "/guessWhat/:message",
     element: <QRCodeMain />,
