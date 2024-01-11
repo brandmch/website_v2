@@ -7,7 +7,11 @@ const items = [
     title: "JavaScript Developer",
     company: "Macro Solutions",
     dates: "Jul 2023 - Present",
-    duties: [],
+    duties: [
+      "Worked as a contractor on a team of developers at the Federal Deposit Insurance Corporation (FDIC)",
+      "Helped to build features and fix bugs for the FDIC's BankFind Suite LINK(https://banks.data.fdic.gov/bankfind-suite/)",
+      "Developed code for both front-end and back-end",
+    ],
   },
   {
     title: "Software Developer",
@@ -74,24 +78,50 @@ const ExpList = ({ width }) => {
           </Box>
         </Box>
         {duties.map((curr) => {
-          return (
-            <Box
-              display="flex"
-              marginBottom={1}
-              textAlign="justify"
-              marginLeft={3}
-              marginRight={3}
-              key={randomKeyGenerator()}
-            >
-              {width <= 631 ? null : (
-                <SubdirectoryArrowRightIcon style={{ marginRight: 10 }} />
-              )}
+          if (curr.includes("LINK(")) {
+            const linkRegex = /LINK\(([^)]+)\)/;
+            const match = curr.match(linkRegex);
+            const stringWithoutLink = curr.replace(linkRegex, "");
 
-              <Typography alignContent="center" gutterBottom>
-                {curr}
-              </Typography>
-            </Box>
-          );
+            const linkVariable = match ? match[1] : null;
+
+            return (
+              <Box
+                display="flex"
+                marginBottom={1}
+                textAlign="justify"
+                marginLeft={3}
+                marginRight={3}
+                key={randomKeyGenerator()}
+              >
+                {width <= 631 ? null : <SubdirectoryArrowRightIcon style={{ marginRight: 10 }} />}
+
+                <Typography alignContent="center" gutterBottom>
+                  {stringWithoutLink}{" "}
+                  <a href={linkVariable} target="_blank">
+                    (LINK)
+                  </a>
+                </Typography>
+              </Box>
+            );
+          } else {
+            return (
+              <Box
+                display="flex"
+                marginBottom={1}
+                textAlign="justify"
+                marginLeft={3}
+                marginRight={3}
+                key={randomKeyGenerator()}
+              >
+                {width <= 631 ? null : <SubdirectoryArrowRightIcon style={{ marginRight: 10 }} />}
+
+                <Typography alignContent="center" gutterBottom>
+                  {curr}
+                </Typography>
+              </Box>
+            );
+          }
         })}
       </Box>
     );
